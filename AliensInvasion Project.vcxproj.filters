@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ds of Armies">
+      <UniqueIdentifier>{e5dc9742-faed-4baa-ae83-b182a99c0d77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Unit Armies">
+      <UniqueIdentifier>{f7ccc67c-bdd2-4d4a-8b36-1c2dc52c8048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Militaries">
+      <UniqueIdentifier>{3798208e-c8a2-47b3-8d3f-20bb1809eacd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameManager">
+      <UniqueIdentifier>{d3b37169-0b06-417d-8f26-d236a7b5d6a0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UnitArmies\Unit.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="UnitArmies\ET.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Ds Of Armies\ET_List.h">
+      <Filter>Ds of Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Militaries\earthArmy.h">
+      <Filter>Militaries</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>GameManager</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="UnitArmies\ET.cpp">
+      <Filter>Unit Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Ds Of Armies\ET_List.cpp">
+      <Filter>Ds of Armies</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
