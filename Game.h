@@ -3,6 +3,8 @@
 class Game
 {
 	Output* POut;
+	
 public:
 	Game();
+	~Game();
 };
