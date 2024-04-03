@@ -1,0 +1,29 @@
+#pragma once
+enum COLOR {
+	DUMMY,
+	DARK_BLUE,
+	DARK_GREEN,
+	AQUA,
+	RED,
+	PURPLE,
+	ORANGE,
+	WHITE,
+	GRAY,
+	LIGHT_BLUE,
+	LIGHT_GREEN,
+	LIGHT_CYAN,
+	LIGHT_RED,
+	PINK,
+	LIGHT_YELLOW
+};
+
+enum MENU {
+	START,
+	TEAM_INFO,
+	EXIT,
+
+
+	INERACT = 0,
+	SILENT,
+	BACK
+};

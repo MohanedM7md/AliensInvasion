@@ -5,7 +5,7 @@
 #include <mmsystem.h>
 #pragma comment (lib,"winmm.lib")
 
-#include "../COLORS.h"
+#include "../DEFS.h"
 //==================================Define Key Buttons Values=============================//
 #define KEY_UP 72
 #define KEY_DOWN 80
@@ -15,15 +15,20 @@
 
 class Output {
 private:
-    CONSOLE_FONT_INFOEX cfi;
-    HANDLE ConsoleHandler;
     
+    HANDLE ConsoleHandler;
+    CONSOLE_SCREEN_BUFFER_INFO screen;
+   
 public:
 	Output();
     void LoadingScreen();
 
     template<class T>
     void PrintOut(T text, COLOR color = WHITE);
-    int ScreenMinue(std::string* MenuItems, int MinueSize);
+    int ScreenMenu(std::string MenuItems[], int MinueSize);
     void ClearScreen();
+    void setFont(short size, const std::wstring& fontType = L"Terminal");
+
+    //=============== Armies Info Outputs ====================//
+    void ES_Print();
 };
