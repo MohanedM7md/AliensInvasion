@@ -6,8 +6,7 @@ ES::ES(int id, int tj, double health, float power, int attackCap,
 	
 }
 
+
 void ES::attack()
 {
-	std::cout << "Attack";
 }
-

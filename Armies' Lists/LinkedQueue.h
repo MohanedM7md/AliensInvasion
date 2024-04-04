@@ -1,9 +1,8 @@
-
-
 #pragma once
 #include "Node.h"
 #include "QueueADT.h"
-#include "iostream"
+#include <iostream>
+
 
 template <typename T>
 class LinkedQueue:public QueueADT<T>
@@ -145,26 +144,24 @@ Output: None.
 template <typename T>
 void LinkedQueue<T>::Print() {
 	Node<T>* temp = frontPtr;
-	while (temp) {
-		std::cout << temp->getItem();
+	while (temp->getNext()) {
+		std::cout << temp->getItem()<<", ";
+		temp = temp->getNext();
 	}
+	std::cout << temp->getItem();
 }
 
-
+//////////////////////////////////////////////////////////////////
 template <typename T>
 LinkedQueue<T>::~LinkedQueue()
 {
 	//Note that the cout statements here is just for learning purpose
 	//They should be normally removed from the destructor
-	std::cout<<"\nStarting LinkedQueue destructor...";
-	std::cout<<"\nFreeing all nodes in the queue...";
-
 	//Free all nodes in the queue
 	T temp;
 	while(dequeue(temp));
 	
-	std::cout<<"\n Is LinkedQueue Empty now?? ==> "<<isEmpty();
-	std::cout<<"\nEnding LinkedQueue destructor..."<<std::endl;
+
 }
 
 /*

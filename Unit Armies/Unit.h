@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include "../Game.h"
+#include <ostream>
+
 
 /* ====================== Unit Class ===========================
  * Description
@@ -11,7 +12,7 @@
  *
  * =============================================================*/
 class Unit{
-private:
+protected:
 
 	int ID;
 	int Tj;
@@ -25,9 +26,8 @@ public:
 
 	Unit(int id = 0, int tj = 0, double health = 0, float power = 0, int attackCap = 0,
 		std::string type = NULL) :ID(id), Tj(tj), health(health), power(power),
-		attackCapacity(attackCap), type(type)
-	{};
-
+		attackCapacity(attackCap), type(type){};
+	
 	/* ===== Getters ======== */
 
 	int GetID() const { return ID; };

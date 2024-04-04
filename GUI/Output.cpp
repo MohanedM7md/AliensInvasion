@@ -5,7 +5,6 @@ Output::Output()
 {   
     // Get a handle to the standard output console
     ConsoleHandler = GetStdHandle(STD_OUTPUT_HANDLE);
-    setFont(35);
     // ===== SECTION FOR SETTING FONT SIZE, FONT FAMILY, AND FULL SCREEN =====
     // This section is commented out as directly changing font family 
     // Simulate Alt+Enter keypress for full screen (might not work reliably)
@@ -15,8 +14,17 @@ Output::Output()
     keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
     
     Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
+
     // Get information about the console screen buffer
     GetConsoleScreenBufferInfo(ConsoleHandler, &screen);
+    CONSOLE_FONT_INFOEX cfi;
+    cfi.cbSize = sizeof(cfi);
+    cfi.nFont = 0;
+    cfi.dwFontSize.X = 0; // Width of each character (default)
+    cfi.dwFontSize.Y = 35; // Height
+    cfi.FontWeight = FW_BOLD; // Bold font style
+    wcscpy_s(cfi.FaceName, L"Terminal");
+    SetCurrentConsoleFontEx(ConsoleHandler, TRUE, &cfi);
     // ===== END OF SECTION =====
 }
 
@@ -81,33 +89,35 @@ void Output::setFont(short size, const std::wstring& fontType ) {
     cfi.nFont = 0;
     cfi.dwFontSize.X = 0; // Width of each character (default)
     cfi.dwFontSize.Y = size; // Height
-    wcscpy_s(cfi.FaceName, fontType.c_str()); // Font family (optional)
     cfi.FontWeight = FW_BOLD; // Bold font style
-
-    // Attempt to set the font with the specified family
-    if (SetCurrentConsoleFontEx(ConsoleHandler, FALSE, &cfi)) {
-        // Success - font family might have been applied
-    }
-    else {
-        // Fallback: Set font family to "Terminal" if the original attempt failed
-        wcscpy_s(cfi.FaceName, L"Terminal");
-        SetCurrentConsoleFontEx(ConsoleHandler, FALSE, &cfi);
-        // Inform the user that the preferred font family might not be available
-        std::wcout << L"Warning: The preferred font family might not be available. Using 'Terminal' font.\n";
-    }
+    wcscpy_s(cfi.FaceName, L"Terminal");
+    wcscpy_s(cfi.FaceName, L"Terminal");
+    SetCurrentConsoleFontEx(ConsoleHandler, TRUE, &cfi);
 }
 
 void Output::ES_Print()
 {
-    std::cout <<' ' << char(178) << '\n';
-    //SetConsoleTextAttribute(ConsoleHandler, LIGHT_GREEN);
+    
+    SetConsoleTextAttribute(ConsoleHandler, ORANGE);
+    std::cout << "  "<< char(254) << '\n';
     SetConsoleTextAttribute(ConsoleHandler, LIGHT_GREEN);
-    std::cout  << char(178) << char(178) << char(178)<< '\n';
-    //SetConsoleTextAttribute(ConsoleHandler, WHITE);
-    SetConsoleTextAttribute(ConsoleHandler, WHITE);
-    std::cout <<' ' << char(178) << '\n';
+    std::cout << ' ' << char(223) << char(219) << char(223);
+    SetConsoleTextAttribute(ConsoleHandler, DARK_GREEN);
+    std::cout << '\n' << "  " << char(219) << '\t';
+    std::cout << "\x1B[1A";
     
 }
+
+void Output::ET_Print()
+{
+    SetConsoleTextAttribute(ConsoleHandler, DARK_GREEN);
+    std::cout << "  " << static_cast<char>(220) << static_cast<char>(220) << std::endl;
+    std::cout << " " << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(223) << static_cast<char>(223) << ' ';
+    SetConsoleTextAttribute(ConsoleHandler, GRAY);
+    std::cout << "\n O  O\t";
+    std::cout << "\x1B[1A";
+}
+
 
 
 
@@ -116,12 +126,12 @@ void Output::LoadingScreen()
     CONSOLE_CURSOR_INFO cursorInfo = { 1,false };
     SetConsoleCursorInfo(ConsoleHandler, &cursorInfo);
 
-    COORD AlignText = { (screen.dwSize.X)/2 - 7,5 };
+    COORD AlignText = { 23,5 };
     GetConsoleScreenBufferInfo(ConsoleHandler, &screen);
     SetConsoleCursorPosition(ConsoleHandler, AlignText);
 
     PrintOut("Loading",ORANGE);
-    AlignText = { static_cast<SHORT>((screen.dwSize.X) / 2 - 7 * 3), 10 };
+    AlignText = { static_cast<SHORT>(12), 10 };
     SetConsoleCursorPosition(ConsoleHandler, AlignText);
 
     for (int i = 0; i < 30; i++) {

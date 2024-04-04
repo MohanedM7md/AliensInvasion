@@ -1,4 +1,5 @@
 #pragma once
+#include <ostream>
 
 template <typename T>
 class Node

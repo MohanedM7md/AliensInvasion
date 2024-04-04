@@ -31,4 +31,6 @@ public:
 
     //=============== Armies Info Outputs ====================//
     void ES_Print();
+    void ET_Print();
+
 };

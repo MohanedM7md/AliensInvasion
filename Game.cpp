@@ -1,14 +1,19 @@
 #include "Game.h"
 
-Game::Game()
+Game::Game():EarthArmies(this)
 {
 	pOut = new Output;//remember to de-allocate this please"
-	pOut->LoadingScreen();
+	
 }
 
 Output* Game::getOutputPtr() const
 {
 	return this->pOut;
+}
+
+void Game::loadingScreen()
+{
+	pOut->LoadingScreen();
 }
 
 MENU Game::startMenue()
@@ -30,10 +35,17 @@ MENU Game::modeMenue()
 	}
 	return BACK;
 }
+
+void Game::startGame()
+{
+	pOut->ClearScreen();
+	pOut->setFont(20);
+	EarthArmies.printEarth();
+	system("pause");
+}
+
 Game::~Game()
 {
 	delete pOut;
-	
-		
 }
 

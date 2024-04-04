@@ -1,30 +1,31 @@
-#pragma once
-#include "../Unit Armies/Unit.h"
+#ifndef _EARTH_ARMY
+#define _EARTH_ARMY
+
+class Game;
+class Output;
 #include "../Unit Armies/ES.h"
+#include "../Unit Armies/ET.h"
 #include "../Armies' Lists/LinkedQueue.h"
-//#include "../Game.h"
+#include "../Armies' Lists/LinkedStack.h"
 
 
-//int id, int tj, double health, float power, int attackCap,
-//std::string type, Game* Gptr
+
+
+
+//class Game;
 class earthArmy {
 	Output* pOut;
-	LinkedQueue <ES> EsList;
+	Game* gPtr;
+	LinkedQueue<ES> ES_List;
+	LinkedStack<ET> ET_List;
+	
 	
 public:
 	
 	
-	earthArmy();
+	earthArmy(Game* gPtr = nullptr);
 	void printEarth();
+
 };
 
-inline earthArmy::earthArmy()
-{
-	ES Man(12, 2, 500, 40, 3, "ES");
-	EsList.enqueue(Man);
-}
-
-inline void earthArmy::printEarth()
-{
-	EsList.Print();
-}
+#endif

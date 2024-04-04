@@ -47,6 +47,7 @@ public :
 	bool push(const T& newEntry);
 	bool pop(T& frntEntry);
 	bool peek(T& frntEntry)  const;	
+	void print();
 	~LinkedStack();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -159,6 +160,28 @@ bool LinkedStack<T>:: peek(T& frntEntry) const
 }
 ///////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+Function: Print
+Print all Data's inside the list
+
+Input: None.
+Output: None.
+*/
+
+template <typename T>
+void LinkedStack<T>::print() {
+	Node<T>* temp = top;
+	while (temp->getNext()) {
+		std::cout << temp->getItem() << ", ";
+		temp = temp->getNext();
+	}
+	std::cout << temp->getItem();
+}
+
+//////////////////////////////////////////////////////////////////
+
 template <typename T>
 LinkedStack<T>::~LinkedStack()
 {
@@ -167,6 +190,6 @@ LinkedStack<T>::~LinkedStack()
 
 	//Free all nodes in the stack
 	T temp;
-	while(destack(temp));
+	while(pop(temp));
 
 }

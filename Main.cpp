@@ -1,27 +1,24 @@
-﻿//#include "Game.h"
-//#include "GUI/Output.h"
-#include "Militaries/earthArmy.h"
+﻿#include "Game.h"
+
+
+
 
 
 int main() {
 	Game game;
-	//Output* out;
-	MENU UserChoice = game.startMenue();
-	while (UserChoice != EXIT) {
-		switch (UserChoice) {
-
-		case START: UserChoice = game.modeMenue();
-			switch (UserChoice) {
-				case INERACT: /*play ineract*/break;
-				case SILENT: /*play Silent*/break;
-				default: break;
+	game.loadingScreen();
+	MENU Choice = game.startMenue();
+	while (Choice != EXIT) {
+		if (Choice == START) {
+			MENU mode = game.modeMenue();
+			switch (mode) {
+			case INERACT: game.startGame(); break;
+			case SILENT: /*SILTEN*/break;
 			}
-			break;
-
-		case TEAM_INFO:/*Shows team Information*/break;
-
-		default: break;
 		}
-		UserChoice = game.startMenue();
+		else if (Choice == TEAM_INFO) {
+			//tem info
+		}
+		Choice = game.startMenue();
 	}
 }
