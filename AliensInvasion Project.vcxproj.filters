@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Ds of Armies">
-      <UniqueIdentifier>{e5dc9742-faed-4baa-ae83-b182a99c0d77}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Unit Armies">
       <UniqueIdentifier>{f7ccc67c-bdd2-4d4a-8b36-1c2dc52c8048}</UniqueIdentifier>
     </Filter>
@@ -13,30 +10,80 @@
     <Filter Include="GameManager">
       <UniqueIdentifier>{d3b37169-0b06-417d-8f26-d236a7b5d6a0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{455f3ec9-4f02-490d-b101-5aa33e1a6b5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Armies%27 Lists">
+      <UniqueIdentifier>{13b4f7d4-6753-4fba-ab9b-04bc3fdc647c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Armies Genrator">
+      <UniqueIdentifier>{bce6cb60-4915-4cc5-907b-086a7e2bcfcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UnitArmies\Unit.h">
-      <Filter>Unit Armies</Filter>
-    </ClInclude>
-    <ClInclude Include="UnitArmies\ET.h">
-      <Filter>Unit Armies</Filter>
-    </ClInclude>
-    <ClInclude Include="Ds Of Armies\ET_List.h">
-      <Filter>Ds of Armies</Filter>
-    </ClInclude>
     <ClInclude Include="Militaries\earthArmy.h">
       <Filter>Militaries</Filter>
     </ClInclude>
+    <ClInclude Include="DEFS.h" />
     <ClInclude Include="Game.h">
       <Filter>GameManager</Filter>
     </ClInclude>
+    <ClInclude Include="GUI\Input.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Output.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit Armies\ES.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit Armies\Unit.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies%27 Lists\Node.h">
+      <Filter>Armies%27 Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies%27 Lists\QueueADT.h">
+      <Filter>Armies%27 Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies%27 Lists\StackADT.h">
+      <Filter>Armies%27 Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit Armies\ET.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies%27 Lists\LinkedQueue.h">
+      <Filter>Armies%27 Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies%27 Lists\LinkedStack.h">
+      <Filter>Armies%27 Lists</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies Genrator\randGen.h">
+      <Filter>Armies Genrator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="UnitArmies\ET.cpp">
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Game.cpp">
+      <Filter>GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Input.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="GUI\Output.cpp">
+      <Filter>GUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit Armies\ES.cpp">
       <Filter>Unit Armies</Filter>
     </ClCompile>
-    <ClCompile Include="Ds Of Armies\ET_List.cpp">
-      <Filter>Ds of Armies</Filter>
+    <ClCompile Include="Unit Armies\ET.cpp">
+      <Filter>Unit Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Militaries\earthArmy.cpp">
+      <Filter>Militaries</Filter>
+    </ClCompile>
+    <ClCompile Include="Armies Genrator\randGen.cpp">
+      <Filter>Armies Genrator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
