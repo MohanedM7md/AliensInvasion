@@ -1,0 +1,16 @@
+Probablity: 100
+N: 7
+#!the 2 upper paramters must be in this order and the first 2 line don't change them.
+
+ES%,ET%,EG%: 40 60
+#      Ranges of Armies     # 
+
+#!Warning don't change in the order of the paramters or the in its fomrat.
+#ES
+Health: 100 200
+Power: 30 60
+Capacity: 1 5
+#ET
+Health: 500 1000
+Power: 100 200
+Capacity: 10 15

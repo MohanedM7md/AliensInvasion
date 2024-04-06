@@ -1,19 +1,11 @@
 #include "earthArmy.h"
 #include "../Game.h"
 
+
+
 earthArmy::earthArmy(Game* gPtr) :gPtr(gPtr)
 {
 	pOut = gPtr->getOutputPtr();
-	ES k(13, 44, 55, 66, 32, "asa");
-	ES_List.enqueue(k);
-	ES_List.enqueue(k);
-	ES_List.enqueue(k);
-	ET m(13, 44, 55, 66, 32, "asa");
-	ET_List.push(m);
-	ET_List.push(m);
-	ET_List.push(m);
-
-
 }
 
 void earthArmy::printEarth()
@@ -32,8 +24,17 @@ void earthArmy::printEarth()
 
 	//=============== print ET Information ========================/
 	pOut->ET_Print();
-	pOut->PrintOut("ES", LIGHT_CYAN);
+	pOut->PrintOut("ET", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
-	ES_List.Print();
+	ET_List.print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
+}
+
+bool earthArmy::addUnit(Unit* unit)
+{
+	if (dynamic_cast<ES*>(unit)) 
+		return ES_List.enqueue((dynamic_cast<ES*>(unit)));
+	else if(dynamic_cast<ET*>(unit))
+		return ET_List.push((dynamic_cast<ET*>(unit)));
+	return false;
 }

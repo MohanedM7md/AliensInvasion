@@ -143,6 +143,7 @@ Output: None.
 
 template <typename T>
 void LinkedQueue<T>::Print() {
+	if (!frontPtr) return;
 	Node<T>* temp = frontPtr;
 	while (temp->getNext()) {
 		std::cout << temp->getItem()<<", ";

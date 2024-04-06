@@ -8,23 +8,16 @@ Output::Output()
     // ===== SECTION FOR SETTING FONT SIZE, FONT FAMILY, AND FULL SCREEN =====
     // This section is commented out as directly changing font family 
     // Simulate Alt+Enter keypress for full screen (might not work reliably)
+    Sleep(2000);
     keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
     keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
     keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
     keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
-    
     Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
 
     // Get information about the console screen buffer
     GetConsoleScreenBufferInfo(ConsoleHandler, &screen);
-    CONSOLE_FONT_INFOEX cfi;
-    cfi.cbSize = sizeof(cfi);
-    cfi.nFont = 0;
-    cfi.dwFontSize.X = 0; // Width of each character (default)
-    cfi.dwFontSize.Y = 35; // Height
-    cfi.FontWeight = FW_BOLD; // Bold font style
-    wcscpy_s(cfi.FaceName, L"Terminal");
-    SetCurrentConsoleFontEx(ConsoleHandler, TRUE, &cfi);
+    setFont(35);
     // ===== END OF SECTION =====
 }
 
@@ -91,8 +84,7 @@ void Output::setFont(short size, const std::wstring& fontType ) {
     cfi.dwFontSize.Y = size; // Height
     cfi.FontWeight = FW_BOLD; // Bold font style
     wcscpy_s(cfi.FaceName, L"Terminal");
-    wcscpy_s(cfi.FaceName, L"Terminal");
-    SetCurrentConsoleFontEx(ConsoleHandler, TRUE, &cfi);
+    SetCurrentConsoleFontEx(ConsoleHandler, FALSE, &cfi);
 }
 
 void Output::ES_Print()

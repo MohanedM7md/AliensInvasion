@@ -16,15 +16,15 @@ class Output;
 class earthArmy {
 	Output* pOut;
 	Game* gPtr;
-	LinkedQueue<ES> ES_List;
-	LinkedStack<ET> ET_List;
-	
-	
+	LinkedQueue<ES*> ES_List;
+	LinkedStack<ET*> ET_List;
+
 public:
 	
 	
 	earthArmy(Game* gPtr = nullptr);
 	void printEarth();
+	bool addUnit(Unit*);
 
 };
 

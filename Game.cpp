@@ -40,8 +40,18 @@ void Game::startGame()
 {
 	pOut->ClearScreen();
 	pOut->setFont(20);
-	EarthArmies.printEarth();
-	system("pause");
+	for (int i = 1; i != 50; i++) {
+		pOut->PrintOut("\t\t\t\t\tCurrent Timestep: " + std::to_string(i) + "\n\n", RED);
+		int j;
+		if (UnitGen.isProbValid(j)) {
+			for (; j > 0; j--) {
+				EarthArmies.addUnit(UnitGen.GenrateArmy());
+			}
+		}
+		EarthArmies.printEarth();
+		system("pause");
+		std::cout << "\n\n\n\n";
+	}
 }
 
 Game::~Game()

@@ -2,12 +2,15 @@
 #define GAME_
 #include "GUI/Output.h"
 #include "Militaries/earthArmy.h"
+#include "Armies Genrator/randGen.h"
 
 
 class Game
 {
 	Output* pOut;
 	earthArmy EarthArmies;
+	randGen UnitGen;
+
 public:
 	Game();
 
@@ -16,6 +19,7 @@ public:
 	MENU startMenue();
 	MENU modeMenue();
 	void startGame();
+
 	~Game();
 };
 #endif 
