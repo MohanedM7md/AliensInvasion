@@ -1,9 +1,13 @@
 #include "Game.h"
 
-Game::Game():EarthArmies(this)
+
+//using namespace std;
+
+Game::Game():EarthArmies(this),UnitGen(this)
 {
 	pOut = new Output;//remember to de-allocate this please"
-	
+	parameters param = LoadParameters();
+	UnitGen.setParameters(param);
 }
 
 Output* Game::getOutputPtr() const
@@ -38,21 +42,78 @@ MENU Game::modeMenue()
 
 void Game::startGame()
 {
+	
 	pOut->ClearScreen();
 	pOut->setFont(20);
 	for (int i = 1; i != 50; i++) {
 		pOut->PrintOut("\t\t\t\t\tCurrent Timestep: " + std::to_string(i) + "\n\n", RED);
-		int j;
-		if (UnitGen.isProbValid(j)) {
-			for (; j > 0; j--) {
-				EarthArmies.addUnit(UnitGen.GenrateArmy());
-			}
-		}
+
+		UnitGen.GenrateArmy();
 		EarthArmies.printEarth();
 		system("pause");
 		std::cout << "\n\n\n\n";
 	}
+	
 }
+
+parameters Game::LoadParameters()
+{
+	parameters param;
+
+	std::fstream inputFile; // create File object
+	inputFile.open(("InputPrameters.yml"), std::ios::in); // open File
+
+	if (inputFile.is_open()) {//checks if the file opened well
+
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line
+		inputFile >> param.prob; // get value of probablity
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
+		inputFile >> param.N; // get value of N
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
+		inputFile >> param.ES >> param.ET >> param.EG;
+		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
+		std::string s;
+		///Get Earth rranges
+		//power Range
+		std::getline(inputFile, s,'-');
+		param.EpwRangees[0] = std::stoi(s);
+		inputFile >> param.EpwRangees[1];
+		//health range
+		std::getline(inputFile, s,'-');
+		param.EhtlyRangees[0] = std::stoi(s);
+		inputFile >> param.EhtlyRangees[1];
+		//Earth capacity range
+		std::getline(inputFile, s,'-');
+		param.EattkCapRangees[0] = std::stoi(s);
+		inputFile >> param.EattkCapRangees[1];
+
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
+		///Get Aliens rranges
+		//power Range
+		std::getline(inputFile, s,'-');
+		param.ApwRangees[0] = std::stoi(s);
+		inputFile >> param.AhtlyRangees[1];
+		//health range
+		std::getline(inputFile, s,'-');
+		param.AhtlyRangees[0] = std::stoi(s);
+		inputFile >> param.AhtlyRangees[1];
+		//Earth capacity range
+		std::getline(inputFile, s,'-');
+		param.AattkCapRangees[0] = std::stoi(s);
+		inputFile >> param.AattkCapRangees[1];
+
+		inputFile.close();//close
+	}
+	
+	return param;
+}
+
+void Game::addEUnits(Unit* add)
+{
+	EarthArmies.addUnit(add);
+}
+
 
 Game::~Game()
 {

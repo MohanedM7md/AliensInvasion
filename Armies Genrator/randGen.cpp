@@ -1,114 +1,75 @@
 #include "randGen.h"
-#include "../Unit Armies/ES.h"
-#include "../Unit Armies/ET.h"
+#include "../Game.h"
+
 using namespace std;
 
-randGen::randGen():ErthIDs(1),AliensthIDs(2000)
-{}
+randGen::randGen(Game* Gptr) :ErthIDs(1), AliensthIDs(2000), Gptr(Gptr)
+{
+}
+
+void randGen::setParameters(parameters & param)
+{
+	if (param.N < 0 || param.prob < 0|| param.ES < 0 
+		|| param.ET < 0 || param.EG < 0 || param.AS < 0
+		|| param.AM < 0 || param.AD < 0)
+		return;//will throw exception later
+	if ((param.EattkCapRangees[1] - param.EattkCapRangees[0]) < 0 ||
+		(param.EhtlyRangees[1] - param.EhtlyRangees[0]) < 0 ||
+		(param.EpwRangees[1] - param.EpwRangees[0]) < 0)
+		return;//will throw exception later
+
+	this->param = param;
+}
 
 
 short randGen::RandmonNumGent() {
-	srand(time(NULL));//Create random number
-	return rand() % 100 +1;// set its range between 1 to 100
-	
+	std::random_device rd;
+	std::uniform_int_distribution<int> dist(1, 100);
+	return dist(rd);// set its range between 1 to 100
+
 }
 
-short randGen::RandmonRangeNum(int min, int max)
+short randGen::RandmonRangeNum(int* range) const
 {
-	srand(time(NULL));
-	int diffBetw = max - min; //to get the range of numbers between the min and max
-	int randNum = rand() % diffBetw + min; //to genrate the this number between min and max 
-	return randNum;
+	std::random_device rd;
+	std::uniform_int_distribution<int> dist(range[0], range[1]);
+	return dist(rd);// set its range between range[0] to range[1]
 }
 
-void randGen::genrateUnitParam(const string& unit, int& hlth, int& pwr, int& cap)
+void randGen::genrateUnitParam(int& hlth, int& pwr, int& cap)
 {
-	fstream inputFile;
 
-	inputFile.open(("InputPrameters.yml"), ios::in);//open the file
-
-	string line;
-	if(inputFile.is_open())
-	while (getline(inputFile, line)) {
-		size_t pos = line.find(unit);
-		if (pos != std::string::npos) { // If "ES" is found in the line
-			// Extract the number following "ES"
-				int Min, Max;
-
-				getline(inputFile, line, ':');//first getting the health value
-				inputFile >> Min >> Max;
-				hlth = RandmonRangeNum(Min, Max);
-				/////////////////////////////////////
-				getline(inputFile, line, ':');//first getting the cap value
-				inputFile >> Min >> Max;
-				pwr = RandmonRangeNum(Min, Max);
-				////////////////////////////////////
-				getline(inputFile, line, ':');
-				inputFile >> Min >> Max;
-				cap = RandmonRangeNum(Min, Max);
-
-				return;
-			}
-			
-		}
-	
+	hlth = RandmonRangeNum(param.EhtlyRangees);
+	///////////////////////////////////////////////////
+	pwr = RandmonRangeNum(param.EpwRangees);
+	///////////////////////////////////////////////////
+	cap = RandmonRangeNum(param.EattkCapRangees);
 }
 
 
 
 
-Unit* randGen::GenrateArmy()
+void randGen::GenrateArmy()
 {
-	
-	fstream inputFile;
-	inputFile.open(("InputPrameters.yml"), ios::in);//open the file
+	int RandA = RandmonNumGent();
+	if (!(RandA < param.prob))
+		return;
 
-	if (inputFile.is_open()) {
-
-		for (int i = 0; i < 2; i++) { //skip the first 2 lines
-			string dummy;//dummy string to use getline
-			getline(inputFile, dummy);
-		}
-
-		int randB = RandmonNumGent();//genrate Random number B from 1 to 100 to genrate army unit
-		inputFile.ignore(std::numeric_limits<std::streamsize>::max(), ':');//it is ignor till the : of the third line
-		int perES, perET, perEG;
-		inputFile >> perES >> perET >> perEG;
-
-
-		string line;
+	for (int i = 0; i < param.N; i++) {
+		int randB = RandmonNumGent();
 		int hlth, pwr, cap;
-		if (randB < perES) {
-			genrateUnitParam("#ES", hlth, pwr, cap);
-			return new ES(ErthIDs++, 0, hlth, pwr, cap, "ES");
+		if (randB < param.ES) {
+			genrateUnitParam(hlth, pwr, cap);
+			Gptr->addEUnits(new ES(ErthIDs++, 0, hlth, pwr, cap, "ES"));
 		}
 
-		if (randB <= perES + perET) {
-			genrateUnitParam("#ET", hlth, pwr, cap);
-			return new ET(ErthIDs++,0, hlth, pwr, cap,"ET");
+		else if (randB <= param.ES + param.ET) {
+			genrateUnitParam(hlth, pwr, cap);
+			Gptr->addEUnits(new ET(ErthIDs++, 0, hlth, pwr, cap, "ET"));
 		}
 
 	}
-		return NULL;
+
 }
 
-bool randGen::isProbValid(int& i)
-{
-	int randA = RandmonNumGent(); //create random number from 1to 100
-	fstream inputFile; // create File object
-	inputFile.open(("InputPrameters.yml"), ios::in); // open File
 
-	if (inputFile.is_open()) {//checks if the file opened well
-		int Value;
-		inputFile.ignore(std::numeric_limits<std::streamsize>::max(), ':');//it is ignor till the : of first line
-		inputFile >> Value; // get value of probablity
-		if (randA <= Value) { // check if Genratedprobablity less than or Equal file Prob.
-			inputFile.ignore(std::numeric_limits<std::streamsize>::max(), ':');//the same as before to get the value of N
-			inputFile >> Value;
-			i = Value;//return the number of itration
-			return true; // return true to complete the genration
-		}
-		inputFile.close();//close
-	}
-	return false;//false probablity is greater than input File probablity
-}
