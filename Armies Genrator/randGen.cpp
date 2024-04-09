@@ -53,11 +53,11 @@ void randGen::GenrateArmy()
 {
 	int RandA = RandmonNumGent();
 	if (!(RandA < param.prob))
-		return;
+		return;//if the probablity is less End the Function
 
 	for (int i = 0; i < param.N; i++) {
-		int randB = RandmonNumGent();
-		int hlth, pwr, cap;
+		int randB = RandmonNumGent(); //genrate rando number range 1-100
+		int hlth, pwr, cap;//intialize input prameter
 		if (randB < param.ES) {
 			genrateUnitParam(hlth, pwr, cap);
 			Gptr->addEUnits(new ES(ErthIDs++, 0, hlth, pwr, cap, "ES"));

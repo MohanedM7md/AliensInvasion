@@ -1,7 +1,5 @@
 #pragma once
-#include <cstdlib> // For rand() and srand()
 #include <random>
-#include <ctime>   // For time()
 #include <string>
 #include <fstream>//for File hanfling
 #include "../DEFS.h"
