@@ -2,8 +2,6 @@
 
 
 
-
-
 int main() {
 	Game game;
 	game.loadingScreen();
@@ -21,4 +19,5 @@ int main() {
 		}
 		Choice = game.startMenue();
 	}
+	
 }

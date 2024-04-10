@@ -12,8 +12,8 @@ public:
 	void attack();
 };
 
-inline std::ostream& operator<<(std::ostream& os, const ES& unit) {
-	os << unit.GetID();
+inline std::ostream& operator<<(std::ostream& os, const ES* unit) {
+	os << unit->GetID();
 	return os;
 }
 

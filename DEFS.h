@@ -27,3 +27,20 @@ enum MENU {
 	SILENT,
 	BACK
 };
+
+struct parameters {
+	int N;
+	int prob;
+	int ES = 0;
+	int ET = 0;
+	int EG = 0;
+	int AS = 0;
+	int AM = 0;
+	int AD = 0;
+	int EpwRangees[2];
+	int EhtlyRangees[2];
+	int EattkCapRangees[2];
+	int ApwRangees[2];
+	int AhtlyRangees[2];
+	int AattkCapRangees[2];
+};

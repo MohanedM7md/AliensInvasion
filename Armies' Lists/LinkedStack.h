@@ -172,6 +172,7 @@ Output: None.
 
 template <typename T>
 void LinkedStack<T>::print() {
+	if (!top) return;
 	Node<T>* temp = top;
 	while (temp->getNext()) {
 		std::cout << temp->getItem() << ", ";
