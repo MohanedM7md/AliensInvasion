@@ -1,6 +1,7 @@
 #include "randGen.h"
 #include "../Game.h"
 
+
 using namespace std;
 
 randGen::randGen(Game* Gptr) :ErthIDs(1), AliensthIDs(2000), Gptr(Gptr)
@@ -66,6 +67,11 @@ void randGen::GenrateArmy()
 		else if (randB <= param.ES + param.ET) {
 			genrateUnitParam(hlth, pwr, cap);
 			Gptr->addEUnits(new ET(ErthIDs++, 0, hlth, pwr, cap, "ET"));
+		}
+		else if (randB <= param.ES + param.ET + param.EG)
+		{
+			genrateUnitParam(hlth, pwr, cap);
+			Gptr->addEUnits(new EG(ErthIDs++, 0, hlth, pwr, cap, "EG"));
 		}
 
 	}
