@@ -2,7 +2,7 @@
 #include <string>
 #include <ostream>
 
-
+using std::string;
 /* ====================== Unit Class ===========================
  * Description
  *
@@ -30,12 +30,22 @@ public:
 	
 	/* ===== Getters ======== */
 
-	int GetID() const { return ID; };
-	int GetTj() const { return Tj; };
-	double GetHealth() const { return health; };
-	float GetPower() const { return power; };
-	int GetAttackCap() const { return attackCapacity; };
-	std::string GetType() const { return type; };
+	int GetID() const;
+	int GetTj() const ;
+	double GetHealth() const;
+	float GetPower() const ;
+	int GetAttackCap() const;
+	string GetType();
+	/* ===== Setters ======== */
+	void SetID(int id);
+	void SetTj(int tj);
+	void SetHealth(double heal);
+	void SetPower(float powr);
+	void SetAttackCap(int AttCap);
+	void SetType(string type);
+
+
+
 
 	virtual void attack() = 0;
 };
