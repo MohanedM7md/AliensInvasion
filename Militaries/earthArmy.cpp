@@ -32,7 +32,7 @@ void earthArmy::printEarth()
 
 	//=============== print ET Information ========================/
 	pOut->ET_Print();
-	pOut->PrintOut("ES", LIGHT_CYAN);
+	pOut->PrintOut("ET", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	ES_List.Print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
