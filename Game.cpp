@@ -3,7 +3,7 @@
 
 //using namespace std;
 
-Game::Game():EarthArmies(this),UnitGen(this)
+Game::Game():EarthArmies(this),UnitGen(this),AlienArmies(this)
 {
 	pOut = new Output;//remember to de-allocate this please"
 	parameters param = LoadParameters();
@@ -50,6 +50,7 @@ void Game::startGame()
 		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
 		UnitGen.GenrateArmy();
 		EarthArmies.printEarth();
+		AlienArmies.printAlien();
 		system("pause");
 		std::cout << "\n\n\n\n";
 	}
@@ -71,6 +72,7 @@ parameters Game::LoadParameters()
 		inputFile >> param.N; // get value of N
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
 		inputFile >> param.ES >> param.ET >> param.EG;
+		inputFile >> param.AS >> param.AM >> param.AD;
 		
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
 		std::string s;
@@ -112,6 +114,11 @@ parameters Game::LoadParameters()
 void Game::addEUnits(Unit* add)
 {
 	EarthArmies.addUnit(add);
+}
+
+void Game::addAUnits(Unit* add)
+{
+	AlienArmies.addUnit(add);
 }
 
 

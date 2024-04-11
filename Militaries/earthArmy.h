@@ -1,8 +1,7 @@
 #ifndef _EARTH_ARMY
 #define _EARTH_ARMY
 
-class Game;
-class Output;
+
 #include "../Unit Armies/ES.h"
 #include "../Unit Armies/ET.h"
 #include "../Unit Armies/EG.h"
@@ -10,11 +9,9 @@ class Output;
 #include "../Armies' Lists/LinkedStack.h"
 #include "../Armies' Lists/priQueue.h"
 
+class Game;
+class Output;
 
-
-
-
-//class Game;
 class earthArmy {
 	Output* pOut;
 	Game* gPtr;
