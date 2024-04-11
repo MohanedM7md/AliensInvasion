@@ -26,11 +26,10 @@ void alienArmy::printAlien()
 
 	//=============== print AM Information ========================/
 	pOut->ET_Print();
-	pOut->PrintOut(std::to_string(AM_count), LIGHT_YELLOW);
+	pOut->PrintOut(std::to_string(AM_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  AM", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
-	for (int i = 0; i < AM_count; i++)
-		std::cout << AM_list[i];
+	AM_List.print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 
 	//=============== print AD Information ========================/
@@ -49,8 +48,8 @@ bool alienArmy::addUnit(Unit* unit)
 
 	else if (dynamic_cast<AM*>(unit))
 	{
-		AM_list[AM_count++] = dynamic_cast<AM*>(unit);
-		return true;
+		
+		return AM_List.add(dynamic_cast<AM*>(unit));
 	}
 
 	else if (dynamic_cast<AD*>(unit)) {

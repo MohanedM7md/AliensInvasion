@@ -62,7 +62,7 @@ parameters Game::LoadParameters()
 	parameters param;
 
 	std::fstream inputFile; // create File object
-	inputFile.open(("InputPrameters.yml"), std::ios::in); // open File
+	inputFile.open(("InputPrameters.txt"), std::ios::in); // open File
 
 	if (inputFile.is_open()) {//checks if the file opened well
 

@@ -70,9 +70,6 @@
     <ClInclude Include="Unit Armies\AM.h">
       <Filter>Unit Armies</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\Input.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
     <ClInclude Include="Militaries\alienArmy.h">
       <Filter>Militaries</Filter>
     </ClInclude>

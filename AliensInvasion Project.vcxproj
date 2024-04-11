@@ -30,7 +30,6 @@
     <ClInclude Include="Armies%27 Lists\StackADT.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GUI\Input.h" />
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="Militaries\alienArmy.h" />
     <ClInclude Include="Militaries\earthArmy.h" />

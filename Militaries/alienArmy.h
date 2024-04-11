@@ -8,7 +8,8 @@
 #include "../Armies' Lists/DoubleQueue.h"
 #include "../Armies' Lists/LinkedStack.h"
 #include "../Armies' Lists/priQueue.h"
-#define MAX 100
+#include "../Armies' Lists/Array.h"
+
 
 
 class Game;

@@ -9,7 +9,7 @@ void EG::attack()
 
 }
 
-float EG::GetPri()
+int EG::GetPri()
 {
 	return ((power*2)+health);
 }
