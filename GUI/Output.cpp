@@ -110,7 +110,8 @@ void Output::ET_Print()
 
     SetConsoleTextAttribute(ConsoleHandler, DARK_GREEN);
     std::cout << "  " << static_cast<char>(220) << static_cast<char>(220) << std::endl;
-    std::cout << " " << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(223) << static_cast<char>(223) << ' ';
+    std::cout << " " << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(219) <<
+        static_cast<char>(219) << static_cast<char>(223) << static_cast<char>(223) << ' ';
     SetConsoleTextAttribute(ConsoleHandler, GRAY);
     std::cout << "\n O  O\t";
     std::cout << "\x1B[1A";
@@ -119,7 +120,8 @@ void Output::ET_Print()
 void Output::EG_Print()
 {
     SetConsoleTextAttribute(ConsoleHandler, LIGHT_GREEN);
-    std::cout << "\n " << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(223) << static_cast<char>(223);
+    std::cout << "\n " << static_cast<char>(219) << static_cast<char>(219)
+        << static_cast<char>(223) << static_cast<char>(223);
     SetConsoleTextAttribute(ConsoleHandler, DARK_GREEN);
     std::cout << static_cast<char>(223) << ' ';
     SetConsoleTextAttribute(ConsoleHandler, GRAY);

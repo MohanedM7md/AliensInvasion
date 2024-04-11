@@ -12,7 +12,10 @@ void randGen::setParameters(parameters & param)
 {
 	if (param.N < 0 || param.prob < 0|| param.ES < 0 
 		|| param.ET < 0 || param.EG < 0 || param.AS < 0
-		|| param.AM < 0 || param.AD < 0)
+		|| param.AM < 0 || param.AD < 0 || param.EattkCapRangees[1] < 0
+		||  param.EattkCapRangees[0] < 0 ||param.EhtlyRangees[1] < 0
+		|| param.EhtlyRangees[0] < 0 || param.EpwRangees[1] < 0
+		||  param.EpwRangees[0] < 0)
 		return;//will throw exception later
 	if ((param.EattkCapRangees[1] - param.EattkCapRangees[0]) < 0 ||
 		(param.EhtlyRangees[1] - param.EhtlyRangees[0]) < 0 ||

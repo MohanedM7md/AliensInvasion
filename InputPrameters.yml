@@ -1,11 +1,21 @@
-#probablity of Genration
+##################################################################################
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!! NOTICE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#it is the same Doc. format we hust changed
+#the extenstion to .yml is just to make the inputs colorful but it has no functionality
+#just put Keys befor the values but same algorithm of loading 
+#If you want to return to Doc format, delete all comments and keys in the inpFile.
+# In addition, you must comment the ignore functions in C++.
+# in C++ code #TODO [From: ingore(,':')) To: //ignore(,':')]
+##################################################################################
+
+#probablity of Genration in percentage
 Probablity: 100
 #number of Genrated Unit per Genrations
 N: 7
-#Units probablities
+#Units probablities in percentage
 ES%,ET%,EG%: 40 55 5
 #      Ranges of Armies     # 
-#!Warning don't change in the order of the paramters or the in its fomrat.[Power health Attack capacity][min-max]
+#!Warning don't change in the order of the paramters[Power health Attack capacity] or in their fomrat.[min-max]
 #Eearth Ranges
 power,health,attack_capacity: 3-50 30-90 2-5
 #Alien Ranges
