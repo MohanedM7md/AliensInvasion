@@ -16,12 +16,12 @@ class Output;
 class alienArmy {
 	Output* pOut;
 	Game* gPtr;
+public:
+
+
 	LinkedQueue<AS*> AS_List;
 	Array <AM*> AM_List;
 	LinkedQueue<AD*> AD_List;
-
-public:
-
 
 	alienArmy(Game* gPtr = nullptr);
 	void printAlien();

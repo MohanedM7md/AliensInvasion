@@ -62,7 +62,7 @@ parameters Game::LoadParameters()
 	parameters param;
 
 	std::fstream inputFile; // create File object
-	inputFile.open(("InputPrameters.txt"), std::ios::in); // open File
+	inputFile.open(("InputPrameters.yml"), std::ios::in); // open File
 
 	if (inputFile.is_open()) {//checks if the file opened well
 
@@ -121,7 +121,8 @@ void Game::addAUnits(Unit* add)
 	AlienArmies.addUnit(add);
 }
 
-void Game::testcode() {
+void Game::testcode() 
+{
 	pOut->ClearScreen();
 	pOut->setFont(20);
 	for (int i = 1; i != 50; i++) {
@@ -130,13 +131,93 @@ void Game::testcode() {
 		// Generate a number X from 1 to 100
 		int X = UnitGen.RandmonNumGent();
 
-		if (X >= 1 && X <= 9) { // If X is between 1 and 9
+		if (X >= 1 && X <= 9)
+
+		{ // If X is between 1 and 9
 			// Select an ES unit from its list and insert it again
 			ES* selectedES = nullptr;
-			if (EarthArmies.ES_List.dequeue(selectedES) ) {
+			if (EarthArmies.ES_List.dequeue(selectedES))
+			{
 				EarthArmies.ES_List.enqueue(selectedES);
 			}
 		}
+
+
+
+
+
+		else if (X >= 11 && X <= 19)
+
+		{
+			// Select an ES unit from its list and insert it again
+			ET* selectedET = nullptr;
+			if (EarthArmies.ET_List.pop(selectedET))
+			{
+				killed_List.enqueue(selectedET);
+			}
+
+		}
+
+
+
+
+
+		else if (X >= 21 && X <= 29)
+
+		{
+			EG* selectedEG = nullptr;
+			int pri = NULL;
+			if (EarthArmies.EG_List.dequeue(selectedEG, pri))
+			{
+				selectedEG->SetHealth(selectedEG->GetHealth() / 2);
+
+				EarthArmies.EG_List.enqueue(selectedEG, pri);
+
+
+
+			}
+		}
+
+		else if (X >= 31 && X <= 39)
+		{
+			AS* selectedAS = nullptr;
+			for (int i = 0; i < 5; i++)
+			{
+
+				if (AlienArmies.AS_List.dequeue(selectedAS))
+				{
+					selectedAS->SetHealth(selectedAS->GetHealth()-1);
+
+					Temp_List.enqueue(selectedAS);
+					AlienArmies.AS_List.enqueue(selectedAS);
+				}
+
+
+
+			}
+
+        }
+
+		else if (X >= 41 && X <= 49)
+
+		{
+			AM* selectedAM = nullptr;
+			for (int i = 0; i < 6; i++) 
+			{
+
+				if (AlienArmies.AM_List.remove(selectedAM))
+				{
+					AlienArmies.AM_List.add(selectedAM);
+
+				}
+
+			}
+
+		}
+
+		//After the drones are done
+
+		//print all info
 	}
 }
 
