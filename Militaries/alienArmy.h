@@ -5,9 +5,9 @@
 #include "../Unit Armies/AM.h"
 #include "../Unit Armies/AS.h"
 #include "../Armies' Lists/LinkedQueue.h"
-#include "../Armies' Lists/LinkedStack.h"
 #include "../Armies' Lists/priQueue.h"
-#define MAX 100
+#include "../Armies' Lists/Array.h"
+
 
 
 class Game;
@@ -17,8 +17,7 @@ class alienArmy {
 	Output* pOut;
 	Game* gPtr;
 	LinkedQueue<AS*> AS_List;
-	AM* AM_list[MAX];
-	int AM_count = 0;
+	Array <AM*> AM_List;
 	LinkedQueue<AD*> AD_List;
 
 public:

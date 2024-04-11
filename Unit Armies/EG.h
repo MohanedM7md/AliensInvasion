@@ -8,7 +8,7 @@ public:
 		std::string type = "");
 
 	void attack();
-	float  GetPri();
+	int  GetPri();
 	void Print();
 	
 
