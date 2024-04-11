@@ -29,7 +29,6 @@
     <ClInclude Include="Armies%27 Lists\StackADT.h" />
     <ClInclude Include="DEFS.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="GUI\Input.h" />
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="Militaries\earthArmy.h" />
     <ClInclude Include="Unit Armies\EG.h" />
@@ -40,7 +39,6 @@
   <ItemGroup>
     <ClCompile Include="Armies Genrator\randGen.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="GUI\Input.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Militaries\earthArmy.cpp" />

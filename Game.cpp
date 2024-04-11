@@ -61,18 +61,18 @@ parameters Game::LoadParameters()
 	parameters param;
 
 	std::fstream inputFile; // create File object
-	inputFile.open(("InputPrameters.yml"), std::ios::in); // open File
+	inputFile.open(("InputPrameters.txt"), std::ios::in); // open File
 
 	if (inputFile.is_open()) {//checks if the file opened well
 
-		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
+		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
 		inputFile >> param.prob; // get value of probablity
-		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
+		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
 		inputFile >> param.N; // get value of N
-		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
+		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
 		inputFile >> param.ES >> param.ET >> param.EG;
 		
-		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
+		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
 		std::string s;
 		///Get Earth rranges
 		//power Range
@@ -88,7 +88,7 @@ parameters Game::LoadParameters()
 		param.EattkCapRangees[0] = std::stoi(s);
 		inputFile >> param.EattkCapRangees[1];
 
-		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
+		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
 		///Get Aliens rranges
 		//power Range
 		std::getline(inputFile, s,'-');
