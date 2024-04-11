@@ -46,8 +46,8 @@ void Game::startGame()
 	pOut->ClearScreen();
 	pOut->setFont(20);
 	for (int i = 1; i != 50; i++) {
-		pOut->PrintOut("\t\t\t\t\tCurrent Timestep: " + std::to_string(i) + "\n\n", RED);
 
+		pOut->PrintOut("\t\t\t\t\t   Current Timestep: " + std::to_string(i) + "\n\n", RED);
 		UnitGen.GenrateArmy();
 		EarthArmies.printEarth();
 		system("pause");
@@ -65,14 +65,14 @@ parameters Game::LoadParameters()
 
 	if (inputFile.is_open()) {//checks if the file opened well
 
-		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
 		inputFile >> param.prob; // get value of probablity
 		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
 		inputFile >> param.N; // get value of N
-		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
 		inputFile >> param.ES >> param.ET >> param.EG;
-		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
-		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
+		
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
 		std::string s;
 		///Get Earth rranges
 		//power Range

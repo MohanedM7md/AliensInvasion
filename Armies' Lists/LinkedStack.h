@@ -49,6 +49,7 @@ public :
 	bool peek(T& frntEntry)  const;	
 	void print();
 	~LinkedStack();
+	int getLength() const;
 };
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -193,4 +194,10 @@ LinkedStack<T>::~LinkedStack()
 	T temp;
 	while(pop(temp));
 
+}
+
+template<typename T>
+inline int LinkedStack<T>::getLength() const
+{
+	return this->length;
 }

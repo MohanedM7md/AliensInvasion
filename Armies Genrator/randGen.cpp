@@ -40,7 +40,7 @@ void randGen::genrateUnitParam(int& hlth, int& pwr, int& cap)
 {
 
 	hlth = RandmonRangeNum(param.EhtlyRangees);
-	///////////////////////////////////////////////////
+	//////////////////////////////////////////////////
 	pwr = RandmonRangeNum(param.EpwRangees);
 	///////////////////////////////////////////////////
 	cap = RandmonRangeNum(param.EattkCapRangees);
@@ -55,8 +55,10 @@ void randGen::GenrateArmy()
 	if (!(RandA < param.prob))
 		return;//if the probablity is less End the Function
 
+
+	//Todo: You have to follow tha same pattern for other Unit calss
 	for (int i = 0; i < param.N; i++) {
-		int randB = RandmonNumGent(); //genrate rando number range 1-100
+		int randB = RandmonNumGent(); //genrate random number range 1-100
 		int hlth, pwr, cap;//intialize input prameter
 		if (randB < param.ES) {
 			genrateUnitParam(hlth, pwr, cap);

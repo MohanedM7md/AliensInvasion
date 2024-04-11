@@ -1,9 +1,11 @@
-Probablity: 100
+#probablity of Genration
+Probablity: 20 
+#number of Genrated Unit per Genrations
 N: 7
-#!the 2 upper paramters must be in this order and the first 2 line don't change them.
+#Units probablities
 ES%,ET%,EG%: 40 50 10
 #      Ranges of Armies     # 
-#!Warning don't change in the order of the paramters or the in its fomrat.
+#!Warning don't change in the order of the paramters or the in its fomrat.[Power health Attack capacity][min-max]
 #Eearth Ranges
 power,health,attack_capacity: 3-50 30-90 2-5
 #Alien Ranges

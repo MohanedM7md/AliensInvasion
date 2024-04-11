@@ -28,9 +28,10 @@ public:
     int ScreenMenu(std::string MenuItems[], int MinueSize);
     void ClearScreen();
     void setFont(short size, const std::wstring& fontType = L"Terminal");
-
+    HANDLE getConsoleHandler ()const;
     //=============== Armies Info Outputs ====================//
     void ES_Print();
     void ET_Print();
+    void EG_Print();
 
 };

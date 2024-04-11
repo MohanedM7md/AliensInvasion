@@ -11,6 +11,7 @@ private :
 	Node<T>* backPtr;
 	Node<T>* frontPtr;
 	int length;
+
 	//std::string ListType;
 
 public :
@@ -21,6 +22,7 @@ public :
 	bool dequeue(T& frntEntry);  
 	bool peek(T& frntEntry)  const;	
 	void Print();
+	int getLength() const;
 	~LinkedQueue();
 };
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -150,6 +152,12 @@ void LinkedQueue<T>::Print() {
 		temp = temp->getNext();
 	}
 	std::cout << temp->getItem();
+}
+
+template<typename T>
+inline int LinkedQueue<T>::getLength() const
+{
+	return this->length;
 }
 
 //////////////////////////////////////////////////////////////////

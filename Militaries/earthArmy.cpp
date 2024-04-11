@@ -17,14 +17,16 @@ void earthArmy::printEarth()
 
 	//=============== print ES Information ========================/
 	pOut->ES_Print();
-	pOut->PrintOut("ES", LIGHT_CYAN);
+	pOut->PrintOut(std::to_string(ES_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  ES", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	ES_List.Print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 
 	//=============== print ET Information ========================/
 	pOut->ET_Print();
-	pOut->PrintOut("ET", LIGHT_CYAN);
+	pOut->PrintOut(std::to_string(ET_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  ET", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	ET_List.print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);

@@ -4,6 +4,8 @@
 
 int main() {
 	Game game;
+	Output* pOut;
+	pOut = game.getOutputPtr();
 	game.loadingScreen();
 	MENU Choice = game.startMenue();
 	while (Choice != EXIT) {
@@ -13,6 +15,7 @@ int main() {
 			case INERACT: game.startGame(); break;
 			case SILENT: /*SILTEN*/break;
 			}
+			pOut->ClearScreen();
 		}
 		else if (Choice == TEAM_INFO) {
 			//tem info
