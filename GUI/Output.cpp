@@ -38,9 +38,9 @@ int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
             if (i == cursor) {
                 // Print arrow characters and the menu item 
                 std::cout << "\n\n\n\t\t"; 
-                PrintOut(char(16), LIGHT_YELLOW); //Right Arrow
+                PrintOut(">", LIGHT_YELLOW); //Right Arrow
                 PrintOut("  " + MenuItems[i] + "  ", ORANGE);
-                PrintOut(char(17), LIGHT_YELLOW); // Left arrow
+                PrintOut("<", LIGHT_YELLOW); // Left arrow
             }
             else // Print the other menu items
             {

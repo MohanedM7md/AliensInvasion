@@ -56,7 +56,7 @@ void randGen::genrateUnitParam(int& hlth, int& pwr, int& cap)
 void randGen::GenrateArmy()
 {
 	int RandA = RandmonNumGent();
-	if (!(RandA < param.prob))
+	if (RandA > param.prob)
 		return;//if the probablity is less End the Function
 
 
@@ -77,7 +77,7 @@ void randGen::GenrateArmy()
 			genrateUnitParam(hlth, pwr, cap);
 			Gptr->addEUnits(new ET(ErthIDs++, 0, hlth, pwr, cap, "ET"));
 		}
-		else if (randB <= param.ES + param.ET + param.EG)
+		else
 		{
 			genrateUnitParam(hlth, pwr, cap);
 			Gptr->addEUnits(new EG(ErthIDs++, 0, hlth, pwr, cap, "EG"));
@@ -94,7 +94,7 @@ void randGen::GenrateArmy()
 			genrateUnitParam(hlth, pwr, cap);
 			Gptr->addAUnits(new AM(AliensthIDs++, 0, hlth, pwr, cap, "AM"));
 		}
-		else if (randB <= param.AS + param.AM + param.AD)
+		else
 		{
 			genrateUnitParam(hlth, pwr, cap);
 			Gptr->addAUnits(new AD(AliensthIDs++, 0, hlth, pwr, cap, "AD"));

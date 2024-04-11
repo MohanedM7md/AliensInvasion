@@ -79,7 +79,7 @@
     <ClInclude Include="Unit Armies\AS.h">
       <Filter>Unit Armies</Filter>
     </ClInclude>
-    <ClInclude Include="Armies%27 Lists\Array.h">
+    <ClInclude Include="Armies%27 Lists\DoubleQueue.h">
       <Filter>Armies%27 Lists</Filter>
     </ClInclude>
   </ItemGroup>
