@@ -34,7 +34,7 @@ void earthArmy::printEarth()
 	//=============== print EG Information ========================/
 	pOut->EG_Print();
 	pOut->PrintOut(std::to_string(EG_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  ET", LIGHT_CYAN);
+	pOut->PrintOut("  EG", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	EG_List.Print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
