@@ -1,5 +1,18 @@
 #include"Unit.h"
+
+Unit::Unit(int id, int tj, int health, int power, int attackCap, std::string type)
+{
+	SetID(id);
+	SetTj(tj);
+	SetHealth(health);
+	SetPower(power);
+	SetAttackCap(attackCap);
+	SetType(type);
+}
+
+
 /* ===== Getters ======== */
+
 int Unit::GetID() const
 {
 	return ID;
@@ -25,29 +38,35 @@ std::string Unit::GetType()
 {
 	return std::string(type);
 }
+
 /* ===== Setters ======== */
+
 void Unit::SetID(int id)
 {
 	ID = id;
 }
+
 void Unit::SetTj(int tj)
 {
 	Tj = tj;
 }
-void Unit::SetHealth(double heal)
+
+void Unit::SetHealth(int heal)
 {
 	if (heal > 100||heal<0)
 		return;
 	else
 		health = heal;
 }
-void Unit::SetPower(float powr)
+
+void Unit::SetPower(int powr)
 {
 	if (powr < 0)
 		return;
 	else
 	power = powr;
 }
+
 void Unit::SetAttackCap(int AttCap)
 {
 	if (AttCap < 0)
@@ -55,6 +74,7 @@ void Unit::SetAttackCap(int AttCap)
 	else
 	attackCapacity = AttCap;
 }
+
 void Unit::SetType(string type)
 {
 	type = type;

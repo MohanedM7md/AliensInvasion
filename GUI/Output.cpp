@@ -98,9 +98,31 @@ void Output::ES_Print()
     SetConsoleTextAttribute(ConsoleHandler, ORANGE);
     std::cout << "  "<< char(254) << '\n';
     SetConsoleTextAttribute(ConsoleHandler, LIGHT_GREEN);
-    std::cout << ' ' << char(223) << char(219) << char(223);
+    std::cout << ' ' << char(218) << char(197) << char(217);
     SetConsoleTextAttribute(ConsoleHandler, DARK_GREEN);
     std::cout << '\n' << "  " << char(219) << '\t';
+    std::cout << '\n' << " " << char(47) << ' ' << char(92) << '\t';
+    /*std::cout << "               .---.\n\t"
+        << "      /_____\\ \n\t"
+        << "      ( '.' )\n\t"
+        << "       \\_-_/_\n\t"
+        << "    .-\"`'V'//-. \n\t"
+        << "   / ,   |// , \\ \n\t"
+        << "  / /|Ll //Ll|\\ \\ \n\t"
+        << " / / |__//   | \\_\\ \n\t"
+        << " \\ \\/---|[]==| / / \n\t"
+        << "  \\/\\__/ |   \\/\\/ \n\t"
+        << "   |/_   | Ll_\|\n\t"
+        << "     |`^\"\"\"^`|\n\t"
+        << "     |   |   |\n\t"
+        << "     |   |   |\n\t"
+        << "     |   |   |\n\t"
+        << "     |   |   |\n\t"
+        << "     L___l___J\n\t"
+        << "      |_ | _|\n\t"
+        << "     (___|___)\n\t"
+        << "      ^^^ ^^^\n\t";
+    */
     std::cout << "\x1B[1A";
     
 }
@@ -109,9 +131,8 @@ void Output::ET_Print()
 {
 
     SetConsoleTextAttribute(ConsoleHandler, DARK_GREEN);
-    std::cout << "  " << static_cast<char>(220) << static_cast<char>(220) << std::endl;
-    std::cout << " " << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(219) <<
-        static_cast<char>(219) << static_cast<char>(223) << static_cast<char>(223) << ' ';
+    std::cout << "  " << static_cast<char>(178) << static_cast<char>(178) << static_cast<char>(205) << static_cast<char>(205) << ' ' << std::endl;
+    std::cout << " " << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(219) << static_cast<char>(219);
     SetConsoleTextAttribute(ConsoleHandler, GRAY);
     std::cout << "\n O  O\t";
     std::cout << "\x1B[1A";

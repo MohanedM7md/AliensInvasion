@@ -4,6 +4,7 @@
 #include <sstream>
 #include "GUI/Output.h"
 #include "Militaries/earthArmy.h"
+#include "Militaries/alienArmy.h"
 #include "Armies Genrator/randGen.h"
 
 
@@ -11,6 +12,7 @@ class Game
 {
 	Output* pOut;
 	earthArmy EarthArmies;
+	alienArmy AlienArmies;
 	randGen UnitGen;
 
 public:
@@ -23,7 +25,7 @@ public:
 	void startGame();
 	parameters LoadParameters();
 	void addEUnits(Unit*);
-	void addAUnits();
+	void addAUnits(Unit*);
 	~Game();
 };
 #endif 

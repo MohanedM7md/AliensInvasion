@@ -28,9 +28,6 @@
     <ClInclude Include="Game.h">
       <Filter>GameManager</Filter>
     </ClInclude>
-    <ClInclude Include="GUI\Input.h">
-      <Filter>GUI</Filter>
-    </ClInclude>
     <ClInclude Include="GUI\Output.h">
       <Filter>GUI</Filter>
     </ClInclude>
@@ -58,9 +55,6 @@
     <ClInclude Include="Armies%27 Lists\LinkedStack.h">
       <Filter>Armies%27 Lists</Filter>
     </ClInclude>
-    <ClInclude Include="Armies Genrator\randGen.h">
-      <Filter>Armies Genrator</Filter>
-    </ClInclude>
     <ClInclude Include="Armies%27 Lists\priQueue.h">
       <Filter>Armies%27 Lists</Filter>
     </ClInclude>
@@ -70,14 +64,29 @@
     <ClInclude Include="Armies%27 Lists\priNode.h">
       <Filter>Armies%27 Lists</Filter>
     </ClInclude>
+    <ClInclude Include="Unit Armies\AD.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit Armies\AM.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="GUI\Input.h">
+      <Filter>GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Militaries\alienArmy.h">
+      <Filter>Militaries</Filter>
+    </ClInclude>
+    <ClInclude Include="Armies Genrator\randGen.h">
+      <Filter>Armies Genrator</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit Armies\AS.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Game.cpp">
       <Filter>GameManager</Filter>
-    </ClCompile>
-    <ClCompile Include="GUI\Input.cpp">
-      <Filter>GUI</Filter>
     </ClCompile>
     <ClCompile Include="GUI\Output.cpp">
       <Filter>GUI</Filter>
@@ -91,13 +100,27 @@
     <ClCompile Include="Militaries\earthArmy.cpp">
       <Filter>Militaries</Filter>
     </ClCompile>
-    <ClCompile Include="Armies Genrator\randGen.cpp">
-      <Filter>Armies Genrator</Filter>
-    </ClCompile>
     <ClCompile Include="Unit Armies\EG.cpp">
       <Filter>Unit Armies</Filter>
     </ClCompile>
     <ClCompile Include="Unit Armies\Unit.cpp">
+      <Filter>Unit Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Militaries\alienArmy.cpp">
+      <Filter>Militaries</Filter>
+    </ClCompile>
+    <ClCompile Include="Armies Genrator\randGen.cpp">
+      <Filter>Armies Genrator</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit Armies\AD.cpp">
+      <Filter>Unit Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit Armies\AM.cpp">
+      <Filter>Unit Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit Armies\AS.cpp">
       <Filter>Unit Armies</Filter>
     </ClCompile>
   </ItemGroup>
