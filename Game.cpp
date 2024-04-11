@@ -121,6 +121,26 @@ void Game::addAUnits(Unit* add)
 	AlienArmies.addUnit(add);
 }
 
+void Game::testcode() {
+	pOut->ClearScreen();
+	pOut->setFont(20);
+	for (int i = 1; i != 50; i++) {
+		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
+		UnitGen.GenrateArmy();
+		// Generate a number X from 1 to 100
+		int X = UnitGen.RandmonNumGent();
+
+		if (X >= 1 && X <= 9) { // If X is between 1 and 9
+			// Select an ES unit from its list and insert it again
+			ES* selectedES = nullptr;
+			if (EarthArmies.ES_List.dequeue(selectedES) ) {
+				EarthArmies.ES_List.enqueue(selectedES);
+			}
+		}
+	}
+}
+
+
 
 Game::~Game()
 {

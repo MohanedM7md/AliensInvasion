@@ -15,13 +15,13 @@ class Output;
 class earthArmy {
 	Output* pOut;
 	Game* gPtr;
-	LinkedQueue<ES*> ES_List;
-	LinkedStack<ET*> ET_List;
-	priQueue<EG*> EG_List;
+
 
 public:
 	
-	
+	LinkedQueue<ES*> ES_List;
+	LinkedStack<ET*> ET_List;
+	priQueue<EG*> EG_List;
 	earthArmy(Game* gPtr = nullptr);
 	void printEarth();
 	bool addUnit(Unit*);

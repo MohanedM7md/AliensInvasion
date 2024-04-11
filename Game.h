@@ -26,6 +26,7 @@ public:
 	parameters LoadParameters();
 	void addEUnits(Unit*);
 	void addAUnits(Unit*);
+	void testcode();
 	~Game();
 };
 #endif 
