@@ -3,6 +3,7 @@
 #include <string>
 #include <fstream>//for File hanfling
 #include "../DEFS.h"
+#include "../Unit Armies/EG.h"
 class Game;
 class Unit;
 

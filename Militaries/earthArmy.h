@@ -5,8 +5,10 @@ class Game;
 class Output;
 #include "../Unit Armies/ES.h"
 #include "../Unit Armies/ET.h"
+#include "../Unit Armies/EG.h"
 #include "../Armies' Lists/LinkedQueue.h"
 #include "../Armies' Lists/LinkedStack.h"
+#include "../Armies' Lists/priQueue.h"
 
 
 
@@ -18,6 +20,7 @@ class earthArmy {
 	Game* gPtr;
 	LinkedQueue<ES*> ES_List;
 	LinkedStack<ET*> ET_List;
+	priQueue<EG*> EG_List;
 
 public:
 	

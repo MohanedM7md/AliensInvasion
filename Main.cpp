@@ -6,7 +6,7 @@ int main() {
 	Game game;
 	Output* pOut;
 	pOut = game.getOutputPtr();
-	game.loadingScreen();
+//	game.loadingScreen();
 	MENU Choice = game.startMenue();
 	while (Choice != EXIT) {
 		if (Choice == START) {

@@ -1,6 +1,7 @@
 #include "randGen.h"
 #include "../Game.h"
 
+
 using namespace std;
 
 randGen::randGen(Game* Gptr) :ErthIDs(1), AliensthIDs(2000), Gptr(Gptr)
@@ -56,7 +57,7 @@ void randGen::GenrateArmy()
 		return;//if the probablity is less End the Function
 
 
-	//Todo: You have to follow tha same pattern for other Unit calss
+	//Todo You have to follow tha same pattern for other Unit calss
 	for (int i = 0; i < param.N; i++) {
 		int randB = RandmonNumGent(); //genrate random number range 1-100
 		int hlth, pwr, cap;//intialize input prameter
@@ -68,6 +69,11 @@ void randGen::GenrateArmy()
 		else if (randB <= param.ES + param.ET) {
 			genrateUnitParam(hlth, pwr, cap);
 			Gptr->addEUnits(new ET(ErthIDs++, 0, hlth, pwr, cap, "ET"));
+		}
+		else if (randB <= param.ES + param.ET + param.EG)
+		{
+			genrateUnitParam(hlth, pwr, cap);
+			Gptr->addEUnits(new EG(ErthIDs++, 0, hlth, pwr, cap, "EG"));
 		}
 
 	}

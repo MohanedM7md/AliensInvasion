@@ -47,7 +47,7 @@ void Game::startGame()
 	pOut->setFont(20);
 	for (int i = 1; i != 50; i++) {
 
-		pOut->PrintOut("\t\t\t\t\t   Current Timestep: " + std::to_string(i) + "\n\n", RED);
+		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
 		UnitGen.GenrateArmy();
 		EarthArmies.printEarth();
 		system("pause");

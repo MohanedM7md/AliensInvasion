@@ -1,9 +1,9 @@
 #probablity of Genration
-Probablity: 20 
+Probablity: 100
 #number of Genrated Unit per Genrations
 N: 7
 #Units probablities
-ES%,ET%,EG%: 40 50 10
+ES%,ET%,EG%: 40 55 5
 #      Ranges of Armies     # 
 #!Warning don't change in the order of the paramters or the in its fomrat.[Power health Attack capacity][min-max]
 #Eearth Ranges
