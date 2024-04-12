@@ -32,19 +32,33 @@ MENU Game::startMenue()
 
 MENU Game::modeMenue()
 {
-	std::string menueItems[] = { "Interactive","Silent","Back" };
-	switch (pOut->ScreenMenu(menueItems, 3)) {
+	std::string menueItems[] = { "Interactive","Silent","Test","Back"};
+	switch (pOut->ScreenMenu(menueItems, 4)) {
 	case 0:return INERACT; break;
 	case 1:return SILENT; break;
+	case 2:return TEST; break;
 	}
 	return BACK;
 }
 
 void Game::startGame()
 {
+
 	
 	pOut->ClearScreen();
 	pOut->setFont(20);
+	Sleep(1000);
+	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+	Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
+	Sleep(1000);
+	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+	Sleep(1000);// 
 	for (int i = 1; i != 50; i++) {
 
 		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
@@ -62,17 +76,17 @@ parameters Game::LoadParameters()
 	parameters param;
 
 	std::fstream inputFile; // create File object
-	inputFile.open(("InputPrameters.yml"), std::ios::in); // open File
+	inputFile.open(("InputPrameters.txt"), std::ios::in); // open File
 
 	if (inputFile.is_open()) {//checks if the file opened well
 
-		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
-		inputFile >> param.prob; // get value of probablity
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
 		inputFile >> param.N; // get value of N
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
 		inputFile >> param.ES >> param.ET >> param.EG;
 		inputFile >> param.AS >> param.AM >> param.AD;
+		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
+		inputFile >> param.prob; // get value of probablity
 		
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
 		std::string s;
@@ -125,6 +139,18 @@ void Game::testcode()
 {
 	pOut->ClearScreen();
 	pOut->setFont(20);
+	Sleep(1000);
+	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+	Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
+	Sleep(1000);
+	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+	Sleep(1000);// 
 	for (int i = 1; i != 50; i++) {
 		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
 		UnitGen.GenrateArmy();

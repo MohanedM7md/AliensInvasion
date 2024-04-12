@@ -3,6 +3,8 @@
 #include <windows.h>
 #include <conio.h>
 #include <mmsystem.h>
+#include <io.h>
+#include <fcntl.h>
 #pragma comment (lib,"winmm.lib")
 
 #include "../DEFS.h"
@@ -33,5 +35,6 @@ public:
     void ES_Print();
     void ET_Print();
     void EG_Print();
+    void Soon_Print();
 
 };

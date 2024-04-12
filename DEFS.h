@@ -25,6 +25,7 @@ enum MENU {
 
 	INERACT = 0,
 	SILENT,
+	TEST,
 	BACK
 };
 
