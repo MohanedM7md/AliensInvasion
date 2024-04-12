@@ -36,5 +36,8 @@ public:
     void ET_Print();
     void EG_Print();
     void Soon_Print();
+    void AS_print();
+    void AM_print();
+    void AD_print();
 
 };

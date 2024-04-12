@@ -135,6 +135,34 @@ void Output::Soon_Print()
     std::cout << "SOON....  ";
 }
 
+void Output::AS_print()
+{
+    SetConsoleTextAttribute(ConsoleHandler, PURPLE);
+    std::cout << "   " << char(238) << '\n';
+    std::cout << ' ' << char(174) << char(196) << char(197) << char(196) << char(175);
+    std::cout << '\n' << "   " << char(219) << '\t';
+    std::cout << '\n' << "  " << char(47) << ' ' << char(92) << '\t';
+    std::cout << "\x1B[1A";
+}
+
+void Output::AM_print()
+{
+    SetConsoleTextAttribute(ConsoleHandler, ORANGE);
+    std::cout << "   " << "oo" << '\n';
+    std::cout << "  " << char(219) << char(223) << char(223) << char(219) << '\t';
+    std::cout << "\n  " << char(186) << char(223) << char(223) << char(186) << '\t';
+    std::cout << "\n  " << char(202) << "  " << char(202) << '\t';
+    std::cout << "\x1B[1A";
+}
+
+void Output::AD_print()
+{
+    SetConsoleTextAttribute(ConsoleHandler, ORANGE);
+    std::cout << "  " << char(196) << char(197) << char(196) << '\n';
+    std::cout << "  "  << char(219) << char(219) << char(219) << char(205) << char(207) << '\t';
+    std::cout << "\n  " << char(217) << " " << char(192) << '\t';
+    std::cout << "\x1B[1A";
+}
 
 
 

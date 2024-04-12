@@ -29,6 +29,8 @@ public:
 	void addEUnits(Unit*);
 	void addAUnits(Unit*);
 	void testcode();
+	earthArmy* GetEarthArmy();
+	alienArmy* GetAlienArmy();
 	~Game();
 };
 #endif 
