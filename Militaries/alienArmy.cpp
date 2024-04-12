@@ -26,7 +26,7 @@ void alienArmy::printAlien()
 
 	//=============== print AM Information ========================/
 	pOut->ET_Print();
-	pOut->PrintOut(std::to_string(AM_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut(std::to_string(AM_List), LIGHT_YELLOW);
 	pOut->PrintOut("  AM", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	AM_List.print();
