@@ -1,13 +1,13 @@
 #pragma once
-#include "Node.h"
+#include "doubleNode.h"
 #include "QueueADT.h"
 
 template <typename T>
 class DoubleQueue :public QueueADT<T>
 {
 private:
-	Node<T>* backPtr;
-	Node<T>* frontPtr;
+	doubleNode<T>* backPtr;
+	doubleNode<T>* frontPtr;
 	int length;
 
 	//std::string ListType;
@@ -18,8 +18,10 @@ public:
 	bool isEmpty() const;
 	bool enqueue(const T& newEntry);
 	bool enqueueFront(const T& newEntry);
-	bool dequeue(T& frntEntry);
-	bool enqueueBack(T& backEntry);
+	bool dequeueFront(T& frntEntry);
+	bool dequeue(T& FrontEntry);
+	bool dequeueBack(T& backEntry);
+	bool enqueueBack(const T& backEntry);
 	bool peek(T& frntEntry)  const;
 	void Print();
 	int getLength() const;
@@ -68,7 +70,7 @@ Output: True if the operation is successful; otherwise false.
 template <typename T>
 bool DoubleQueue<T>::enqueue(const T& newEntry)
 {
-	Node<T>* newNodePtr = new Node<T>(newEntry);
+	doubleNode<T>* newNodePtr = new doubleNode<T>(newEntry);
 	// Insert the new node
 	if (isEmpty())	//special case if this is the first node to insert
 		frontPtr = newNodePtr; // The queue is empty
@@ -83,16 +85,63 @@ bool DoubleQueue<T>::enqueue(const T& newEntry)
 template <typename T>
 bool DoubleQueue<T>::enqueueFront(const T& newEntry)
 {
-	Node<T>* newNodePtr = new Node<T>(newEntry);
+	doubleNode<T>* newNodePtr = new doubleNode<T>(newEntry);
 	// Insert the new node
 	if (isEmpty())	//special case if this is the first node to insert
-		frontPtr = newNodePtr; // The queue is empty
-	else
-	{
-		newNodePtr->setNext(frontPtr); // The queue was not empty
+		backPtr = frontPtr = newNodePtr; // The queue is empty
+	else {
+		newNodePtr->setNext(frontPtr);
+		frontPtr->setPrevious(newNodePtr);
 		frontPtr = newNodePtr;
-		length++;
 	}
+	length++;
+	return true;
+}
+
+template<typename T>
+inline bool DoubleQueue<T>::dequeueFront(T& frntEntry)
+{
+	if (isEmpty())
+		return false;
+
+	doubleNode<T>* nodeToDeletePtr = frontPtr;
+	frntEntry = frontPtr->getItem();
+	frontPtr = frontPtr->getNext();
+	// Queue is not empty; remove front
+	if (nodeToDeletePtr == backPtr)	 // Special case: last node in the queue
+		backPtr = nullptr;
+
+	// Free memory reserved for the dequeued node
+	delete nodeToDeletePtr;
+
+	length--;
+	return true;
+}
+
+template<typename T>
+inline bool DoubleQueue<T>::dequeue(T& FrontEntry)
+{
+	return false;
+}
+
+
+template<typename T>
+inline bool DoubleQueue<T>::dequeueBack(T& backEntry)
+{
+	if (isEmpty())
+		return false;
+
+	doubleNode<T>* nodeToDeletePtr = backPtr;
+	backEntry = backPtr->getItem();
+	backPtr = backPtr->getPrevious();
+	// Queue is not empty; remove front
+	if (nodeToDeletePtr == frontPtr)	 // Special case: last node in the queue
+		frontPtr = nullptr;
+
+	// Free memory reserved for the dequeued node
+	delete nodeToDeletePtr;
+
+	length--;
 	return true;
 }
 
@@ -107,39 +156,21 @@ Input: None.
 Output: True if the operation is successful; otherwise false.
 */
 
-template <typename T>
-bool DoubleQueue<T>::dequeue(T& frntEntry)
-{
-	if (isEmpty())
-		return false;
-
-	Node<T>* nodeToDeletePtr = frontPtr;
-	frntEntry = frontPtr->getItem();
-	frontPtr = frontPtr->getNext();
-	// Queue is not empty; remove front
-	if (nodeToDeletePtr == backPtr)	 // Special case: last node in the queue
-		backPtr = nullptr;
-
-	// Free memory reserved for the dequeued node
-	delete nodeToDeletePtr;
-
-	length--;
-	return true;
-}
 
 template <typename T>
-bool DoubleQueue<T>::enqueueBack(T& backEntry)
+bool DoubleQueue<T>::enqueueBack(const T& backEntry)
 {
-	Node<T>* newNodePtr = frontPtr;
 
-	while (newNodePtr->getNext() != backPtr)
-	{
-		newNodePtr = newNodePtr->getNext();
-	};
-	backEntry = newNodePtr->getNext()->getItem();
-	delete newNodePtr->getNext();
-	newNodePtr->setNext() = nullptr;
-	backPtr = newNodePtr;
+	doubleNode<T>* newNodePtr = new doubleNode<T>(backEntry);
+	// Insert the new node
+	if (isEmpty())	//special case if this is the first node to insert
+		backPtr = frontPtr = newNodePtr; // The queue is empty
+	else {
+		newNodePtr->setPrevious(backPtr);
+		backPtr->setNext(newNodePtr);
+		backPtr = newNodePtr;
+	}
+	length++;
 	return true;
 }
 
@@ -176,12 +207,12 @@ Output: None.
 template <typename T>
 void DoubleQueue<T>::Print() {
 	if (!frontPtr) return;
-	Node<T>* temp = frontPtr;
+	doubleNode<T>* temp = frontPtr;
 	while (temp->getNext()) {
-		std::cout << temp->getItem() << ", ";
+		std::cout << *temp->getItem() << ", ";
 		temp = temp->getNext();
 	}
-	std::cout << temp->getItem();
+	std::cout << *temp->getItem();
 }
 
 template<typename T>

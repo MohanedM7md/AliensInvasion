@@ -32,19 +32,33 @@ MENU Game::startMenue()
 
 MENU Game::modeMenue()
 {
-	std::string menueItems[] = { "Interactive","Silent","Back" };
-	switch (pOut->ScreenMenu(menueItems, 3)) {
+	std::string menueItems[] = { "Interactive","Silent","Test","Back"};
+	switch (pOut->ScreenMenu(menueItems, 4)) {
 	case 0:return INERACT; break;
 	case 1:return SILENT; break;
+	case 2:return TEST; break;
 	}
 	return BACK;
 }
 
 void Game::startGame()
 {
+
 	
 	pOut->ClearScreen();
 	pOut->setFont(20);
+	Sleep(1000);
+	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+	Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
+	Sleep(1000);
+	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+	Sleep(1000);// 
 	for (int i = 1; i != 50; i++) {
 
 		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
@@ -66,13 +80,13 @@ parameters Game::LoadParameters()
 
 	if (inputFile.is_open()) {//checks if the file opened well
 
-		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
-		inputFile >> param.prob; // get value of probablity
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
 		inputFile >> param.N; // get value of N
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
 		inputFile >> param.ES >> param.ET >> param.EG;
 		inputFile >> param.AS >> param.AM >> param.AD;
+		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
+		inputFile >> param.prob; // get value of probablity
 		
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
 		std::string s;
@@ -120,6 +134,133 @@ void Game::addAUnits(Unit* add)
 {
 	AlienArmies.addUnit(add);
 }
+
+void Game::testcode() 
+{
+	pOut->ClearScreen();
+	pOut->setFont(20);
+	Sleep(1000);
+	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+	Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
+	Sleep(1000);
+	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+	Sleep(1000);// 
+	for (int i = 1; i != 50; i++) {
+		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
+		UnitGen.GenrateArmy();
+		// Generate a number X from 1 to 100
+		int X = UnitGen.RandmonNumGent();
+
+		if (X >= 1 && X <= 9)
+
+		{ // If X is between 1 and 9
+			// Select an ES unit from its list and insert it again
+			ES* selectedES = nullptr;
+			if (EarthArmies.ES_List.dequeue(selectedES))
+			{
+				EarthArmies.ES_List.enqueue(selectedES);
+			}
+		}
+
+
+
+
+
+		else if (X >= 11 && X <= 19)
+
+		{
+			// Select an ES unit from its list and insert it again
+			ET* selectedET = nullptr;
+			if (EarthArmies.ET_List.pop(selectedET))
+			{
+				killed_List.enqueue(selectedET);
+			}
+
+		}
+
+
+
+
+
+		else if (X >= 21 && X <= 29)
+
+		{
+			EG* selectedEG = nullptr;
+			int pri = NULL;
+			if (EarthArmies.EG_List.dequeue(selectedEG, pri))
+			{
+				selectedEG->SetHealth(selectedEG->GetHealth() / 2);
+
+				EarthArmies.EG_List.enqueue(selectedEG, pri);
+
+
+
+			}
+		}
+
+		else if (X >= 31 && X <= 39)
+		{
+			AS* selectedAS = nullptr;
+			for (int i = 0; i < 5; i++)
+			{
+
+				if (AlienArmies.AS_List.dequeue(selectedAS))
+				{
+					selectedAS->SetHealth(selectedAS->GetHealth()-1);
+
+					Temp_List.enqueue(selectedAS);
+					AlienArmies.AS_List.enqueue(selectedAS);
+				}
+
+
+
+			}
+
+        }
+
+		else if (X >= 41 && X <= 49)
+
+		{
+			AM* selectedAM = nullptr;
+			for (int i = 0; i < 5; i++) 
+			{
+
+				if (AlienArmies.AM_List.remove(selectedAM))
+				{
+					AlienArmies.AM_List.add(selectedAM);
+
+				}
+
+			}
+
+		}
+
+		//else if  (X >= 41 && X <= 49)
+		//{
+		//	AD* selectedAD = nullptr;
+		//	for (int i = 0; i < 5; i++)
+		//	{
+
+		//		if (AlienArmies.AD_List.dequeue()
+		//		{
+		//			
+
+		//		}
+
+		//	}
+
+		//}
+
+		//print all info
+	}
+}
+
 
 
 Game::~Game()

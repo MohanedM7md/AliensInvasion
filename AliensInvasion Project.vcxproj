@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Armies Genrator\randGen.h" />
-    <ClInclude Include="Armies%27 Lists\Array.h" />
+    <ClInclude Include="Armies%27 Lists\doubleNode.h" />
     <ClInclude Include="Armies%27 Lists\DoubleQueue.h" />
     <ClInclude Include="Armies%27 Lists\LinkedQueue.h" />
     <ClInclude Include="Armies%27 Lists\LinkedStack.h" />

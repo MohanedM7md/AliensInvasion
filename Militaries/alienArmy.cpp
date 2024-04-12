@@ -17,7 +17,7 @@ void alienArmy::printAlien()
 
 	//=============== print AS Information ========================/
 
-	pOut->ES_Print();
+	pOut->Soon_Print();
 	pOut->PrintOut(std::to_string(AS_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  AS", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
@@ -25,15 +25,15 @@ void alienArmy::printAlien()
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 
 	//=============== print AM Information ========================/
-	pOut->ET_Print();
-	pOut->PrintOut(std::to_string(AM_List), LIGHT_YELLOW);
+	pOut->Soon_Print();
+	pOut->PrintOut(std::to_string(AM_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  AM", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	AM_List.print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 
 	//=============== print AD Information ========================/
-	pOut->EG_Print();
+	pOut->Soon_Print();
 	pOut->PrintOut(std::to_string(AD_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  ET", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
@@ -53,7 +53,10 @@ bool alienArmy::addUnit(Unit* unit)
 	}
 
 	else if (dynamic_cast<AD*>(unit)) {
-		return AD_List.enqueue((dynamic_cast<AD*>(unit)));
+		if (AD_List.getLength() % 2)
+			return AD_List.enqueueFront((dynamic_cast<AD*>(unit)));
+		else
+			return AD_List.enqueueBack((dynamic_cast<AD*>(unit)));
 	}
 
 	return false;

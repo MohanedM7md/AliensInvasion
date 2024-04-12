@@ -14,6 +14,8 @@ class Game
 	earthArmy EarthArmies;
 	alienArmy AlienArmies;
 	randGen UnitGen;
+	LinkedQueue<Unit*> killed_List;
+	LinkedQueue<Unit*> Temp_List;
 
 public:
 	Game();
@@ -26,6 +28,7 @@ public:
 	parameters LoadParameters();
 	void addEUnits(Unit*);
 	void addAUnits(Unit*);
+	void testcode();
 	~Game();
 };
 #endif 

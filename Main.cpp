@@ -14,6 +14,7 @@ int main() {
 			switch (mode) {
 			case INERACT: game.startGame(); break;
 			case SILENT: /*SILTEN*/break;
+			case TEST: game.testcode(); break;
 			}
 			pOut->ClearScreen();
 		}
