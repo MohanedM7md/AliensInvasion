@@ -202,7 +202,7 @@ void Game::testcode()
 
 		{
 			AM* selectedAM = nullptr;
-			for (int i = 0; i < 6; i++) 
+			for (int i = 0; i < 5; i++) 
 			{
 
 				if (AlienArmies.AM_List.remove(selectedAM))
@@ -215,7 +215,21 @@ void Game::testcode()
 
 		}
 
-		//After the drones are done
+		//else if  (X >= 41 && X <= 49)
+		//{
+		//	AD* selectedAD = nullptr;
+		//	for (int i = 0; i < 5; i++)
+		//	{
+
+		//		if (AlienArmies.AD_List.dequeue()
+		//		{
+		//			
+
+		//		}
+
+		//	}
+
+		//}
 
 		//print all info
 	}
