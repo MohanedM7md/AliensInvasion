@@ -17,6 +17,8 @@ class Game
 	LinkedQueue<Unit*> killed_List;
 	LinkedQueue<Unit*> Temp_List;
 	void DisplayLists();
+	void DisplayKilledList();
+	void DisplayTemp();
 
 public:
 	Game();

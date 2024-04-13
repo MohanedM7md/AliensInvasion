@@ -128,6 +128,7 @@ bool LinkedStack<T>:: pop(T& frntEntry)
 		return false;
 
 	Node<T>* nodeToDeletePtr = top;
+	frntEntry = top->getItem();
 	top = top->getNext();
 		
 	// Free memory reserved for the destackd node

@@ -58,8 +58,12 @@ inline bool Array<T>::remove(T& item)
 {
 	if(length == 0)
 		return false;
+	int randomIndex;
+	if (length != 1)
+		randomIndex = createRandomIndex(length - 1);
+	else
+		randomIndex = 0;
 
-	int randomIndex = createRandomIndex(length-1);
 	T* deleteMe = Arrlist[randomIndex];
 	item = *Arrlist[randomIndex];
 	Arrlist[randomIndex] = Arrlist[length - 1];

@@ -7,19 +7,35 @@ void Game::DisplayLists()
 {
 	this->EarthArmies.printEarth();
 	this->AlienArmies.printAlien();
+	
+}
+
+void Game::DisplayKilledList()
+{
 	pOut->PrintOut("=======================================   ", LIGHT_RED);
 	pOut->PrintOut("Killed/Destructed Units", ORANGE);
 	pOut->PrintOut("   =====================================\n", LIGHT_RED);
-	pOut->PrintOut("\t"+std::to_string(killed_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("\t" + std::to_string(killed_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut(" Unit  ", LIGHT_CYAN);
 	pOut->PrintOut("[", LIGHT_BLUE);
 	killed_List.Print();
 	pOut->PrintOut("]\n", LIGHT_BLUE);
 }
 
-Game::Game():EarthArmies(this),UnitGen(this),AlienArmies(this)
+void Game::DisplayTemp()
 {
-	pOut = new Output;//remember to de-allocate this please"
+	pOut->PrintOut("=======================================   ", LIGHT_RED);
+	pOut->PrintOut("TEMP LIST", ORANGE);
+	pOut->PrintOut("   =====================================\n", LIGHT_RED);
+	pOut->PrintOut("\t" + std::to_string(killed_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut(" Unit  ", LIGHT_CYAN);
+	pOut->PrintOut("[", LIGHT_BLUE);
+	Temp_List.Print();
+	pOut->PrintOut("]\n", LIGHT_BLUE);
+}
+
+Game::Game():pOut(new Output), EarthArmies(this), UnitGen(this), AlienArmies(this)
+{
 	parameters param = LoadParameters();
 	UnitGen.setParameters(param);
 }
@@ -155,26 +171,33 @@ void Game::testcode()
 		UnitGen.GenrateArmy();
 		// Generate a number X from 1 to 100
 		int X = UnitGen.RandmonNumGent();
-
+		pOut->PrintOut("\t\tthe value of X: " + std::to_string(X) + " \n\n\n", GRAY);
 		if (X >= 1 && X <= 9)
 
 		{ // If X is between 1 and 9
 			// Select an ES unit from its list and insert it again
 			ES* selectedES = nullptr;
-			(EarthArmies.ES_List.Print());
+			pOut->PrintOut("The ES before reMove");
+			EarthArmies.ES_printer();
 			std::cout << '\n';
 			if (EarthArmies.ES_List.dequeue(selectedES))
 			{
+				pOut->PrintOut("The ES After reMove");
+				EarthArmies.ES_printer();
+				pOut->PrintOut("The ES After return");
 				EarthArmies.ES_List.enqueue(selectedES);
-				(EarthArmies.ES_List.Print());
+				EarthArmies.ES_printer();
 				std::cout << '\n';
 			}
 		}else if (X >= 11 && X <= 19)
 		{// Select an ES unit from its list and insert it again
 			ET* selectedET = nullptr;
+			EarthArmies.ET_printer();
 			if (EarthArmies.ET_List.pop(selectedET))
 			{
+				EarthArmies.ET_printer();
 				killed_List.enqueue(selectedET);
+				DisplayKilledList();
 			}
 
 		}
@@ -182,30 +205,47 @@ void Game::testcode()
 		{
 			EG* selectedEG = nullptr;
 			int pri = NULL;
+			pOut->PrintOut("The ET before reMove:");
+			EarthArmies.EG_printer();
 			if (EarthArmies.EG_List.dequeue(selectedEG, pri))
 			{
+				EarthArmies.EG_printer();
+				std::cout << "\nthe Pickied one ID:" << selectedEG->GetID() << "\n Health: " << selectedEG->GetHealth()<<std::endl;
 				selectedEG->SetHealth(selectedEG->GetHealth() * 0.5);
+				std::cout << "\nthe Pickied one ID:" << selectedEG->GetID() << "\n Health After Decrement: " << selectedEG->GetHealth()<<std::endl;
 
 				EarthArmies.EG_List.enqueue(selectedEG, pri);
+				EarthArmies.EG_printer();
 			}
 		}
 		else if (X >= 31 && X <= 39)
 		{
 			AS* selectedAS = nullptr;
+
+			AlienArmies.AS_printer();
 			for (int i = 0; i < 5; i++)
 			{
-
 				if (AlienArmies.AS_List.dequeue(selectedAS))
 				{
-					selectedAS->SetHealth(selectedAS->GetHealth()-1);
+					std::cout <<i+1<<" : " << "\nthe Pickied one ID:" << selectedAS->GetID() << "\n Health: " << selectedAS->GetHealth() << std::endl;
+					selectedAS->SetHealth(selectedAS->GetHealth() * 0.5);
+					std::cout << "\n====\nthe Pickied one ID:" << selectedAS->GetID() << "\n Health After Decrement: " << selectedAS->GetHealth() << std::endl;
 
-					Temp_List.enqueue(selectedAS);
-					AlienArmies.AS_List.enqueue(selectedAS);
 				}
-
-
-
 			}
+			AlienArmies.AS_printer();
+			this->DisplayTemp();
+			Unit* getFromTemp = nullptr;
+			for (int i = 0; i < 5; i++)
+			{
+				if (Temp_List.dequeue(getFromTemp))
+				{
+					AlienArmies.AS_List.enqueue(dynamic_cast<AS*>(getFromTemp));
+
+				}
+			}
+			AlienArmies.AS_printer();
+			this->DisplayTemp();
 
         }
 
