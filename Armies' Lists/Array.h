@@ -17,6 +17,7 @@ public:
 	bool remove(T&);
 	void print();
 	int getLength() const;
+	~Array();
 
 };
 
@@ -82,4 +83,11 @@ template<typename T>
 inline int Array<T>::getLength() const
 {
 	return this->length;
+}
+
+template<typename T>
+inline Array<T>::~Array()
+{
+	for (int i = 0; i < length; i++)
+		delete Arrlist[i];
 }
