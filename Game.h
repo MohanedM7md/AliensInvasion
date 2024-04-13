@@ -16,6 +16,7 @@ class Game
 	randGen UnitGen;
 	LinkedQueue<Unit*> killed_List;
 	LinkedQueue<Unit*> Temp_List;
+	void DisplayLists();
 
 public:
 	Game();

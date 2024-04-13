@@ -27,6 +27,11 @@ public:
 	void printAlien();
 	bool addUnit(Unit*);
 
+	//////////// Each Alien Printer   /////////////
+	void AS_printer();
+	void AM_printer();
+	void AD_printer();
+
 };
 
 

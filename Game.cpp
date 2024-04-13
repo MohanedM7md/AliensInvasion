@@ -3,6 +3,20 @@
 
 //using namespace std;
 
+void Game::DisplayLists()
+{
+	this->EarthArmies.printEarth();
+	this->AlienArmies.printAlien();
+	pOut->PrintOut("=======================================   ", LIGHT_RED);
+	pOut->PrintOut("Killed/Destructed Units", ORANGE);
+	pOut->PrintOut("   =====================================\n", LIGHT_RED);
+	pOut->PrintOut("\t"+std::to_string(killed_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut(" Unit  ", LIGHT_CYAN);
+	pOut->PrintOut("[", LIGHT_BLUE);
+	killed_List.Print();
+	pOut->PrintOut("]\n", LIGHT_BLUE);
+}
+
 Game::Game():EarthArmies(this),UnitGen(this),AlienArmies(this)
 {
 	pOut = new Output;//remember to de-allocate this please"
@@ -52,10 +66,9 @@ void Game::startGame()
 		if (GetAsyncKeyState(VK_ESCAPE)) {
 			break; // Exit the loop and end the program
 		}
+		this->UnitGen.GenrateArmy();
 		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
-		UnitGen.GenrateArmy();
-		EarthArmies.printEarth();
-		AlienArmies.printAlien();
+		DisplayLists();
 		system("pause");
 		std::cout << "\n\n\n\n";
 	}
@@ -153,9 +166,13 @@ void Game::testcode()
 		{ // If X is between 1 and 9
 			// Select an ES unit from its list and insert it again
 			ES* selectedES = nullptr;
+			(EarthArmies.ES_List.Print());
+			std::cout << '\n';
 			if (EarthArmies.ES_List.dequeue(selectedES))
 			{
 				EarthArmies.ES_List.enqueue(selectedES);
+				(EarthArmies.ES_List.Print());
+				std::cout << '\n';
 			}
 		}else if (X >= 11 && X <= 19)
 		{// Select an ES unit from its list and insert it again
@@ -232,6 +249,7 @@ void Game::testcode()
 
 		//print all info
 	}
+	system("pause");
 }
 
 

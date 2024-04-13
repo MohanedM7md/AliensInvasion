@@ -14,31 +14,12 @@ void alienArmy::printAlien()
 	pOut->PrintOut("========================================   ", AQUA);
 	pOut->PrintOut("Alien Army ALive Units", ORANGE);
 	pOut->PrintOut("   =====================================\n", AQUA);
-
 	//=============== print AS Information ========================/
-
-	pOut->AS_print();
-	pOut->PrintOut(std::to_string(AS_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  AS", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	AS_List.Print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
-
+	AS_printer();
 	//=============== print AM Information ========================/
-	pOut->AM_print();
-	pOut->PrintOut(std::to_string(AM_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  AM", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	AM_List.print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
-
+	AM_printer();
 	//=============== print AD Information ========================/
-	pOut->AD_print();
-	pOut->PrintOut(std::to_string(AD_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  AD", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	AD_List.Print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
+	AD_printer();
 }
 
 bool alienArmy::addUnit(Unit* unit)
@@ -60,4 +41,35 @@ bool alienArmy::addUnit(Unit* unit)
 	}
 
 	return false;
+}
+
+void alienArmy::AS_printer()
+{
+
+	pOut->AS_print();
+	pOut->PrintOut(std::to_string(AS_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  AS", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	AS_List.Print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
+}
+void alienArmy::AM_printer()
+{
+
+	pOut->AM_print();
+	pOut->PrintOut(std::to_string(AM_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  AM", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	AM_List.print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
+}
+void alienArmy::AD_printer()
+{
+
+	pOut->AD_print();
+	pOut->PrintOut(std::to_string(AD_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  AD", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	AD_List.Print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 }

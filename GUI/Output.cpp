@@ -121,12 +121,12 @@ void Output::ET_Print()
 void Output::EG_Print()
 {
     SetConsoleTextAttribute(ConsoleHandler, LIGHT_GREEN);
-    std::cout << "\n " << static_cast<char>(219) << static_cast<char>(219)
+    std::cout << " " << static_cast<char>(219) << static_cast<char>(219)
         << static_cast<char>(223) << static_cast<char>(223);
     SetConsoleTextAttribute(ConsoleHandler, DARK_GREEN);
-    std::cout << static_cast<char>(223) << ' ';
+    std::cout << static_cast<char>(223) << '\t';
     SetConsoleTextAttribute(ConsoleHandler, GRAY);
-    std::cout << "\x1B[1A";
+   // std::cout << "\x1B[1A";
 }
 
 void Output::Soon_Print()

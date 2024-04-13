@@ -26,6 +26,11 @@ public:
 	void printEarth();
 	bool addUnit(Unit*);
 
+	//////////// Each earthian Printer   /////////////
+	void ES_printer();
+	void ET_printer();
+	void EG_printer();
+
 };
 
 #endif
