@@ -70,34 +70,34 @@ void randGen::GenrateArmy()
 
 		if (randB < param.ES) {
 			genrateUnitParam(hlth, pwr, cap);
-			Gptr->addEUnits(new ES(ErthIDs++, 0, hlth, pwr, cap, "ES"));
+			Gptr->addEUnits(new ES(ErthIDs++, 0, hlth, pwr, cap, "ES", Gptr));
 		}
 
 		else if (randB <= param.ES + param.ET) {
 			genrateUnitParam(hlth, pwr, cap);
-			Gptr->addEUnits(new ET(ErthIDs++, 0, hlth, pwr, cap, "ET"));
+			Gptr->addEUnits(new ET(ErthIDs++, 0, hlth, pwr, cap, "ET", Gptr));
 		}
 		else
 		{
 			genrateUnitParam(hlth, pwr, cap);
-			Gptr->addEUnits(new EG(ErthIDs++, 0, hlth, pwr, cap, "EG"));
+			Gptr->addEUnits(new EG(ErthIDs++, 0, hlth, pwr, cap, "EG", Gptr));
 		}
 
 		/*======================== Alien Army ========================*/
 
 		if (randB < param.AS) {
 			genrateUnitParam(hlth, pwr, cap);
-			Gptr->addAUnits(new AS(AliensthIDs++, 0, hlth, pwr, cap, "AS"));
+			Gptr->addAUnits(new AS(AliensthIDs++, 0, hlth, pwr, cap, "AS", Gptr));
 		}
 
 		else if (randB <= param.AS + param.AM) {
 			genrateUnitParam(hlth, pwr, cap);
-			Gptr->addAUnits(new AM(AliensthIDs++, 0, hlth, pwr, cap, "AM"));
+			Gptr->addAUnits(new AM(AliensthIDs++, 0, hlth, pwr, cap, "AM", Gptr));
 		}
 		else
 		{
 			genrateUnitParam(hlth, pwr, cap);
-			Gptr->addAUnits(new AD(AliensthIDs++, 0, hlth, pwr, cap, "AD"));
+			Gptr->addAUnits(new AD(AliensthIDs++, 0, hlth, pwr, cap, "AD", Gptr));
 		}
 
 	}

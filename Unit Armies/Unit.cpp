@@ -1,6 +1,7 @@
 #include"Unit.h"
+#include "../Game.h"
 
-Unit::Unit(int id, int tj, int health, int power, int attackCap, std::string type)
+Unit::Unit(int id, int tj, int health, int power, int attackCap, std::string type, Game* Gptr)
 {
 	SetID(id);
 	SetTj(tj);
@@ -8,6 +9,7 @@ Unit::Unit(int id, int tj, int health, int power, int attackCap, std::string typ
 	SetPower(power);
 	SetAttackCap(attackCap);
 	SetType(type);
+	SetGamePtr(Gptr);
 }
 
 
@@ -37,6 +39,11 @@ int Unit::GetAttackCap() const
 std::string Unit::GetType()
 {
 	return std::string(type);
+}
+
+Game* Unit::GetGamePtr() const
+{
+	return Gameptr;
 }
 
 /* ===== Setters ======== */
@@ -78,5 +85,10 @@ void Unit::SetAttackCap(int AttCap)
 void Unit::SetType(string type)
 {
 	type = type;
+}
+
+void Unit::SetGamePtr(Game* Gptr)
+{
+	Gameptr = Gptr;
 }
 ;

@@ -2,6 +2,8 @@
 #include <string>
 #include <ostream>
 
+class Game;
+
 using std::string;
 /* ====================== Unit Class ===========================
  * Description
@@ -21,11 +23,12 @@ protected:
 	int power;
 	int attackCapacity;
 	std::string type;
+	Game* Gameptr;
 	
 
 public:
 
-	Unit(int id = 0, int tj = 0, int health = 0, int power = 0, int attackCap = 0, std::string type = "");
+	Unit(int id = 0, int tj = 0, int health = 0, int power = 0, int attackCap = 0, std::string type = "", Game* Gptr = NULL);
 	
 	/* ===== Getters ======== */
 
@@ -34,6 +37,7 @@ public:
 	int GetHealth() const;
 	int GetPower() const ;
 	int GetAttackCap() const;
+	Game* GetGamePtr() const;
 	string GetType();
 
 	/* ===== Setters ======== */
@@ -44,6 +48,7 @@ public:
 	void SetPower(int powr);
 	void SetAttackCap(int AttCap);
 	void SetType(string type);
+	void SetGamePtr(Game* Gptr);
 
 	virtual void attack() = 0;
 };
