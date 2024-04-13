@@ -17,7 +17,7 @@ void alienArmy::printAlien()
 
 	//=============== print AS Information ========================/
 
-	pOut->Soon_Print();
+	pOut->AS_print();
 	pOut->PrintOut(std::to_string(AS_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  AS", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
@@ -25,7 +25,7 @@ void alienArmy::printAlien()
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 
 	//=============== print AM Information ========================/
-	pOut->Soon_Print();
+	pOut->AM_print();
 	pOut->PrintOut(std::to_string(AM_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  AM", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
@@ -33,9 +33,9 @@ void alienArmy::printAlien()
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 
 	//=============== print AD Information ========================/
-	pOut->Soon_Print();
+	pOut->AD_print();
 	pOut->PrintOut(std::to_string(AD_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  ET", LIGHT_CYAN);
+	pOut->PrintOut("  AD", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	AD_List.Print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);

@@ -126,6 +126,16 @@ void Game::addAUnits(Unit* add)
 	AlienArmies.addUnit(add);
 }
 
+earthArmy* Game::GetEarthArmy()
+{
+	return &EarthArmies;
+}
+
+alienArmy* Game::GetAlienArmy()
+{
+	return &AlienArmies;
+}
+
 void Game::testcode() 
 {
 	pOut->ClearScreen();
