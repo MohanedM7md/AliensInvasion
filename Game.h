@@ -22,7 +22,7 @@ public:
 	Game();
 
 	Output* getOutputPtr() const;
-	void loadingScreen();
+	/*void loadingScreen();*/
 	MENU startMenue();
 	MENU modeMenue();
 	void startGame();

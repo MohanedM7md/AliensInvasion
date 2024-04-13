@@ -29,11 +29,6 @@ Output* Game::getOutputPtr() const
 	return this->pOut;
 }
 
-void Game::loadingScreen()
-{
-	pOut->LoadingScreen();
-}
-
 MENU Game::startMenue()
 {
 	std::string menueItems[] = {"Start","Teams' Information","Exit"};
