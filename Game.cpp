@@ -47,20 +47,11 @@ void Game::startGame()
 	
 	pOut->ClearScreen();
 	pOut->setFont(20);
-	Sleep(1000);
-	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
-	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
-	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
-	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
-	Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
-	Sleep(1000);
-	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
-	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
-	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
-	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
-	Sleep(1000);// 
+	pOut->screenRefesher();
 	for (int i = 1; i != 50; i++) {
-
+		if (GetAsyncKeyState(VK_ESCAPE)) {
+			break; // Exit the loop and end the program
+		}
 		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
 		UnitGen.GenrateArmy();
 		EarthArmies.printEarth();
@@ -68,12 +59,12 @@ void Game::startGame()
 		system("pause");
 		std::cout << "\n\n\n\n";
 	}
-	
+	system("cls");
 }
 
 parameters Game::LoadParameters()
 {
-	parameters param;
+		parameters param;
 
 	std::fstream inputFile; // create File object
 	inputFile.open(("InputPrameters.txt"), std::ios::in); // open File
@@ -139,18 +130,8 @@ void Game::testcode()
 {
 	pOut->ClearScreen();
 	pOut->setFont(20);
-	Sleep(1000);
-	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
-	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
-	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
-	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
-	Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
-	Sleep(1000);
-	keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
-	keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
-	keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
-	keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
-	Sleep(1000);// 
+	pOut->screenRefesher();
+
 	for (int i = 1; i != 50; i++) {
 		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
 		UnitGen.GenrateArmy();
@@ -166,16 +147,8 @@ void Game::testcode()
 			{
 				EarthArmies.ES_List.enqueue(selectedES);
 			}
-		}
-
-
-
-
-
-		else if (X >= 11 && X <= 19)
-
-		{
-			// Select an ES unit from its list and insert it again
+		}else if (X >= 11 && X <= 19)
+		{// Select an ES unit from its list and insert it again
 			ET* selectedET = nullptr;
 			if (EarthArmies.ET_List.pop(selectedET))
 			{
@@ -183,27 +156,17 @@ void Game::testcode()
 			}
 
 		}
-
-
-
-
-
 		else if (X >= 21 && X <= 29)
-
 		{
 			EG* selectedEG = nullptr;
 			int pri = NULL;
 			if (EarthArmies.EG_List.dequeue(selectedEG, pri))
 			{
-				selectedEG->SetHealth(selectedEG->GetHealth() / 2);
+				selectedEG->SetHealth(selectedEG->GetHealth() * 0.5);
 
 				EarthArmies.EG_List.enqueue(selectedEG, pri);
-
-
-
 			}
 		}
-
 		else if (X >= 31 && X <= 39)
 		{
 			AS* selectedAS = nullptr;

@@ -48,3 +48,7 @@ public:
 	virtual void attack() = 0;
 };
 
+inline std::ostream& operator<<(std::ostream& os, const Unit* unit) {
+	os << unit->GetID();
+	return os;
+}

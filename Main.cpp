@@ -3,12 +3,14 @@
 
 
 int main() {
-	Game game;
-	Output* pOut;
-	pOut = game.getOutputPtr();
+
 //	game.loadingScreen();
-	MENU Choice = game.startMenue();
-	while (Choice != EXIT) {
+	MENU Choice;
+	Output* pOut;
+	do{
+		Game game;
+		pOut = game.getOutputPtr();
+		Choice = game.startMenue();
 		if (Choice == START) {
 			MENU mode = game.modeMenue();
 			switch (mode) {
@@ -16,12 +18,11 @@ int main() {
 			case SILENT: /*SILTEN*/break;
 			case TEST: game.testcode(); break;
 			}
-			pOut->ClearScreen();
 		}
 		else if (Choice == TEAM_INFO) {
 			//tem info
 		}
 		Choice = game.startMenue();
-	}
+	} while (Choice != EXIT);
 	
 }

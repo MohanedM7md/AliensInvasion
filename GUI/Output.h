@@ -8,11 +8,11 @@
 #pragma comment (lib,"winmm.lib")
 
 #include "../DEFS.h"
-//==================================Define Key Buttons Values=============================//
+//================================== Define Key Buttons Values =============================//
 #define KEY_UP 72
 #define KEY_DOWN 80
 #define ENTER_KEY 13
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 
 class Output {
@@ -24,10 +24,10 @@ private:
 public:
 	Output();
     void LoadingScreen();
-
+    void screenRefesher();
     template<class T>
     void PrintOut(T text, COLOR color = WHITE);
-    int ScreenMenu(std::string MenuItems[], int MinueSize);
+    int ScreenMenu(std::string* MenuItems, int MinueSize);
     void ClearScreen();
     void setFont(short size, const std::wstring& fontType = L"Terminal");
     HANDLE getConsoleHandler ()const;

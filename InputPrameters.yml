@@ -5,7 +5,9 @@ N: 7
 #Units probablities in percentage
 ES%,ET%,EG%: 40 55 5
 #      Ranges of Armies     # 
-#!Warning don't change in the order of the paramters[Power health Attack capacity] or in their fomrat.[min-max]
+#! Warning! don't change in the order of the paramters[Power health Attack capacity] or in their fomrat.[min-max] !#
+#?instead you can change the numbers values
+
 #Eearth Ranges
 power,health,attack_capacity: 3-50 30-90 2-5
 #Alien Ranges

@@ -1,9 +1,9 @@
 #pragma once
 #include "doubleNode.h"
-#include "QueueADT.h"
+#include "DoubleQueueADT.h"
 
 template <typename T>
-class DoubleQueue :public QueueADT<T>
+class DoubleQueue :public DoubleQueueADT<T>
 {
 private:
 	doubleNode<T>* backPtr;
@@ -16,10 +16,10 @@ public:
 	DoubleQueue();
 
 	bool isEmpty() const;
-	bool enqueue(const T& newEntry);
+	
 	bool enqueueFront(const T& newEntry);
 	bool dequeueFront(T& frntEntry);
-	bool dequeue(T& FrontEntry);
+	
 	bool dequeueBack(T& backEntry);
 	bool enqueueBack(const T& backEntry);
 	bool peek(T& frntEntry)  const;
@@ -68,21 +68,6 @@ Output: True if the operation is successful; otherwise false.
 */
 
 template <typename T>
-bool DoubleQueue<T>::enqueue(const T& newEntry)
-{
-	doubleNode<T>* newNodePtr = new doubleNode<T>(newEntry);
-	// Insert the new node
-	if (isEmpty())	//special case if this is the first node to insert
-		frontPtr = newNodePtr; // The queue is empty
-	else
-		backPtr->setNext(newNodePtr); // The queue was not empty
-
-	backPtr = newNodePtr; // New node is the last node now
-	length++;
-	return true;
-} // end enqueue
-
-template <typename T>
 bool DoubleQueue<T>::enqueueFront(const T& newEntry)
 {
 	doubleNode<T>* newNodePtr = new doubleNode<T>(newEntry);
@@ -118,11 +103,6 @@ inline bool DoubleQueue<T>::dequeueFront(T& frntEntry)
 	return true;
 }
 
-template<typename T>
-inline bool DoubleQueue<T>::dequeue(T& FrontEntry)
-{
-	return false;
-}
 
 
 template<typename T>
@@ -229,7 +209,7 @@ DoubleQueue<T>::~DoubleQueue()
 	//They should be normally removed from the destructor
 	//Free all nodes in the queue
 	T temp;
-	while (dequeue(temp));
+	while (dequeueFront(temp));
 
 
 }
