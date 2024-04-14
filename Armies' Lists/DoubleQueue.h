@@ -55,7 +55,7 @@ Output: True if the queue is empty; otherwise false.
 template <typename T>
 bool DoubleQueue<T>::isEmpty() const
 {
-	return (frontPtr == nullptr);
+	return (frontPtr == nullptr || backPtr == nullptr);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -114,6 +114,7 @@ inline bool DoubleQueue<T>::dequeueBack(T& backEntry)
 	doubleNode<T>* nodeToDeletePtr = backPtr;
 	backEntry = backPtr->getItem();
 	backPtr = backPtr->getPrevious();
+	backPtr->setNext(nullptr);
 	// Queue is not empty; remove front
 	if (nodeToDeletePtr == frontPtr)	 // Special case: last node in the queue
 		frontPtr = nullptr;

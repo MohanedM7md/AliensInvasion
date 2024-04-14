@@ -7,16 +7,23 @@ void Game::DisplayLists()
 {
 	this->EarthArmies.printEarth();
 	this->AlienArmies.printAlien();
+	pOut->PrintOut("=======================================   ", LIGHT_RED);
+	pOut->PrintOut("Killed/Destructed Units", ORANGE);
+	pOut->PrintOut("   =====================================\n", LIGHT_RED);
+
+	DisplayKilledList();
+	pOut->PrintOut("=======================================   ", LIGHT_RED);
+	pOut->PrintOut("TEMP LIST", ORANGE);
+	pOut->PrintOut("   =====================================\n", LIGHT_RED);
+	DisplayTemp();
 	
 }
 
 void Game::DisplayKilledList()
 {
-	pOut->PrintOut("=======================================   ", LIGHT_RED);
-	pOut->PrintOut("Killed/Destructed Units", ORANGE);
-	pOut->PrintOut("   =====================================\n", LIGHT_RED);
-	pOut->PrintOut("\t" + std::to_string(killed_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut(" Unit  ", LIGHT_CYAN);
+	
+	pOut->PrintOut("Killed " + std::to_string(killed_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut(" Unit", LIGHT_CYAN);
 	pOut->PrintOut("[", LIGHT_BLUE);
 	killed_List.Print();
 	pOut->PrintOut("]\n", LIGHT_BLUE);
@@ -24,11 +31,9 @@ void Game::DisplayKilledList()
 
 void Game::DisplayTemp()
 {
-	pOut->PrintOut("=======================================   ", LIGHT_RED);
-	pOut->PrintOut("TEMP LIST", ORANGE);
-	pOut->PrintOut("   =====================================\n", LIGHT_RED);
-	pOut->PrintOut("\t" + std::to_string(killed_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut(" Unit  ", LIGHT_CYAN);
+	
+	pOut->PrintOut("Temp " + std::to_string(killed_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut(" Unit", LIGHT_CYAN);
 	pOut->PrintOut("[", LIGHT_BLUE);
 	Temp_List.Print();
 	pOut->PrintOut("]\n", LIGHT_BLUE);
@@ -177,14 +182,14 @@ void Game::testcode()
 		{ // If X is between 1 and 9
 			// Select an ES unit from its list and insert it again
 			ES* selectedES = nullptr;
-			pOut->PrintOut("The ES before reMove");
+			pOut->PrintOut("The ES before remove: \n");
 			EarthArmies.ES_printer();
 			std::cout << '\n';
 			if (EarthArmies.ES_List.dequeue(selectedES))
 			{
-				pOut->PrintOut("The ES After reMove");
+				pOut->PrintOut("The ES After remove :\n");
 				EarthArmies.ES_printer();
-				pOut->PrintOut("The ES After return");
+				pOut->PrintOut("The ES After return: \n");
 				EarthArmies.ES_List.enqueue(selectedES);
 				EarthArmies.ES_printer();
 				std::cout << '\n';
@@ -205,16 +210,18 @@ void Game::testcode()
 		{
 			EG* selectedEG = nullptr;
 			int pri = NULL;
-			pOut->PrintOut("The ET before reMove:");
+			pOut->PrintOut("The ET before remove:\n");
 			EarthArmies.EG_printer();
 			if (EarthArmies.EG_List.dequeue(selectedEG, pri))
 			{
+				pOut->PrintOut("The ET after remove: \n");
 				EarthArmies.EG_printer();
 				std::cout << "\nthe Pickied one ID:" << selectedEG->GetID() << "\n Health: " << selectedEG->GetHealth()<<std::endl;
 				selectedEG->SetHealth(selectedEG->GetHealth() * 0.5);
 				std::cout << "\nthe Pickied one ID:" << selectedEG->GetID() << "\n Health After Decrement: " << selectedEG->GetHealth()<<std::endl;
 
 				EarthArmies.EG_List.enqueue(selectedEG, pri);
+				pOut->PrintOut("The ET after return: \n");
 				EarthArmies.EG_printer();
 			}
 		}
@@ -229,12 +236,13 @@ void Game::testcode()
 				{
 					std::cout <<i+1<<" : " << "\nthe Pickied one ID:" << selectedAS->GetID() << "\n Health: " << selectedAS->GetHealth() << std::endl;
 					selectedAS->SetHealth(selectedAS->GetHealth() * 0.5);
-					std::cout << "\n====\nthe Pickied one ID:" << selectedAS->GetID() << "\n Health After Decrement: " << selectedAS->GetHealth() << std::endl;
+					std::cout << "====\nthe Pickied one ID:" << selectedAS->GetID() << "\n Health After Decrement: " << selectedAS->GetHealth() << "\n\n";
+					Temp_List.enqueue(selectedAS);
 
 				}
 			}
-			AlienArmies.AS_printer();
 			this->DisplayTemp();
+			AlienArmies.AS_printer();
 			Unit* getFromTemp = nullptr;
 			for (int i = 0; i < 5; i++)
 			{
@@ -244,45 +252,48 @@ void Game::testcode()
 
 				}
 			}
-			AlienArmies.AS_printer();
 			this->DisplayTemp();
+			AlienArmies.AS_printer();
 
         }
 
 		else if (X >= 41 && X <= 49)
 
 		{
-			AM* selectedAM = nullptr;
-			for (int i = 0; i < 5; i++) 
-			{
+			AM* selectedAM[5];
+			for (int i = 0; i < 5; i++)
+				selectedAM[i] = nullptr;
+			AlienArmies.AM_printer();
 
-				if (AlienArmies.AM_List.remove(selectedAM))
-				{
-					AlienArmies.AM_List.add(selectedAM);
+			for (int i = 0; i < 5; i++)
+				AlienArmies.AM_List.remove(selectedAM[i]);
+			AlienArmies.AM_printer();
+			for (int i = 0; i < 5; i++)
+				if(selectedAM[i])
+					AlienArmies.AM_List.add(selectedAM[i]);
+			AlienArmies.AM_printer();
 
-				}
-
-			}
 
 		}
-
-		//else if  (X >= 41 && X <= 49)
-		//{
-		//	AD* selectedAD = nullptr;
-		//	for (int i = 0; i < 5; i++)
-		//	{
-
-		//		if (AlienArmies.AD_List.dequeue()
-		//		{
-		//			
-
-		//		}
-
-		//	}
-
-		//}
-
-		//print all info
+		else if (X > 49 && X <= 60) {
+			AD* selectedAD[6];
+			for (int i = 0; i < 6; i++)
+				selectedAD[i] = nullptr;
+			AlienArmies.AD_printer();
+			for (int i = 0; i < 6; i++) {
+				if(i%2)
+				AlienArmies.AD_List.dequeueBack(selectedAD[i]);
+				else
+				AlienArmies.AD_List.dequeueFront(selectedAD[i]);
+				AlienArmies.AD_printer();
+			}
+			for (int i = 0; i < 6; i++)
+				if (selectedAD[i])
+					killed_List.enqueue(selectedAD[i]);
+			
+			this->DisplayKilledList();
+			AlienArmies.AD_printer();
+		}
 	}
 	system("pause");
 }

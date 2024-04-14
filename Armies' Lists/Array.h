@@ -31,7 +31,6 @@ template<typename T>
 inline int Array<T>::createRandomIndex(int max)
 {
 	srand((int)time(0));
-
 	return (rand() % max);
 }
 
@@ -58,16 +57,13 @@ inline bool Array<T>::remove(T& item)
 {
 	if(length == 0)
 		return false;
-	int randomIndex;
-	if (length != 1)
-		randomIndex = createRandomIndex(length - 1);
-	else
-		randomIndex = 0;
 
+	int randomIndex;
+	randomIndex = createRandomIndex(length);
 	T* deleteMe = Arrlist[randomIndex];
 	item = *Arrlist[randomIndex];
-	Arrlist[randomIndex] = Arrlist[length - 1];
-	length--;
+	Arrlist[randomIndex] = Arrlist[--length];
+	//length--;
 	delete deleteMe;
 	return true;
 }

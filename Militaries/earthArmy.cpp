@@ -16,12 +16,15 @@ void earthArmy::printEarth()
 	pOut->PrintOut("   =====================================\n", AQUA);
 
 	//=============== print ES Information ========================/
+	pOut->ES_Print();
 	ES_printer();
 
 	//=============== print ET Information ========================/
+	pOut->ET_Print();
 	ET_printer();
 
 	//=============== print EG Information ========================/
+	pOut->EG_Print();
 	EG_printer();
 }
 
@@ -41,29 +44,28 @@ bool earthArmy::addUnit(Unit* unit)
 	return false;
 }
 
+
 void earthArmy::ES_printer()
 {
-	pOut->ES_Print();
+	
 	pOut->PrintOut(std::to_string(ES_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  ES", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	ES_List.Print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 }
-
 void earthArmy::ET_printer()
 {
-	pOut->ET_Print();
+	
 	pOut->PrintOut(std::to_string(ET_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  ET", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);
 	ET_List.print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 }
-
 void earthArmy::EG_printer()
 {
-	pOut->EG_Print();
+	
 	pOut->PrintOut(std::to_string(EG_List.getLength()), LIGHT_YELLOW);
 	pOut->PrintOut("  EG", LIGHT_CYAN);
 	pOut->PrintOut('[', LIGHT_GREEN);

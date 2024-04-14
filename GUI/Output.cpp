@@ -189,18 +189,18 @@ void Output::LoadingScreen()
 
 void Output::screenRefesher()//after changing the screen size font the console need to be resized to to make it good
 {
-    Sleep(1000);
+    Sleep(200);
     keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
     keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
     keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
     keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
     Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
-    Sleep(1000);
+    Sleep(200);
     keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
     keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
     keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
     keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
-    Sleep(1000);// 
+    Sleep(300);// just wait as theese take time to be performed
 }
 
 
