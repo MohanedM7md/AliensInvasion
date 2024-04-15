@@ -182,21 +182,26 @@ void Game::testcode()
 		{ // If X is between 1 and 9
 			// Select an ES unit from its list and insert it again
 			ES* selectedES = nullptr;
+			std::cout << "\n\tOriginal List\n\n";
 			EarthArmies.ES_printer();
 			std::cout << '\n';
 			if (EarthArmies.ES_Getter(selectedES))
 			{
+				std::cout << "\n\tBefore Insertion\n\n";
 				EarthArmies.ES_printer();
 				EarthArmies.addUnit(selectedES);
+				std::cout << "\n\After Insertion\n\n";
 				EarthArmies.ES_printer();
 				std::cout << '\n';
 			}
 		}else if (X >= 11 && X <= 19)
 		{// Select an ES unit from its list and insert it again
+			std::cout << "\n\tBefore Insertion\n\n";
 			ET* selectedET = nullptr;
 			EarthArmies.ET_printer();
 			if (EarthArmies.ET_Getter(selectedET))
 			{
+				std::cout << "\n\After Insertion\n\n";
 				EarthArmies.ET_printer();
 				killed_List.enqueue(selectedET);
 				DisplayKilledList();
@@ -208,15 +213,16 @@ void Game::testcode()
 			EG* selectedEG = nullptr;
 			int pri = NULL;
 			
+			std::cout << "\n\tBefore Deletion\n\n";
 			EarthArmies.EG_printer();
 			if (EarthArmies.EG_Getter(selectedEG, pri))
 			{
-				
 				EarthArmies.EG_printer();
 				std::cout << "\nID:" << selectedEG->GetID() << "\n Health: " << selectedEG->GetHealth()<<std::endl;
 				selectedEG->SetHealth(selectedEG->GetHealth() * 0.5);
 				std::cout << "\nID:" << selectedEG->GetID() << "\n Decremented: " << selectedEG->GetHealth()<<std::endl;
 				EarthArmies.addUnit(selectedEG);
+				std::cout << "\n\tAfter Deletion\n\n";
 				EarthArmies.EG_printer();
 			}
 		}
@@ -224,6 +230,7 @@ void Game::testcode()
 		{
 			AS* selectedAS = nullptr;
 
+			std::cout << "\n\tBefore Deletion\n\n";
 			AlienArmies.AS_printer();
 			for (int i = 0; i < 5; i++)
 			{
@@ -235,6 +242,7 @@ void Game::testcode()
 					Temp_List.enqueue(selectedAS);
 				}
 			}
+			std::cout << "\n\tAfter Deletion\n\n";
 			this->DisplayTemp();
 			AlienArmies.AS_printer();
 			Unit* getFromTemp = nullptr;
@@ -254,10 +262,12 @@ void Game::testcode()
 			AM* selectedAM[5];
 			for (int i = 0; i < 5; i++)
 				selectedAM[i] = nullptr;
+			std::cout << "\n\tBefore Insertion\n\n";
 			AlienArmies.AM_printer();
 
 			for (int i = 0; i < 5; i++)
 				AlienArmies.AM_Getter(selectedAM[i]);
+			std::cout << "\n\After Insertion\n\n";
 			AlienArmies.AM_printer();
 			for (int i = 0; i < 5; i++)
 				if(selectedAM[i])
@@ -270,6 +280,7 @@ void Game::testcode()
 			AD* selectedAD[6];
 			for (int i = 0; i < 6; i++)
 				selectedAD[i] = nullptr;
+			std::cout << "\n\tBefore Deletion\n\n";
 			AlienArmies.AD_printer();
 			for (int i = 0; i < 3; i++) {
 				
@@ -280,6 +291,7 @@ void Game::testcode()
 				if (selectedAD[i])
 					killed_List.enqueue(selectedAD[i]);
 			
+			std::cout << "\n\tAfter Deletion\n\n";
 			this->DisplayKilledList();
 			AlienArmies.AD_printer();
 		}

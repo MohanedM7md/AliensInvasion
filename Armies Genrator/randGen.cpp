@@ -65,7 +65,7 @@ void randGen::GenrateArmy()
 
 			/*======================== Earth Army ========================*/
 
-			if (randB < param.ES) {
+			if (randB <= param.ES) {
 				genrateUnitParam(hlth, pwr, cap);
 				Gptr->addEUnits(new ES(ErthIDs++, 0, hlth, pwr, cap, "ES", Gptr));
 			}
@@ -89,7 +89,7 @@ void randGen::GenrateArmy()
 		for (int i = 0; i < param.N; i++) {
 			int randB = RandmonNumGent(); //genrate random number range 1-100
 			int hlth, pwr, cap;//intialize input prameter
-			if (randB < param.AS) {
+			if (randB <= param.AS) {
 				genrateUnitParam(hlth, pwr, cap);
 				Gptr->addAUnits(new AS(AliensthIDs++, 0, hlth, pwr, cap, "AS", Gptr));
 			}
