@@ -16,20 +16,24 @@ class earthArmy {
 	Output* pOut;
 	Game* gPtr;
 
-
-public:
-	
 	LinkedQueue<ES*> ES_List;
 	LinkedStack<ET*> ET_List;
 	priQueue<EG*> EG_List;
+
+public:
+	
 	earthArmy(Game* gPtr = nullptr);
 	void printEarth();
 	bool addUnit(Unit*);
-
 	//////////// Each earthian Printer   /////////////
 	void ES_printer();
 	void ET_printer();
 	void EG_printer();
+
+	/////////// Units Getters ///////////////////////
+	bool ES_Getter(ES*&);
+	bool ET_Getter(ET*&);
+	bool EG_Getter(EG*&, int&);
 
 };
 

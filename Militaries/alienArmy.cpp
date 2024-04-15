@@ -77,3 +77,22 @@ void alienArmy::AD_printer()
 	AD_List.Print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 }
+
+bool alienArmy::AS_Getter(AS*& as)
+{
+	return AS_List.dequeue(as);
+}
+
+bool alienArmy::AM_Getter(AM*& am)
+{
+	return AM_List.remove(am);
+}
+
+bool alienArmy::AD_Getter(AD*& adFrnt, AD*&adBack)
+{
+	
+	if (AD_List.getLength() < 2)
+		return false;
+
+	return (AD_List.dequeueFront(adFrnt) && AD_List.dequeueBack(adBack));
+}

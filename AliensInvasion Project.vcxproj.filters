@@ -132,5 +132,8 @@
     <ClCompile Include="Unit Armies\AS.cpp">
       <Filter>Unit Armies</Filter>
     </ClCompile>
+    <ClCompile Include="deQUE.h">
+      <Filter>Armies%27 Lists</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

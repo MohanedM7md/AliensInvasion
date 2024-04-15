@@ -45,6 +45,7 @@ bool earthArmy::addUnit(Unit* unit)
 }
 
 
+
 void earthArmy::ES_printer()
 {
 	
@@ -71,4 +72,19 @@ void earthArmy::EG_printer()
 	pOut->PrintOut('[', LIGHT_GREEN);
 	EG_List.Print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
+}
+
+bool earthArmy::ES_Getter(ES*& es)
+{
+	return ES_List.dequeue(es);
+}
+
+bool earthArmy::ET_Getter(ET*& et)
+{
+	return ET_List.pop(et);
+}
+
+bool earthArmy::EG_Getter(EG*& eg,int& pri)
+{
+	return EG_List.dequeue(eg, pri);
 }

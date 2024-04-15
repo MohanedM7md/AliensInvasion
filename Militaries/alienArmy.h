@@ -17,10 +17,10 @@ class alienArmy {
 	Output* pOut;
 	Game* gPtr;
 
-public:
 	LinkedQueue<AS*> AS_List;
 	Array <AM*> AM_List;
 	DoubleQueue<AD*> AD_List;
+public:
 
 
 	alienArmy(Game* gPtr = nullptr);
@@ -31,6 +31,11 @@ public:
 	void AS_printer();
 	void AM_printer();
 	void AD_printer();
+
+	/////////////// Alien Unit remover ///////////////
+	bool AS_Getter(AS*&);
+	bool AM_Getter(AM*&);
+	bool AD_Getter(AD*&, AD*&);
 
 };
 

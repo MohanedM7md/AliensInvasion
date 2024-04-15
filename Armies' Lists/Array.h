@@ -25,6 +25,8 @@ public:
 template<typename T>
 inline Array<T>::Array():length(0)
 {
+	for (int i = 0; i < MAX; i++)
+		Arrlist[i] == nullptr;
 }
 
 template<typename T>
