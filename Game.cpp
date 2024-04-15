@@ -216,7 +216,7 @@ void Game::testcode()
 				std::cout << "\nID:" << selectedEG->GetID() << "\n Health: " << selectedEG->GetHealth()<<std::endl;
 				selectedEG->SetHealth(selectedEG->GetHealth() * 0.5);
 				std::cout << "\nID:" << selectedEG->GetID() << "\n Decremented: " << selectedEG->GetHealth()<<std::endl;
-				pOut->PrintOut("The ET after return: \n");
+				EarthArmies.addUnit(selectedEG);
 				EarthArmies.EG_printer();
 			}
 		}
