@@ -187,7 +187,7 @@ void Game::testcode()
 			if (EarthArmies.ES_Getter(selectedES))
 			{
 				EarthArmies.ES_printer();
-				EarthArmies.ES_Getter(selectedES);
+				EarthArmies.addUnit(selectedES);
 				EarthArmies.ES_printer();
 				std::cout << '\n';
 			}
