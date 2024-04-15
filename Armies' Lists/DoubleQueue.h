@@ -22,7 +22,11 @@ public:
 	
 	bool dequeueBack(T& backEntry);
 	bool enqueueBack(const T& backEntry);
-	bool peek(T& frntEntry)  const;
+
+	bool dequeueFrontBack(T& Front, T& Back);
+
+	bool peekFront(T& frntEntry)  const;
+	bool peekBack(T& backEntry)  const;
 	void Print();
 	int getLength() const;
 	~DoubleQueue();
@@ -126,6 +130,15 @@ inline bool DoubleQueue<T>::dequeueBack(T& backEntry)
 	return true;
 }
 
+template <typename T>
+bool DoubleQueue<T>::dequeueFrontBack(T& Front, T& Back)
+{
+	if (dequeueFront(Front) && dequeueBack(Back))
+		return true;
+	return false;
+}
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -166,12 +179,23 @@ Output: The front of the queue.
 */
 
 template <typename T>
-bool DoubleQueue<T>::peek(T& frntEntry) const
+bool DoubleQueue<T>::peekFront(T& frntEntry) const
 {
 	if (isEmpty())
 		return false;
 
 	frntEntry = frontPtr->getItem();
+	return true;
+
+}
+
+template <typename T>
+bool DoubleQueue<T>::peekBack(T& backentry) const
+{
+	if (isEmpty())
+		return false;
+
+	backEntry = backPtr->getItem();
 	return true;
 
 }
