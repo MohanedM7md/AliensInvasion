@@ -171,7 +171,7 @@ void Game::testcode()
 	pOut->setFont(20);
 	pOut->screenRefesher();
 
-	for (int i = 1; i != 50; i++) {
+	for (int i = 1; i <= 50; i++) {
 		pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(i) + "\n\n", RED);
 		UnitGen.GenrateArmy();
 		// Generate a number X from 1 to 100
