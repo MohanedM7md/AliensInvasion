@@ -129,7 +129,7 @@ parameters Game::LoadParameters()
 		//power Range
 		std::getline(inputFile, s,'-');
 		param.ApwRangees[0] = std::stoi(s);
-		inputFile >> param.AhtlyRangees[1];
+		inputFile >> param.ApwRangees[1];
 		//health range
 		std::getline(inputFile, s,'-');
 		param.AhtlyRangees[0] = std::stoi(s);
@@ -190,7 +190,7 @@ void Game::testcode()
 				std::cout << "\n\tBefore Insertion\n\n";
 				EarthArmies.ES_printer();
 				EarthArmies.addUnit(selectedES);
-				std::cout << "\n\After Insertion\n\n";
+				std::cout <<"\n\After Insertion\n\n";
 				EarthArmies.ES_printer();
 				std::cout << '\n';
 			}
@@ -201,7 +201,7 @@ void Game::testcode()
 			EarthArmies.ET_printer();
 			if (EarthArmies.ET_Getter(selectedET))
 			{
-				std::cout << "\n\After Insertion\n\n";
+				std::cout <<"\n\After Insertion\n\n";
 				EarthArmies.ET_printer();
 				killed_List.enqueue(selectedET);
 				DisplayKilledList();
@@ -267,7 +267,7 @@ void Game::testcode()
 
 			for (int i = 0; i < 5; i++)
 				AlienArmies.AM_Getter(selectedAM[i]);
-			std::cout << "\n\After Insertion\n\n";
+			std::cout <<"\n\After Insertion\n\n";
 			AlienArmies.AM_printer();
 			for (int i = 0; i < 5; i++)
 				if(selectedAM[i])

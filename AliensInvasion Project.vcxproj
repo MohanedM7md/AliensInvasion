@@ -46,7 +46,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Armies Genrator\randGen.cpp" />
-    <ClCompile Include="deQUE.h" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="Main.cpp" />

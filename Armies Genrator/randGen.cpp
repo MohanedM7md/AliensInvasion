@@ -40,16 +40,6 @@ short randGen::RandmonRangeNum(int* range) const
 	return dist(rd);// set its range between range[0] to range[1]
 }
 
-void randGen::genrateUnitParam(int& hlth, int& pwr, int& cap)
-{
-
-	hlth = RandmonRangeNum(param.EhtlyRangees);
-	//////////////////////////////////////////////////
-	pwr = RandmonRangeNum(param.EpwRangees);
-	///////////////////////////////////////////////////
-	cap = RandmonRangeNum(param.EattkCapRangees);
-}
-
 
 
 
@@ -64,19 +54,18 @@ void randGen::GenrateArmy()
 
 
 			/*======================== Earth Army ========================*/
-
+			hlth = RandmonRangeNum(param.EhtlyRangees);
+			pwr = RandmonRangeNum(param.EpwRangees);
+			cap = RandmonRangeNum(param.EattkCapRangees);
 			if (randB <= param.ES) {
-				genrateUnitParam(hlth, pwr, cap);
 				Gptr->addEUnits(new ES(ErthIDs++, 0, hlth, pwr, cap, "ES", Gptr));
 			}
 
 			else if (randB <= param.ES + param.ET) {
-				genrateUnitParam(hlth, pwr, cap);
 				Gptr->addEUnits(new ET(ErthIDs++, 0, hlth, pwr, cap, "ET", Gptr));
 			}
 			else
 			{
-				genrateUnitParam(hlth, pwr, cap);
 				Gptr->addEUnits(new EG(ErthIDs++, 0, hlth, pwr, cap, "EG", Gptr));
 			}
 
@@ -89,18 +78,21 @@ void randGen::GenrateArmy()
 		for (int i = 0; i < param.N; i++) {
 			int randB = RandmonNumGent(); //genrate random number range 1-100
 			int hlth, pwr, cap;//intialize input prameter
+			hlth = RandmonRangeNum(param.AhtlyRangees);
+			pwr = RandmonRangeNum(param.ApwRangees);
+			cap = RandmonRangeNum(param.AattkCapRangees);
 			if (randB <= param.AS) {
-				genrateUnitParam(hlth, pwr, cap);
+				
 				Gptr->addAUnits(new AS(AliensthIDs++, 0, hlth, pwr, cap, "AS", Gptr));
 			}
 
 			else if (randB <= param.AS + param.AM) {
-				genrateUnitParam(hlth, pwr, cap);
+
 				Gptr->addAUnits(new AM(AliensthIDs++, 0, hlth, pwr, cap, "AM", Gptr));
 			}
 			else
 			{
-				genrateUnitParam(hlth, pwr, cap);
+
 				Gptr->addAUnits(new AD(AliensthIDs++, 0, hlth, pwr, cap, "AD", Gptr));
 			}
 		}

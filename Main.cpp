@@ -1,15 +1,14 @@
 ﻿#include "Game.h"
-#include "deQUE.h"
+
 
 
 int main() {
 	
 	//game.loadingScreen();
 	MENU Choice;
-	Output* pOut;
+	
 	do{
 		Game game;
-		pOut = game.getOutputPtr();
 		Choice = game.startMenue();
 		if (Choice == START) {
 			MENU mode = game.modeMenue();
@@ -22,7 +21,7 @@ int main() {
 		else if (Choice == TEAM_INFO) {
 			//tem info
 		}
-		Choice = game.startMenue();
+		system("cls");
 	} while (Choice != EXIT);
 
 }

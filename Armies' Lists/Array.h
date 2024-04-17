@@ -25,6 +25,7 @@ public:
 template<typename T>
 inline Array<T>::Array():length(0)
 {
+	srand((int)time(0));
 	for (int i = 0; i < MAX; i++)
 		Arrlist[i] = nullptr;
 }
@@ -32,7 +33,7 @@ inline Array<T>::Array():length(0)
 template<typename T>
 inline int Array<T>::createRandomIndex(int max)
 {
-	srand((int)time(0));
+	
 	return (rand() % max);
 }
 
