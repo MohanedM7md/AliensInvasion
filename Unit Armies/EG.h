@@ -14,7 +14,7 @@ public:
 
 };
 
-inline std::ostream& operator<<(std::ostream& os, const EG* unit) {
+static std::ostream& operator<<(std::ostream& os, const EG* unit) {
 	os << unit->GetID();
 	return os;
 }

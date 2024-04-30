@@ -6,7 +6,7 @@ int main() {
 	
 	//game.loadingScreen();
 	MENU Choice;
-	
+	Output::FullScreenSetter();
 	do{
 		Game game;
 		Choice = game.startMenue();
@@ -15,7 +15,7 @@ int main() {
 			switch (mode) {
 			case INERACT: game.startGame(); break;
 			case SILENT: /*SILTEN*/break;
-			case TEST: game.testcode(); break;
+			
 			}
 		}
 		else if (Choice == TEAM_INFO) {

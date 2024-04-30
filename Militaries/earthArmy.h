@@ -25,15 +25,16 @@ public:
 	earthArmy(Game* gPtr = nullptr);
 	void printEarth();
 	bool addUnit(Unit*);
-	//////////// Each earthian Printer   /////////////
-	void ES_printer();
-	void ET_printer();
-	void EG_printer();
 
 	/////////// Units Getters ///////////////////////
 	bool ES_Getter(ES*&);
 	bool ET_Getter(ET*&);
 	bool EG_Getter(EG*&, int&);
+
+	bool IfListIsEmpyt(string s) const;
+
+	///////////// Attack Function //////////////////////
+	void attackAliens();
 
 };
 

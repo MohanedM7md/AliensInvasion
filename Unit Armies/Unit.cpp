@@ -1,15 +1,23 @@
 #include"Unit.h"
 #include "../Game.h"
 
+int Unit::calcDmg(Unit* U1, Unit* U2)
+{
+	return (U1->power * (U1->health / static_cast<double>(100))) / (sqrt(U2->GetHealth()));
+}
+
 Unit::Unit(int id, int tj, int health, int power, int attackCap, std::string type, Game* Gptr)
 {
 	SetID(id);
 	SetTj(tj);
 	SetHealth(health);
+	MaxHelth = health;
 	SetPower(power);
 	SetAttackCap(attackCap);
 	SetType(type);
 	SetGamePtr(Gptr);
+	Ta = 0;
+	Td = 0;
 }
 
 
@@ -23,6 +31,14 @@ int Unit::GetID() const
 int Unit::GetTj() const
 {
 	return  Tj;
+}
+int Unit::GetTd() const
+{
+	return  Td;
+}
+int Unit::GetTa() const
+{
+	return  Ta;
 }
 int Unit::GetHealth() const
 {
@@ -58,10 +74,22 @@ void Unit::SetTj(int tj)
 	Tj = tj;
 }
 
+void Unit::setTa(int ta)
+{
+	if(ta > 0 && !Ta)
+		this->Ta = ta;
+}
+
+void Unit::setTd(int td)
+{
+	if (td > 0)
+		this->Td = td;
+}
+
 void Unit::SetHealth(int heal)
 {
-	if (heal > 100||heal<0)
-		return;
+	if (heal < 0)
+		health = 0;
 	else
 		health = heal;
 }

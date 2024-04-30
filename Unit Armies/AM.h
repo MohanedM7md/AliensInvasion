@@ -20,7 +20,7 @@ public:
 	void attack();
 };
 
-inline std::ostream& operator<<(std::ostream& os, const AM* unit) {
+static std::ostream& operator<<(std::ostream& os, const AM* unit) {
 	os << unit->GetID();
 	return os;
 }

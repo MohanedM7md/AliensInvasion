@@ -43,7 +43,7 @@ short randGen::RandmonRangeNum(int* range) const
 
 
 
-void randGen::GenrateArmy()
+void randGen::GenrateArmy(int Tj)
 {
 	int RandA = RandmonNumGent();
 	//Todo You have to follow tha same pattern for other Unit calss
@@ -58,15 +58,15 @@ void randGen::GenrateArmy()
 			pwr = RandmonRangeNum(param.EpwRangees);
 			cap = RandmonRangeNum(param.EattkCapRangees);
 			if (randB <= param.ES) {
-				Gptr->addEUnits(new ES(ErthIDs++, 0, hlth, pwr, cap, "ES", Gptr));
+				Gptr->addEUnits(new ES(ErthIDs++, Tj, hlth, pwr, cap, "ES", Gptr));
 			}
 
 			else if (randB <= param.ES + param.ET) {
-				Gptr->addEUnits(new ET(ErthIDs++, 0, hlth, pwr, cap, "ET", Gptr));
+				Gptr->addEUnits(new ET(ErthIDs++, Tj, hlth, pwr, cap, "ET", Gptr));
 			}
 			else
 			{
-				Gptr->addEUnits(new EG(ErthIDs++, 0, hlth, pwr, cap, "EG", Gptr));
+				Gptr->addEUnits(new EG(ErthIDs++, Tj, hlth, pwr, cap, "EG", Gptr));
 			}
 
 			/*======================== Alien Army ========================*/
@@ -83,17 +83,17 @@ void randGen::GenrateArmy()
 			cap = RandmonRangeNum(param.AattkCapRangees);
 			if (randB <= param.AS) {
 				
-				Gptr->addAUnits(new AS(AliensthIDs++, 0, hlth, pwr, cap, "AS", Gptr));
+				Gptr->addAUnits(new AS(AliensthIDs++, Tj, hlth, pwr, cap, "AS", Gptr));
 			}
 
 			else if (randB <= param.AS + param.AM) {
 
-				Gptr->addAUnits(new AM(AliensthIDs++, 0, hlth, pwr, cap, "AM", Gptr));
+				Gptr->addAUnits(new AM(AliensthIDs++, Tj, hlth, pwr, cap, "AM", Gptr));
 			}
 			else
 			{
 
-				Gptr->addAUnits(new AD(AliensthIDs++, 0, hlth, pwr, cap, "AD", Gptr));
+				Gptr->addAUnits(new AD(AliensthIDs++, Tj, hlth, pwr, cap, "AD", Gptr));
 			}
 		}
 }

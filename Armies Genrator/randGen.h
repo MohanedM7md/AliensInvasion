@@ -27,6 +27,6 @@ public:
 
     // Generates the parameters of the unit armies from the input file
     // (health, power, capacity) based on the type of the army
-    void GenrateArmy(); // Army Generator
+    void GenrateArmy(int Tj); // Army Generator
 };
 

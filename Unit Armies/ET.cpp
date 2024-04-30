@@ -6,8 +6,9 @@ ET::ET(int id, int tj, int health, int power, int attackCap,
 
 }
 
-
 void ET::attack()
 {
-	
 }
+
+
+

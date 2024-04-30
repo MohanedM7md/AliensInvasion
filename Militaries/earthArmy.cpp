@@ -17,15 +17,27 @@ void earthArmy::printEarth()
 
 	//=============== print ES Information ========================/
 	pOut->ES_Print();
-	ES_printer();
+	pOut->PrintOut(std::to_string(ES_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  ES", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	ES_List.Print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 
 	//=============== print ET Information ========================/
 	pOut->ET_Print();
-	ET_printer();
+	pOut->PrintOut(std::to_string(ET_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  ET", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	ET_List.print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 
 	//=============== print EG Information ========================/
 	pOut->EG_Print();
-	EG_printer();
+	pOut->PrintOut(std::to_string(EG_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  EG", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	EG_List.Print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 }
 
 bool earthArmy::addUnit(Unit* unit)
@@ -44,36 +56,6 @@ bool earthArmy::addUnit(Unit* unit)
 	return false;
 }
 
-
-
-void earthArmy::ES_printer()
-{
-	
-	pOut->PrintOut(std::to_string(ES_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  ES", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	ES_List.Print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
-}
-void earthArmy::ET_printer()
-{
-	
-	pOut->PrintOut(std::to_string(ET_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  ET", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	ET_List.print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
-}
-void earthArmy::EG_printer()
-{
-	
-	pOut->PrintOut(std::to_string(EG_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  EG", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	EG_List.Print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
-}
-
 bool earthArmy::ES_Getter(ES*& es)
 {
 	return ES_List.dequeue(es);
@@ -87,4 +69,36 @@ bool earthArmy::ET_Getter(ET*& et)
 bool earthArmy::EG_Getter(EG*& eg,int& pri)
 {
 	return EG_List.dequeue(eg, pri);
+}
+
+bool earthArmy::IfListIsEmpyt(string s) const
+{
+	if (s == "ES")
+		return ES_List.isEmpty();
+	else if (s == "ET")
+		return ET_List.isEmpty();
+	else
+		return EG_List.isEmpty();
+}
+
+void earthArmy::attackAliens()
+{
+	ES* ESattcker;
+	if (ES_List.peek(ESattcker)) {
+
+		
+
+		ESattcker->attack();
+		std::cout << '\n';
+	}
+
+	ET* ETattcker;
+	if (ET_List.peek(ETattcker))
+		ETattcker->attack();
+
+	EG* EGattcker;
+	int EGPri;
+	/*if (EG_List.peek(EGattcker,EGPri))
+		ESattcker->attack();*/
+
 }

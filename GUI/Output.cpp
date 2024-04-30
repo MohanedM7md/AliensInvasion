@@ -7,13 +7,7 @@ Output::Output()
     ConsoleHandler = GetStdHandle(STD_OUTPUT_HANDLE);
     // ===== SECTION FOR SETTING FONT SIZE, FONT FAMILY, AND FULL SCREEN =====
     // This section is commented out as directly changing font family 
-    // Simulate Alt+Enter keypress for full screen (might not work reliably)
-    Sleep(1000);
-    keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
-    keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
-    keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
-    keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
-    Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
+   
    
 
     // Get information about the console screen buffer
@@ -202,6 +196,19 @@ void Output::screenRefesher()//after changing the screen size font the console n
     keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
     Sleep(300);// just wait as theese take time to be performed
 }
+
+void Output::FullScreenSetter()
+{
+        // Simulate Alt+Enter keypress for full screen (might not work reliably)
+        Sleep(1000);
+        keybd_event(VK_MENU, 0x38, 0, 0); // Alt button down
+        keybd_event(VK_RETURN, 0x1c, 0, 0); // Enter button Down
+        keybd_event(VK_RETURN, 0x1c, KEYEVENTF_KEYUP, 0); // Alt up
+        keybd_event(VK_MENU, 0x38, KEYEVENTF_KEYUP, 0); //Enter up
+        Sleep(800);// Sleep for a short time to avoid potential issues with window resizing
+}
+
+
 
 
 template<class T>

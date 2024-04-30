@@ -27,15 +27,15 @@ public:
 	void printAlien();
 	bool addUnit(Unit*);
 
-	//////////// Each Alien Printer   /////////////
-	void AS_printer();
-	void AM_printer();
-	void AD_printer();
 
 	/////////////// Alien Unit remover ///////////////
 	bool AS_Getter(AS*&);
 	bool AM_Getter(AM*&);
 	bool AD_Getter(AD*&, AD*&);
+
+	bool IfListIsEmpyt(string s) const;
+
+	void attackEarthians();
 
 };
 

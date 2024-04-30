@@ -17,13 +17,25 @@ void alienArmy::printAlien()
 	//print Unit Charcter then the list of it
 	//=============== print AS Information ========================/
 	pOut->AS_print();
-	AS_printer();
+	pOut->PrintOut(std::to_string(AS_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  AS", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	AS_List.Print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 	//=============== print AM Information ========================/
 	pOut->AM_print();
-	AM_printer();
+	pOut->PrintOut(std::to_string(AM_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  AM", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	AM_List.print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 	//=============== print AD Information ========================/
 	pOut->AD_print();
-	AD_printer();
+	pOut->PrintOut(std::to_string(AD_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  AD", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	AD_List.Print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 }
 
 bool alienArmy::addUnit(Unit* unit)
@@ -47,36 +59,6 @@ bool alienArmy::addUnit(Unit* unit)
 	return false;
 }
 
-void alienArmy::AS_printer()
-{
-
-	
-	pOut->PrintOut(std::to_string(AS_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  AS", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	AS_List.Print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
-}
-void alienArmy::AM_printer()
-{
-
-	
-	pOut->PrintOut(std::to_string(AM_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  AM", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	AM_List.print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
-}
-void alienArmy::AD_printer()
-{
-
-	
-	pOut->PrintOut(std::to_string(AD_List.getLength()), LIGHT_YELLOW);
-	pOut->PrintOut("  AD", LIGHT_CYAN);
-	pOut->PrintOut('[', LIGHT_GREEN);
-	AD_List.Print();
-	pOut->PrintOut("]\n\n", LIGHT_GREEN);
-}
 
 bool alienArmy::AS_Getter(AS*& as)
 {
@@ -95,4 +77,31 @@ bool alienArmy::AD_Getter(AD*& adFrnt, AD*&adBack)
 		return false;
 
 	return (AD_List.dequeueFront(adFrnt) && AD_List.dequeueBack(adBack));
+}
+
+bool alienArmy::IfListIsEmpyt(string s) const
+{
+	if (s == "AS")
+		return AS_List.isEmpty();
+	else if (s == "AM")
+		return AM_List.isEmpty();
+	else
+		return AD_List.isEmpty();
+}
+
+void alienArmy::attackEarthians()
+{
+	AS* ASattcker;
+	if (AS_List.peek(ASattcker))
+		ASattcker->attack();
+
+	AM* AMattcker;
+	if (AM_List.RandomPeek(AMattcker))
+		AMattcker->attack();
+
+	AD* ADattcker;
+	
+	/*if (EG_List.peek(EGattcker,EGPri))
+		ESattcker->attack();*/
+
 }

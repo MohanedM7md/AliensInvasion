@@ -24,7 +24,10 @@ private:
 public:
 	Output();
     void LoadingScreen();
+
     void screenRefesher();
+    static void FullScreenSetter();
+
     template<class T>
     void PrintOut(T text, COLOR color = WHITE);
     int ScreenMenu(std::string* MenuItems, int MinueSize);

@@ -10,14 +10,19 @@
 class Game
 {
 	Output* pOut;
+
 	earthArmy EarthArmies;
 	alienArmy AlienArmies;
+
 	randGen UnitGen;
+
 	LinkedQueue<Unit*> killed_List;
-	LinkedQueue<Unit*> Temp_List;
+
+	int Timesteps;
 	void DisplayLists();
 	void DisplayKilledList();
-	void DisplayTemp();
+
+	bool GameMode;
 
 public:
 	Game();
@@ -27,12 +32,21 @@ public:
 	MENU startMenue();
 	MENU modeMenue();
 	void startGame();
+
 	parameters LoadParameters();
+	void OutPutFileCreator();
+
 	void addEUnits(Unit*);
 	void addAUnits(Unit*);
-	void testcode();
+
 	earthArmy* GetEarthArmy();
 	alienArmy* GetAlienArmy();
+
+	bool addToKillList(Unit* unit);
+	bool getGameMode() const;
+	
+	int GetTimeStep() const;
+
 	~Game();
 };
 #endif 

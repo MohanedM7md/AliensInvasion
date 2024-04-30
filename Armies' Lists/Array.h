@@ -12,9 +12,10 @@ class Array {
 	int createRandomIndex(int max);
 public:
 	Array();
-	bool isEmpty();
+	bool isEmpty() const;
 	bool add(const T&);
 	bool remove(T&);
+	bool RandomPeek(T& item);
 	void print();
 	int getLength() const;
 	~Array();
@@ -38,7 +39,7 @@ inline int Array<T>::createRandomIndex(int max)
 }
 
 template<typename T>
-inline bool Array<T>::isEmpty()
+inline bool Array<T>::isEmpty() const
 {
 	return length == 0;
 }
@@ -69,6 +70,21 @@ inline bool Array<T>::remove(T& item)
 	//length--;
 	delete deleteMe;
 	return true;
+}
+
+template<typename T>
+inline bool Array<T>::RandomPeek(T& item)
+{
+	
+	if (length == 0)
+		return false;
+
+	int randomIndex;
+	randomIndex = createRandomIndex(length);
+	item = *Arrlist[randomIndex];
+	//length--;
+	return true;
+	
 }
 
 template<typename T>

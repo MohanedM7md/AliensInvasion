@@ -12,7 +12,7 @@ public:
 	void attack();
 };
 
-inline std::ostream& operator<<(std::ostream& os, const AS* unit) {
+static std::ostream& operator<<(std::ostream& os, const AS* unit) {
 	os << unit->GetID();
 	return os;
 }

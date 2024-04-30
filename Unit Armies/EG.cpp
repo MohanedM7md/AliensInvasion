@@ -4,9 +4,10 @@ EG::EG(int id, int tj, int health, int power, int attackCap, std::string type, G
 {
 }
 
+
+
 void EG::attack()
 {
-
 }
 
 int EG::GetPri()
