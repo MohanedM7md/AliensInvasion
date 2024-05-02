@@ -48,7 +48,7 @@ MENU Game::modeMenue()
 	return BACK;
 }
 
-void Game::startGame()
+void Game::startGameInteractive()
 {
 
 	//// GUI related functions /////
@@ -56,17 +56,12 @@ void Game::startGame()
 	pOut->setFont(20);
 	pOut->screenRefesher();
 
-	if (!GameMode) {
-		pOut->PrintOut("Silent Mode");
-		pOut->PrintOut("Simulation Starts...");
-	}
+
 	while(true) {
 		if (GetAsyncKeyState(VK_ESCAPE)) {
 			break; // Exit the loop and end the program
 		}
 		UnitGen.GenrateArmy(Timesteps++);
-
-		if (this->GameMode) {
 			pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(Timesteps) + "\n\n", RED);
 
 			this->EarthArmies.printEarth();//Print Earthians' Armies
@@ -76,6 +71,7 @@ void Game::startGame()
 			pOut->PrintOut("Units fighting at current step", ORANGE);
 			pOut->PrintOut("   ===================================\n\n", AQUA);
 			EarthArmies.attackAliens();
+			AlienArmies.attackEarthians();
 
 			pOut->PrintOut("\n\n====================================   ", RED);
 			pOut->PrintOut("Killed/Destructed Units", ORANGE);
@@ -84,13 +80,29 @@ void Game::startGame()
 			std::cout << "\n\n\n";
 			system("pause");
 			std::cout << "\n\n\n\n";
+		if ((!EarthArmies.GetLength("ttl") || !AlienArmies.GetLength("ttl")) && (Timesteps > 39)) {
+			break;
 		}
 	}
-	if (!GameMode)
-		pOut->PrintOut("Silent ends, Output file is created");
 
+	OutPutFileCreator();
+	system("cls");
+}
 
-	Timesteps = 1;
+void Game::startGameSilent()
+{
+	pOut->PrintOut("Silent Mode\n");
+	pOut->PrintOut("Simulation Starts...");
+	while (true) {
+		UnitGen.GenrateArmy(Timesteps++);
+		EarthArmies.attackAliens();
+		AlienArmies.attackEarthians();
+		if ((!EarthArmies.GetLength("ttl") || !AlienArmies.GetLength("ttl")) && (Timesteps > 39))
+			break;
+	}
+
+	pOut->PrintOut("Silent ends, Output file is created");
+	system("pause");
 	OutPutFileCreator();
 	system("cls");
 }
@@ -152,14 +164,46 @@ parameters Game::LoadParameters()
 void Game::OutPutFileCreator()
 {
 	std::fstream OutputFile; // create File object
+	int ttlDestructedALiens = AS::getKilled() + AM::getKilled() + AD::getKilled();
+	int ttlDestructedEarth = EG::getKilled() + ES::getKilled() + ET::getKilled();
+	
+	int ttlALiensUnit = AS::getTotal() + AM::getTotal() + AD::getTotal();
+	int ttlEarthUnit = EG::getTotal() + ES::getTotal() + ET::getTotal();
 	OutputFile.open(("OutputFile.txt"), std::ios::out); // open File
 	if (OutputFile.is_open()) {
 		Unit* u;
 		OutputFile << "Td" << '\t' << "ID" << '\t' <<"Tj"<< '\t' <<"DF" << '\t' << "Dd" << '\t' << "Db" << "\n\n\n";
 		while (killed_List.dequeue(u)) {
 			int td = u->GetTd(), tj = u->GetTj(), ta = u->GetTa();
-			OutputFile << td << '\t' << u->GetID() << '\t' << tj << '\t' << (ta - tj) << '\t' << (td - ta) << '\t' << (td - tj)<< "\n\n";
+			OutputFile << td << '\t' << u->GetID() << '\t' << tj << '\t' << (ta - tj) << '\t' << (td - ta) << '\t' << (td - tj)<<'\t'<<ta << "\n\n";
 		}
+
+		if (!EarthArmies.GetLength("ttl")) 
+			OutputFile << "\n\n=====================================================================================================\n\n"
+			<< "Aliens Won the Battle";
+		else
+			OutputFile << "\n\n===================================================================\n\n"
+			<< "Earth Won the Battle";
+		OutputFile << "\n\n============================== Earth Statistcs  ========================\n\n"
+			<< "ES #: "<<ES::getTotal()<<std::endl
+			<< "Percentage of destructe: " << ((double)ES::getKilled() / (double)ES::getTotal()) * 100 << "%" <<std::endl
+			<< "ET #: "<<ET::getTotal()<<std::endl
+			<< "Percentage of destructe: " << ((double)ET::getKilled() / (double)ET::getTotal()) * 100 << "%" << std::endl
+			<< "EG #: " << EG::getTotal() << std::endl
+			<< "Percentage of destructe: " << ((double)EG::getKilled() / (double)EG::getTotal()) * 100 << "%" << std::endl
+			<< "Percenta e of total destructed units: " << ((double)ttlDestructedEarth / (double)ttlEarthUnit) * 100 << "%"<<std::endl;
+
+		OutputFile << "\n\n============================== Earth Statistcs  ========================\n\n"
+			<< "AS #: " << AS::getTotal() << std::endl
+			<< "Percentage of destructe: " << ((double)AS::getKilled() / (double)AS::getTotal()) * 100 << "%" << std::endl
+			<< "AM #: " << AM::getTotal() << std::endl
+			<< "Percentage of destructe: " << ((double)AM::getKilled() / (double)AM::getTotal()) * 100 << "%" << std::endl
+			<< "AD #: " << AD::getTotal() << std::endl
+			<< "Percentage of destructe: " << ((double)AD::getKilled() / (double)AD::getTotal()) * 100 << "%" << std::endl
+			<< "Percenta e of total destructed units: " << (float(ttlDestructedALiens) / float(ttlALiensUnit)) * 100 << "%" << std::endl;
+
+
+
 		OutputFile.close();
 	}
 }

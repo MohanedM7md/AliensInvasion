@@ -2,6 +2,7 @@
 #include "Unit.h"
 class EG :public Unit {
 	static int total;
+	static int Killed;
 
 public:
 	EG(int id = 0, int tj = 0, int health = 0, int power = 0, int attackCap = 0,
@@ -9,7 +10,9 @@ public:
 
 	void attack();
 	int  GetPri();
-	
+	static void KilledIncreament();
+	static int getKilled();
+	static int getTotal();
 
 };
 

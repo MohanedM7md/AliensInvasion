@@ -2,6 +2,7 @@
 #include "../Game.h"
 
 int ES::total = 0;
+int ES::Killed= 0;
 
 ES::ES(int id, int tj, int health, int power, int attackCap,
 	std::string type, Game* Gptr):Unit(id,tj,health,power, attackCap, type, Gptr)
@@ -9,6 +10,21 @@ ES::ES(int id, int tj, int health, int power, int attackCap,
 	total++;
 }
 
+
+int ES::getTotal()
+{
+	return ES::total;
+}
+
+void ES::KilledIncreament()
+{
+	ES::Killed++;
+}
+
+int ES::getKilled()
+{
+	return ES::Killed;
+}
 
 void ES::attack()
 {
@@ -43,6 +59,7 @@ void ES::attack()
 
 		if (!as->GetHealth()) {
 			as->setTd(Gameptr->GetTimeStep());
+			AS::KilledIncreament();
 			Gameptr->addToKillList(as);
 		}
 		else {
@@ -50,8 +67,8 @@ void ES::attack()
 		}
 		 
 	}
-
-	pOut->PrintOut("\b]", DARK_GREEN);
+	if(gameMode)
+	pOut->PrintOut("\b]\n\n", DARK_GREEN);
 
 	while (!tempList.isEmpty()) { //remove units from temp list
 		AS* as;

@@ -13,8 +13,8 @@ int main() {
 		if (Choice == START) {
 			MENU mode = game.modeMenue();
 			switch (mode) {
-			case INERACT: game.startGame(); break;
-			case SILENT: /*SILTEN*/break;
+			case INERACT: game.startGameInteractive(); break;
+			case SILENT: game.startGameSilent();  break;
 			
 			}
 		}

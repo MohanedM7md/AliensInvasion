@@ -102,18 +102,11 @@ int earthArmy::GetLength(string s) const
 void earthArmy::attackAliens()
 {
 	ES* ESattcker;
-	if (ES_List.peek(ESattcker)) {
-
-		
-
+	if (ES_List.peek(ESattcker))
 		ESattcker->attack();
-		std::cout << '\n';
-	}
-
 	ET* ETattcker;
 	if (ET_List.peek(ETattcker))
 		ETattcker->attack();
-
 	EG* EGattcker;
 	int EGPri;
 	/*if (EG_List.peek(EGattcker,EGPri))

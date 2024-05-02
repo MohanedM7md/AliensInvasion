@@ -19,7 +19,7 @@ class Game
 	LinkedQueue<Unit*> killed_List;
 
 	int Timesteps;
-	void DisplayLists();
+	
 	void DisplayKilledList();
 
 	bool GameMode;
@@ -31,7 +31,8 @@ public:
 	/*void loadingScreen();*/
 	MENU startMenue();
 	MENU modeMenue();
-	void startGame();
+	void startGameInteractive();
+	void startGameSilent();
 
 	parameters LoadParameters();
 	void OutPutFileCreator();
