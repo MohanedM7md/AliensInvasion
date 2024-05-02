@@ -76,7 +76,7 @@ public:
         }
         std::cout << temp->getItem(dummi);
     }
-    int getLength() {
+    int getLength() const{
         return this->length; 
     }
 };

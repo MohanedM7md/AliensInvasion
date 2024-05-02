@@ -1,9 +1,12 @@
 #include "ES.h"
 #include "../Game.h"
 
+int ES::total = 0;
+
 ES::ES(int id, int tj, int health, int power, int attackCap,
 	std::string type, Game* Gptr):Unit(id,tj,health,power, attackCap, type, Gptr)
 {
+	total++;
 }
 
 
@@ -16,7 +19,7 @@ void ES::attack()
 
 	LinkedStack<AS*> tempList; // intialize temp list ot hold AS units
 	Output* pOut = Gameptr->getOutputPtr();// get Output ptr
-	bool gameMode = Gameptr->getGameMode(); //check if the mode is interactive to print
+	bool gameMode = Gameptr->getGameMode();//check if the mode is interactive to print
 
 	if (gameMode) { // For the Fight scene output
 		pOut->PrintOut("ES ", LIGHT_BLUE);
@@ -32,9 +35,8 @@ void ES::attack()
 		if (!Aarmy->AS_Getter(as)) break;//if there is no more unit to attack end the loop.
 		int dmge = calcDmg(this, as);
 
-
 		if(gameMode)
-			pOut->PrintOut(std::to_string(as->GetID())+", ");// print the attacked units
+			pOut->PrintOut(" " + std::to_string(as->GetID()) + ",");// print the attacked units
 
 		as->SetHealth(as->GetHealth() - dmge); // Set New health
 		as->setTa(Gameptr->GetTimeStep()); // Set time attacked
@@ -49,7 +51,7 @@ void ES::attack()
 		 
 	}
 
-	pOut->PrintOut(']', DARK_GREEN);
+	pOut->PrintOut("\b]", DARK_GREEN);
 
 	while (!tempList.isEmpty()) { //remove units from temp list
 		AS* as;

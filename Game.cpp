@@ -10,14 +10,6 @@ Game::Game():pOut(new Output), EarthArmies(this), UnitGen(this), AlienArmies(thi
 }
 
 
-void Game::DisplayLists()
-{
-	
-	
-
-	
-	
-}
 
 void Game::DisplayKilledList()
 {
@@ -64,13 +56,16 @@ void Game::startGame()
 	pOut->setFont(20);
 	pOut->screenRefesher();
 
-	
+	if (!GameMode) {
+		pOut->PrintOut("Silent Mode");
+		pOut->PrintOut("Simulation Starts...");
+	}
 	while(true) {
 		if (GetAsyncKeyState(VK_ESCAPE)) {
 			break; // Exit the loop and end the program
 		}
 		UnitGen.GenrateArmy(Timesteps++);
-		
+
 		if (this->GameMode) {
 			pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(Timesteps) + "\n\n", RED);
 
@@ -87,13 +82,12 @@ void Game::startGame()
 			pOut->PrintOut("   ========================================\n\n", RED);
 			DisplayKilledList(); // Killed List printer
 			std::cout << "\n\n\n";
-
-
 			system("pause");
 			std::cout << "\n\n\n\n";
 		}
 	}
-	if (!GameMode);
+	if (!GameMode)
+		pOut->PrintOut("Silent ends, Output file is created");
 
 
 	Timesteps = 1;
@@ -164,7 +158,7 @@ void Game::OutPutFileCreator()
 		OutputFile << "Td" << '\t' << "ID" << '\t' <<"Tj"<< '\t' <<"DF" << '\t' << "Dd" << '\t' << "Db" << "\n\n\n";
 		while (killed_List.dequeue(u)) {
 			int td = u->GetTd(), tj = u->GetTj(), ta = u->GetTa();
-			OutputFile << td << '\t' << u->GetID() << '\t' << tj << '\t' << (ta - tj) << '\t' << (td - ta) << '\t' << (td - tj) << "\n\n\n";
+			OutputFile << td << '\t' << u->GetID() << '\t' << tj << '\t' << (ta - tj) << '\t' << (td - ta) << '\t' << (td - tj)<< "\n\n";
 		}
 		OutputFile.close();
 	}

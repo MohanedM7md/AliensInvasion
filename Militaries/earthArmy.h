@@ -35,6 +35,7 @@ public:
 
 	///////////// Attack Function //////////////////////
 	void attackAliens();
+	int GetLength(string s) const;
 
 };
 

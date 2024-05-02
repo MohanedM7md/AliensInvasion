@@ -88,17 +88,14 @@ void Unit::setTd(int td)
 
 void Unit::SetHealth(int heal)
 {
-	if (heal < 0)
-		health = 0;
-	else
-		health = heal;
+	health = heal > 0 ? heal : 0;
 }
 
 void Unit::SetPower(int powr)
 {
 	if (powr < 0)
 		return;
-	else
+
 	power = powr;
 }
 

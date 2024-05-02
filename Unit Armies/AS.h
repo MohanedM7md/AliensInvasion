@@ -3,7 +3,7 @@
 
 
 class AS :public Unit {
-
+	static int total;
 
 public:
 	AS(int id = 0, int tj = 0, int health = 0, int power = 0, int attackCap = 0,

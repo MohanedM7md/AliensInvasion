@@ -2,7 +2,7 @@
 #include "Unit.h"
 
 class ET :public Unit {
-
+	static int total;
 
 public:
 	ET(int id = 0, int tj = 0, int health = 0, int power = 0, int attackCap = 0,

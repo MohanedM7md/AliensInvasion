@@ -37,6 +37,8 @@ public:
 
 	void attackEarthians();
 
+	int GetLength(string s) const;
+
 };
 
 

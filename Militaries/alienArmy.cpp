@@ -85,8 +85,9 @@ bool alienArmy::IfListIsEmpyt(string s) const
 		return AS_List.isEmpty();
 	else if (s == "AM")
 		return AM_List.isEmpty();
-	else
+	else if(s == "AD")
 		return AD_List.isEmpty();
+	return false;
 }
 
 void alienArmy::attackEarthians()
@@ -104,4 +105,17 @@ void alienArmy::attackEarthians()
 	/*if (EG_List.peek(EGattcker,EGPri))
 		ESattcker->attack();*/
 
+}
+
+int alienArmy::GetLength(string s) const
+{
+	if (s == "AS")
+		return AS_List.getLength();
+	else if (s == "AM")
+		return AM_List.getLength();
+	else if(s == "AD")
+		return AD_List.getLength();
+	else if (s == "ttl")
+		return AS_List.getLength() + AD_List.getLength() + AM_List.getLength();
+	return -1;
 }

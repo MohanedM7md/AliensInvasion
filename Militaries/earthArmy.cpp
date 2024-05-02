@@ -77,9 +77,27 @@ bool earthArmy::IfListIsEmpyt(string s) const
 		return ES_List.isEmpty();
 	else if (s == "ET")
 		return ET_List.isEmpty();
-	else
+	else if (s == "EG")
 		return EG_List.isEmpty();
+
+	return false;
 }
+
+int earthArmy::GetLength(string s) const
+{
+	if (s == "ES")
+		return ES_List.getLength();
+	else if (s == "ET")
+		return ET_List.getLength();
+	else if(s == "EG")
+		return EG_List.getLength();
+	else if (s == "ttl")
+		return ES_List.getLength() + ET_List.getLength() + EG_List.getLength();
+	
+	return -1;
+
+}
+
 
 void earthArmy::attackAliens()
 {
