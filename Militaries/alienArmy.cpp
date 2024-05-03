@@ -100,8 +100,15 @@ void alienArmy::attackEarthians()
 	if (AM_List.RandomPeek(AMattcker))
 		AMattcker->attack();
 
-	AD* ADattcker;
 
+	AD* AD_Pair1;
+	AD* AD_Pair2;
+	
+	if (AD_List.peek(AD_Pair1) && AD_List.peekBack(AD_Pair2) && AD_List.getLength() != 1)
+	{
+		AD_Pair1->attack();
+		AD_Pair2->attack();
+	}
 }
 
 int alienArmy::GetLength(string s) const

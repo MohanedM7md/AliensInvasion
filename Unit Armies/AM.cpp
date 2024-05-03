@@ -1,4 +1,7 @@
 #include "AM.h"
+#include "../Game.h"
+#include "../Armies' Lists/Array.h"
+
 
 int AM::total = 0;
 int AM::Killed = 0;
@@ -11,6 +14,104 @@ AM::AM(int id, int tj, int health, int power, int attackCap,
 
 void AM::attack()
 {
+	earthArmy* EarthArmy = Gameptr->GetEarthArmy();
+
+	/*
+	* Monsters Attack Soliders and Tanks So if They Are Not Found, End The Function
+	*/
+
+	if (EarthArmy->IfListIsEmpyt("ES") && EarthArmy->IfListIsEmpyt("ET"))
+		return;
+
+	LinkedStack<ES*> TempListES;
+	LinkedStack<ET*> TempListET;
+	Output* pOut = Gameptr->getOutputPtr();
+	bool GameMode = Gameptr->getGameMode();
+
+	if (GameMode)
+	{
+		pOut->PrintOut("AM ", LIGHT_BLUE);
+		pOut->PrintOut(std::to_string(ID));
+		pOut->PrintOut(" Shoots ", LIGHT_RED);
+		pOut->PrintOut('[', DARK_GREEN);
+	}
+
+	for (int i = 0; i < attackCapacity; i++)
+	{
+		ES* At_ES = nullptr;
+		ET* At_ET = nullptr;
+
+		/*
+		* This condtion is To Check if There is Units To Attack
+		* " Maybe Attacked Enemies Could All die Before Loop Is Completed"
+		*/
+		if (!EarthArmy->ES_Getter(At_ES) && !EarthArmy->ET_Getter(At_ET))
+			break;
+
+		int damage_ES, damage_ET;
+
+
+		if (i % 2 == 0)
+		{
+			if (At_ES != nullptr)
+			{
+				damage_ES = calcDmg(this, At_ES);
+				if (GameMode)
+					pOut->PrintOut(" " + std::to_string(At_ES->GetID()) + ",");
+				At_ES->SetHealth(At_ES->GetHealth() - damage_ES);
+				At_ES->setTa(Gameptr->GetTimeStep());
+				if (!At_ES->GetHealth())
+				{
+					ES::KilledIncreament();
+					At_ES->setTd(Gameptr->GetTimeStep());
+					Gameptr->addToKillList(At_ES);
+				}
+				else
+				{
+					TempListES.push(At_ES);
+				}
+			}
+
+		}
+		else
+		{
+			if (At_ET != nullptr)
+			{
+				damage_ET = calcDmg(this, At_ET);
+				At_ET->SetHealth(At_ET->GetHealth() - damage_ET);
+				if (GameMode)
+					pOut->PrintOut(" " + std::to_string(At_ET->GetID()) + ",");
+				At_ET->setTa(Gameptr->GetTimeStep());
+				if (!At_ET->GetHealth())
+				{
+					ET::KilledIncreament();
+					At_ET->setTd(Gameptr->GetTimeStep());
+					Gameptr->addToKillList(At_ET);
+				}
+				else
+				{
+					TempListET.push(At_ET);
+				}
+			}
+		}
+	}
+	if (GameMode)
+		pOut->PrintOut("\b]\n\n", DARK_GREEN);
+
+	while (!TempListES.isEmpty())
+	{
+		ES* Es_temp;
+		TempListES.pop(Es_temp);
+		Gameptr->addEUnits(Es_temp);
+	}
+
+	while (!TempListET.isEmpty())
+	{
+		ET* Et_temp;
+		TempListET.pop(Et_temp);
+		Gameptr->addEUnits(Et_temp);
+	}
+
 }
 
 void AM::KilledIncreament()
