@@ -169,21 +169,23 @@ void Game::OutPutFileCreator()
 	
 	int ttlALiensUnit = AS::getTotal() + AM::getTotal() + AD::getTotal();
 	int ttlEarthUnit = EG::getTotal() + ES::getTotal() + ET::getTotal();
-	OutputFile.open(("OutputFile.txt"), std::ios::out); // open File
+
+	OutputFile.open(("OutputFile.txt"), std::ios::out); // open File in output mode
+
 	if (OutputFile.is_open()) {
 		Unit* u;
-		OutputFile << "Td" << '\t' << "ID" << '\t' <<"Tj"<< '\t' <<"DF" << '\t' << "Dd" << '\t' << "Db" << "\n\n\n";
+		OutputFile << "Td" << '\t' << "ID" << '\t' <<"Tj"<< '\t' <<"DF" << '\t' << "Dd" << '\t' << "Db" <<"\tTj" << "\n\n\n";
 		while (killed_List.dequeue(u)) {
 			int td = u->GetTd(), tj = u->GetTj(), ta = u->GetTa();
 			OutputFile << td << '\t' << u->GetID() << '\t' << tj << '\t' << (ta - tj) << '\t' << (td - ta) << '\t' << (td - tj)<<'\t'<<ta << "\n\n";
 		}
 
 		if (!EarthArmies.GetLength("ttl")) 
-			OutputFile << "\n\n=====================================================================================================\n\n"
-			<< "Aliens Won the Battle";
+			OutputFile << "\n\n\n\nAliens Won the Battle\n\n";
+		else if (!AlienArmies.GetLength("ttl"))
+			OutputFile << "\n\n\n\nEarth Won the Battle\n\n";
 		else
-			OutputFile << "\n\n===================================================================\n\n"
-			<< "Earth Won the Battle";
+			OutputFile << "\n\n\n\nDraw\n\n";
 		OutputFile << "\n\n============================== Earth Statistcs  ========================\n\n"
 			<< "ES #: "<<ES::getTotal()<<std::endl
 			<< "Percentage of destructe: " << ((double)ES::getKilled() / (double)ES::getTotal()) * 100 << "%" <<std::endl
@@ -193,7 +195,7 @@ void Game::OutPutFileCreator()
 			<< "Percentage of destructe: " << ((double)EG::getKilled() / (double)EG::getTotal()) * 100 << "%" << std::endl
 			<< "Percenta e of total destructed units: " << ((double)ttlDestructedEarth / (double)ttlEarthUnit) * 100 << "%"<<std::endl;
 
-		OutputFile << "\n\n============================== Earth Statistcs  ========================\n\n"
+		OutputFile << "\n\n============================== Aliens Statistcs  ========================\n\n"
 			<< "AS #: " << AS::getTotal() << std::endl
 			<< "Percentage of destructe: " << ((double)AS::getKilled() / (double)AS::getTotal()) * 100 << "%" << std::endl
 			<< "AM #: " << AM::getTotal() << std::endl

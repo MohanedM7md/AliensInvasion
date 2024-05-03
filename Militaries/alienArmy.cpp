@@ -101,9 +101,6 @@ void alienArmy::attackEarthians()
 		AMattcker->attack();
 
 	AD* ADattcker;
-	
-	/*if (EG_List.peek(EGattcker,EGPri))
-		ESattcker->attack();*/
 
 }
 
