@@ -30,6 +30,7 @@ Output* Game::getOutputPtr() const
 MENU Game::startMenue()
 {
 	std::string menueItems[] = {"Start","Teams' Information","Exit"};
+
 	
 	switch (pOut->ScreenMenu(menueItems, 3)) {
 	case 0:return START; break;

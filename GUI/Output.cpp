@@ -21,7 +21,15 @@ Output::Output()
 int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
 {
     ClearScreen(); //clearing screen
-   
+    SetConsoleTextAttribute(ConsoleHandler, ORANGE);
+    std::cout << "\n\n\n";
+    std::cout << "\t\t\t" << "  ____  _      ____    ___  ____           ____  ____   __ __   ____  _____ ____  ___   ____" << std::endl;
+    std::cout << "\t\t\t" << " /    || |    |    |  /  _]|     \\        |    ||    \\ |  |  | /    |/ ___/|    |/   \\ |    \\ " << std::endl;
+    std::cout << "\t\t\t" << "| o   || |    |    | /  [_ |  _  |         |  | |  _  ||  |  ||  o  (   \\_  |  ||     ||  _  |" << std::endl;
+    std::cout << "\t\t\t" << "|     || |___  |  | |    _]|  |  |         |  | |  |  ||  |  ||     |\\__  | |  ||  O  ||  |  |" << std::endl;
+    std::cout << "\t\t\t" << "|  _  ||     | |  | |    [_|  |  |         |  | |  |  ||  :  ||  _  |/  \\ | |  ||     ||  |  |" << std::endl;
+    std::cout << "\t\t\t" << "|  |  ||     | |  | |     ||  |  |         |  | |  |  | \\   / |  |  |\\    | |  ||     ||  |  |" << std::endl;
+    std::cout << "\t\t\t" << "|__|__||_____||____||_____||__|__|        |____||__|__|  \\_/  |__|__| \\___||____|\\___/ |__|__|" << std::endl;
     int cursor = 0; // Current selected item index(0) (cursor)
     char key = NULL;   // Key pressed by the user
 
@@ -115,12 +123,11 @@ void Output::ET_Print()
 void Output::EG_Print()
 {
     SetConsoleTextAttribute(ConsoleHandler, LIGHT_GREEN);
-    std::cout << " " << static_cast<char>(219) << static_cast<char>(219)
-        << static_cast<char>(223) << static_cast<char>(223);
-    SetConsoleTextAttribute(ConsoleHandler, DARK_GREEN);
-    std::cout << static_cast<char>(223) << '\t';
-    SetConsoleTextAttribute(ConsoleHandler, GRAY);
-   // std::cout << "\x1B[1A";
+    std::cout << "  " << char(79) << char(205) << char(205) << char(209)  << '\n';
+    std::cout << "  " << char(197) << '\n';
+    std::cout << "  " << char(179) << '\n';
+    std::cout << " " << char(218) << char(202) << char(191);
+    std::cout << "\x1B[1A";
 }
 
 void Output::Soon_Print()
