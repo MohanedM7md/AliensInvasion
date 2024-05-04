@@ -54,18 +54,14 @@ void AD::attack()
 	{
 		EG* At_EG = nullptr;
 		ET* At_ET = nullptr;
-
-		/*
-		* This condtion is To Check if There is Units To Attack
-		* " Maybe Attacked Enemies Could All die Before Loop Is Completed"
-		*/
-		if (!EarthArmy->EG_Getter(At_EG, Dummy) && !EarthArmy->ET_Getter(At_ET))
-			break;
-
+		bool EG_Found = true, ET_Found = true;
 		int damage_ET, damage_EG;
+
+
 		if (i % 2 == 0)
 		{
-			if (At_EG != nullptr)
+			EG_Found = EarthArmy->EG_Getter(At_EG, Dummy);
+			if (At_EG)
 			{
 				damage_EG = calcDmg(this, At_EG);
 				if (GameMode)
@@ -87,7 +83,8 @@ void AD::attack()
 		}
 		else
 		{
-			if (At_ET != nullptr)
+			ET_Found = EarthArmy->ET_Getter(At_ET);
+			if (At_ET)
 			{
 				damage_ET = calcDmg(this, At_ET);
 				At_ET->SetHealth(At_ET->GetHealth() - damage_ET);
@@ -105,6 +102,14 @@ void AD::attack()
 					TempListET.push(At_ET);
 				}
 			}
+		}
+		/*
+		* This condtion is To Check if There is Units To Attack
+		* " Maybe Attacked Enemies Could All die Before Loop Is Completed"
+		*/
+		if ( (EG_Found == false) && (ET_Found == false))
+		{
+			break;
 		}
 	}
 	if (GameMode)
@@ -125,3 +130,31 @@ void AD::attack()
 	}
 
 }
+/*pOut->PrintOut(" Current i : ", LIGHT_BLUE);
+		pOut->PrintOut(std::to_string(i), ORANGE);
+		pOut->PrintOut(" EG Address ", LIGHT_BLUE);
+		if (At_EG)
+			pOut->PrintOut("Address is Found", DARK_GREEN);
+		else
+			pOut->PrintOut("Address is Not Found Found", LIGHT_RED);			
+		
+		pOut->PrintOut(" ET Address ", LIGHT_BLUE);
+		if (At_ET)
+			pOut->PrintOut("Address is Found", DARK_GREEN);
+		else
+			pOut->PrintOut("Address is Not Found Found", LIGHT_RED);
+
+		pOut->PrintOut("In Loop Break", PINK);
+		pOut->PrintOut(" Current i : ", LIGHT_BLUE);
+		pOut->PrintOut(std::to_string(i), ORANGE);
+		pOut->PrintOut(" EG Address ", LIGHT_BLUE);
+		if (At_EG)
+			pOut->PrintOut("Address is Found", DARK_GREEN);
+		else
+			pOut->PrintOut("Address is Not Found Found", LIGHT_RED);
+		pOut->PrintOut(" ET Address ", LIGHT_BLUE);
+		if (At_ET)
+			pOut->PrintOut("Address is Found", DARK_GREEN);
+		else
+			pOut->PrintOut("Address is Not Found Found", LIGHT_RED);
+		*/
