@@ -21,22 +21,25 @@ Output::Output()
 int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
 {
     ClearScreen(); //clearing screen
-    SetConsoleTextAttribute(ConsoleHandler, ORANGE);
-    std::cout << "\n\n\n";
-    std::cout << "\t\t\t" << "  ____  _      ____    ___  ____           ____  ____   __ __   ____  _____ ____  ___   ____" << std::endl;
-    std::cout << "\t\t\t" << " /    || |    |    |  /  _]|     \\        |    ||    \\ |  |  | /    |/ ___/|    |/   \\ |    \\ " << std::endl;
-    std::cout << "\t\t\t" << "| o   || |    |    | /  [_ |  _  |         |  | |  _  ||  |  ||  o  (   \\_  |  ||     ||  _  |" << std::endl;
-    std::cout << "\t\t\t" << "|     || |___  |  | |    _]|  |  |         |  | |  |  ||  |  ||     |\\__  | |  ||  O  ||  |  |" << std::endl;
-    std::cout << "\t\t\t" << "|  _  ||     | |  | |    [_|  |  |         |  | |  |  ||  :  ||  _  |/  \\ | |  ||     ||  |  |" << std::endl;
-    std::cout << "\t\t\t" << "|  |  ||     | |  | |     ||  |  |         |  | |  |  | \\   / |  |  |\\    | |  ||     ||  |  |" << std::endl;
-    std::cout << "\t\t\t" << "|__|__||_____||____||_____||__|__|        |____||__|__|  \\_/  |__|__| \\___||____|\\___/ |__|__|" << std::endl;
-    int cursor = 0; // Current selected item index(0) (cursor)
+   
+    int cursor = 0; // Current selected item index(0)d (cursor)
     char key = NULL;   // Key pressed by the user
 
    
     do {
+                 
+
         std::cout << "\n\n\n";
         for (int i = 0; i < MinueSize; i++) {
+            SetConsoleTextAttribute(ConsoleHandler, ORANGE);
+            SetConsoleTextAttribute(ConsoleHandler, ORANGE);
+            std::cout << "  ___  _    __    __  ___  ";
+            std::cout << " /   || |  |  |  / _]|   \\";
+            std::cout << "| o  || |  |  | / [_ | _ | ";
+            std::cout << "|    || |_  || |   _]| | | ";
+            std::cout << "|  _ ||   | || |   [_| | | ";
+            std::cout << "|  | ||   | || |    || | | ";
+            std::cout << "|__|_||___||__||____||_|_| ";
             // If the current item is selected
             if (i == cursor) {
                 // Print arrow characters and the menu item 
@@ -170,6 +173,7 @@ void Output::AD_print()
 void Output::LoadingScreen()
 {
     CONSOLE_CURSOR_INFO cursorInfo = { 1,false };
+    cursorInfo.bVisible = false;
     SetConsoleCursorInfo(ConsoleHandler, &cursorInfo);
 
     COORD AlignText = { 23,5 };
