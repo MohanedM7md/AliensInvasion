@@ -5,6 +5,14 @@
 
 int AM::total = 0;
 int AM::Killed = 0;
+float AM::InfProb = 0;
+
+void AM::SetInfProb(int inf)
+{
+	//float randomNum = (inf[0] + rand() * (inf[0] - inf[1])) / 10;
+	//InfProb = randomNum;
+}
+
 
 AM::AM(int id, int tj, int health, int power, int attackCap,
 	std::string type, Game* Gptr) :Unit(id, tj, health, power, attackCap, type, Gptr)
@@ -45,19 +53,18 @@ void AM::attack()
 		* This condtion is To Check if There is Units To Attack
 		* " Maybe Attacked Enemies Could All die Before Loop Is Completed"
 		*/
-		if (!EarthArmy->ES_Getter(At_ES) && !EarthArmy->ET_Getter(At_ET))
-			break;
 
 		int damage_ES, damage_ET;
 
 
 		if (i % 2 == 0)
 		{
-			if (At_ES != nullptr)
+			if (EarthArmy->ES_Getter(At_ES))
 			{
 				damage_ES = calcDmg(this, At_ES);
 				if (GameMode)
 					pOut->PrintOut(" " + std::to_string(At_ES->GetID()) + ",");
+
 				At_ES->SetHealth(At_ES->GetHealth() - damage_ES);
 				At_ES->setTa(Gameptr->GetTimeStep());
 				if (!At_ES->GetHealth())
@@ -68,14 +75,14 @@ void AM::attack()
 				}
 				else
 				{
-					TempListES.push(At_ES);
-				}
+						TempListES.push(At_ES);
+					}
 			}
 
 		}
 		else
 		{
-			if (At_ET != nullptr)
+			if (EarthArmy->ET_Getter(At_ET))
 			{
 				damage_ET = calcDmg(this, At_ET);
 				At_ET->SetHealth(At_ET->GetHealth() - damage_ET);

@@ -153,9 +153,12 @@ parameters Game::LoadParameters()
 		param.AhtlyRangees[0] = std::stoi(s);
 		inputFile >> param.AhtlyRangees[1];
 		//Earth capacity range
-		std::getline(inputFile, s,'-');
+		std::getline(inputFile, s,'-');			
 		param.AattkCapRangees[0] = std::stoi(s);
 		inputFile >> param.AattkCapRangees[1];
+		std::getline(inputFile, s, '-');
+		int Fprob;
+		inputFile >> Fprob;
 
 		inputFile.close();//close
 	}

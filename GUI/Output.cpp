@@ -30,16 +30,17 @@ int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
                  
 
         std::cout << "\n\n\n";
+            SetConsoleTextAttribute(ConsoleHandler, ORANGE);
+            PrintOut("  ___  _     __    __  __    ___  ___    __ __    ___  _____  __   ___    __\n", LIGHT_BLUE);
+            PrintOut(" /   || |   |  |  / _]|  \\  | | |   \\ |  |  |  /   |/ ___/ |  | /   \\ |  \\ \n", LIGHT_BLUE);
+            PrintOut("| o  || |    ||  / [_ | _ |  | | | _  | |  |  | |  o (   \\_  || |     | | _ |\n", LIGHT_BLUE);
+            PrintOut("|    || |__  || |   _]| | |  | | | |  | |  |  | |    |\\__  | || |  O  | | | |\n", LIGHT_BLUE);
+            PrintOut("|  _ ||    | || |   [_| | |  | | | |  | |  :  | |  _ |/  \\ | || |     | | | |\n", LIGHT_RED);
+            PrintOut("|  | ||    | || |    || | |  | | | |  | \\   /  |  | |\\    | || |     | | | |\n", LIGHT_RED);
+            PrintOut("|__|_||____||__||____||_|_| |___||_|__|  \\_/   |__|_| \\___||__|\\___/  |_|_|\n", LIGHT_RED);
+
         for (int i = 0; i < MinueSize; i++) {
-            SetConsoleTextAttribute(ConsoleHandler, ORANGE);
-            SetConsoleTextAttribute(ConsoleHandler, ORANGE);
-            std::cout << "  ___  _    __    __  ___  ";
-            std::cout << " /   || |  |  |  / _]|   \\";
-            std::cout << "| o  || |  |  | / [_ | _ | ";
-            std::cout << "|    || |_  || |   _]| | | ";
-            std::cout << "|  _ ||   | || |   [_| | | ";
-            std::cout << "|  | ||   | || |    || | | ";
-            std::cout << "|__|_||___||__||____||_|_| ";
+            
             // If the current item is selected
             if (i == cursor) {
                 // Print arrow characters and the menu item 

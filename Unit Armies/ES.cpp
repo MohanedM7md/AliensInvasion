@@ -4,6 +4,7 @@
 int ES::total = 0;
 int ES::Killed= 0;
 
+
 ES::ES(int id, int tj, int health, int power, int attackCap,
 	std::string type, Game* Gptr):Unit(id,tj,health,power, attackCap, type, Gptr)
 {
@@ -25,6 +26,8 @@ int ES::getKilled()
 {
 	return ES::Killed;
 }
+
+
 
 void ES::attack()
 {

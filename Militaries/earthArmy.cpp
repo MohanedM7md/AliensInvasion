@@ -107,5 +107,9 @@ void earthArmy::attackAliens()
 	ET* ETattcker;
 	if (ET_List.peek(ETattcker))
 		ETattcker->attack();
+	EG* EGattcker;
+	int EGPri;
+	if (EG_List.peek(EGattcker,EGPri))
+		EGattcker->attack();
 
 }
