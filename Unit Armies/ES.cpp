@@ -31,9 +31,9 @@ void ES::attack()
 
 	alienArmy* Aarmy = Gameptr->GetAlienArmy();
 	if (Aarmy->IfListIsEmpyt("AS"))
-		return; // ends the function if it attacking empyt list
+		return; // ends the function if it attacking empty list
 
-	LinkedStack<AS*> tempList; // intialize temp list ot hold AS units
+	LinkedStack<AS*> tempList; // intialize temp list to hold AS units
 	Output* pOut = Gameptr->getOutputPtr();// get Output ptr
 	bool gameMode = Gameptr->getGameMode();//check if the mode is interactive to print
 

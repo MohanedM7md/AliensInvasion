@@ -5,6 +5,7 @@
 
 Game::Game():pOut(new Output), EarthArmies(this), UnitGen(this), AlienArmies(this),Timesteps(1)
 {
+	pOut->LoadingScreen();
 	parameters param = LoadParameters();
 	UnitGen.setParameters(param);
 }
