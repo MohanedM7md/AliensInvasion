@@ -102,6 +102,10 @@ void EG::attack()
 		AM* am;
 		tempList.pop(am);
 		Gameptr->addAUnits(am);
+	}while (!tempList1.isEmpty()) { //remove units from temp list
+		AD* ad;
+		tempList1.pop(ad);
+		Gameptr->addAUnits(ad);
 	}
 	
 }

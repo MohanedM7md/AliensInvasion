@@ -156,10 +156,9 @@ parameters Game::LoadParameters()
 		std::getline(inputFile, s,'-');			
 		param.AattkCapRangees[0] = std::stoi(s);
 		inputFile >> param.AattkCapRangees[1];
-		std::getline(inputFile, s, '-');
 		int Fprob;
 		inputFile >> Fprob;
-
+		AM::SetInfProb(Fprob);
 		inputFile.close();//close
 	}
 	
@@ -202,11 +201,11 @@ void Game::OutPutFileCreator()
 
 		OutputFile << "\n\n============================== Aliens Statistcs  ========================\n\n"
 			<< "AS #: " << AS::getTotal() << std::endl
-			<< "Percentage of destructe: " << ((double)AS::getKilled() / (double)AS::getTotal()) * 100 << "%" << std::endl
+			<< "Percentage of destructed: " << ((double)AS::getKilled() / (double)AS::getTotal()) * 100 << "%" << std::endl
 			<< "AM #: " << AM::getTotal() << std::endl
-			<< "Percentage of destructe: " << ((double)AM::getKilled() / (double)AM::getTotal()) * 100 << "%" << std::endl
+			<< "Percentage of destructed: " << ((double)AM::getKilled() / (double)AM::getTotal()) * 100 << "%" << std::endl
 			<< "AD #: " << AD::getTotal() << std::endl
-			<< "Percentage of destructe: " << ((double)AD::getKilled() / (double)AD::getTotal()) * 100 << "%" << std::endl
+			<< "Percentage of destructed: " << ((double)AD::getKilled() / (double)AD::getTotal()) * 100 << "%" << std::endl
 			<< "Percenta e of total destructed units: " << (float(ttlDestructedALiens) / float(ttlALiensUnit)) * 100 << "%" << std::endl;
 
 

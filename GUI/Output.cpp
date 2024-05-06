@@ -21,8 +21,7 @@ Output::Output()
 int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
 {
     ClearScreen(); //clearing screen
-   
-    int cursor = 0; // Current selected item index(0)d (cursor)
+    int cursor = 0; // Current selected item index(0) (cursor)
     char key = NULL;   // Key pressed by the user
 
    
@@ -31,13 +30,13 @@ int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
 
         std::cout << "\n\n\n";
             SetConsoleTextAttribute(ConsoleHandler, ORANGE);
-            PrintOut("  ___  _     __    __  __    ___  ___    __ __    ___  _____  __   ___    __\n", LIGHT_BLUE);
-            PrintOut(" /   || |   |  |  / _]|  \\  | | |   \\ |  |  |  /   |/ ___/ |  | /   \\ |  \\ \n", LIGHT_BLUE);
-            PrintOut("| o  || |    ||  / [_ | _ |  | | | _  | |  |  | |  o (   \\_  || |     | | _ |\n", LIGHT_BLUE);
-            PrintOut("|    || |__  || |   _]| | |  | | | |  | |  |  | |    |\\__  | || |  O  | | | |\n", LIGHT_BLUE);
-            PrintOut("|  _ ||    | || |   [_| | |  | | | |  | |  :  | |  _ |/  \\ | || |     | | | |\n", LIGHT_RED);
-            PrintOut("|  | ||    | || |    || | |  | | | |  | \\   /  |  | |\\    | || |     | | | |\n", LIGHT_RED);
-            PrintOut("|__|_||____||__||____||_|_| |___||_|__|  \\_/   |__|_| \\___||__|\\___/  |_|_|\n", LIGHT_RED);
+            PrintOut("  ___  _     __    __  __    ___   ___    __ __    ___  _____  __   ___    __\n", LIGHT_BLUE);
+            PrintOut(" /   || |   |  |  / _]|  \\  | |  |   \\ |  |  |  /   |/ ___/ |  | /   \\ |  \\ \n", LIGHT_BLUE);
+            PrintOut("| o  || |    ||  / [_ | _ |  | |  | _  | |  |  | |  o (   \\_  || |     | | _ |\n", LIGHT_BLUE);
+            PrintOut("|    || |__  || |   _]| | |  | |  | |  | |  |  | |    |\\__  | || |  O  | | | |\n", LIGHT_BLUE);
+            PrintOut("|  _ ||    | || |   [_| | |  | |  | |  | |  :  | |  _ |/  \\ | || |     | | | |\n", LIGHT_RED);
+            PrintOut("|  | ||    | || |    || | |  | |  | |  | \\   /  |  | |\\    | || |     | | | |\n", LIGHT_RED);
+            PrintOut("|__|_||____||__||____||_|_|  |_|  |_|__|  \\_/   |__|_| \\___||__|\\___/  |_|_|\n", LIGHT_RED);
 
         for (int i = 0; i < MinueSize; i++) {
             
@@ -56,6 +55,17 @@ int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
                 std::cout << "   ";
             }
         }
+        std::cout << "\n\n\n\n\n\n\n\n\n\n\n";
+        PrintOut("	     ______                         ", DARK_BLUE); PrintOut("  .-\"\"`\"\"-.                      ", PURPLE); PrintOut("|                   ", LIGHT_YELLOW); PrintOut(".-\"\"`\"\"-.    \n", PURPLE);
+        PrintOut("          .-'.   ':'-.                 ", DARK_BLUE); PrintOut("    _/`oOoOoOoOo`\\_                  ", PURPLE); PrintOut("-0-              ", LIGHT_YELLOW);  PrintOut(" _/`oOoOoOoOo`\\_        \n", PURPLE);
+        PrintOut("         .''::: .:    '.                  ", DARK_BLUE); PrintOut("'.-=-=-=-=-=-=-.'                  ", PURPLE); PrintOut("|               ", LIGHT_YELLOW); PrintOut("'.-=-=-=-=-=-=-.'\n", PURPLE);
+        PrintOut("        /   :::::'      \\                   ", DARK_BLUE);  PrintOut("`-=.=-.-=.=-'                                      `-=.=-.-=.=-'                         \n", PURPLE);
+        PrintOut("       ;.    ':' `       ;                     ", DARK_BLUE); PrintOut("^  ^  ^                   .-\"\"`\"\"-.                ^  ^  ^ \n", PURPLE);
+        PrintOut("       |       '..       |                                            ", DARK_BLUE); PrintOut("_/`oOoOoOoOo`\\_                           \n", PURPLE);
+        PrintOut("       ; '      ::::.    ;                     ", DARK_BLUE); PrintOut("|                     ", LIGHT_YELLOW);  PrintOut("'.-=-=-=-=-=-=-.'", PURPLE); PrintOut("         |   \n", LIGHT_YELLOW);
+        PrintOut("        \\       '::::   /                     ", DARK_BLUE); PrintOut("-0-                      ", LIGHT_YELLOW);  PrintOut("`-=.=-.-=.=-'", PURPLE); PrintOut("          -0-                     \n", LIGHT_YELLOW);
+        PrintOut("         '.      :::  .'                       ", DARK_BLUE); PrintOut("|                          ", LIGHT_YELLOW); PrintOut("^  ^  ^              ", PURPLE); PrintOut("|    \n", LIGHT_YELLOW);
+        PrintOut("           '-.___'_.-'                                                                              \n", DARK_BLUE);
         std::cout << std::endl;
         // Get the key pressed by the user
         key = _getch();

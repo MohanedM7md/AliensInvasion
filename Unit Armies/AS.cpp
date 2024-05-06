@@ -59,6 +59,8 @@ void AS::attack()
 		if (!es->GetHealth()) {
 			ES::KilledIncreament();
 			es->setTd(Gameptr->GetTimeStep());
+			if (es->isInfected())
+				ES::InfDecreament();
 			Gameptr->addToKillList(es);
 		}
 		else {

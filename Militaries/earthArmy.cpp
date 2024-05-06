@@ -61,6 +61,11 @@ bool earthArmy::ES_Getter(ES*& es)
 	return ES_List.dequeue(es);
 }
 
+bool earthArmy::ES_randGetter(ES*& es)
+{
+	return ES_List.randompeek(es);
+}
+
 bool earthArmy::ET_Getter(ET*& et)
 {
 	return ET_List.pop(et);

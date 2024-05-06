@@ -1,4 +1,5 @@
 #pragma once
+#include <cstdlib>
 #include "Node.h"
 #include "QueueADT.h"
 #include <iostream>
@@ -21,6 +22,7 @@ public :
 	bool enqueue(const T& newEntry);
 	bool dequeue(T& frntEntry);  
 	bool peek(T& frntEntry)  const;	
+	bool randompeek(T& frntEntry)  const;	
 	void Print();
 	int getLength() const;
 	~LinkedQueue();
@@ -126,12 +128,27 @@ Output: The front of the queue.
 template <typename T>
 bool LinkedQueue<T>:: peek(T& frntEntry) const 
 {
-	if(isEmpty())
+	if (isEmpty())
 		return false;
 
 	frntEntry = frontPtr->getItem();
 	return true;
 
+}
+template<typename T>
+inline bool LinkedQueue<T>::randompeek(T& frntEntry) const
+{
+
+
+	if (isEmpty())
+		return false;
+	Node<T>* temp = frontPtr;
+	int random = rand() % length;
+	while (random--) {
+		temp = temp->getNext();
+	}
+	frntEntry = temp->getItem();
+	return true;
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
