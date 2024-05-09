@@ -47,6 +47,10 @@ int ES::getKilled()
 {
 	return ES::Killed;
 }
+int ES::getInfected()
+{
+	return ES::Killed;
+}
 
 
 
@@ -58,7 +62,7 @@ void ES::attack()
 	Output* pOut = Gameptr->getOutputPtr();// get Output ptr
 	if (gameMode) {
 		pOut->PrintOut("Infected Percentage: ", DARK_GREEN);
-		pOut->PrintOut(std::to_string(((float)ES::InfNom / (ES::total - ES::Killed + 1))*100) + "\n\n", LIGHT_RED);
+			pOut->PrintOut(std::to_string(((float)ES::InfNom / (ES::total - ES::Killed))*100) + "%\n\n", LIGHT_RED);
 	}
 	if (Aarmy->IfListIsEmpyt("AS"))
 		return; // ends the function if it attacking empty list

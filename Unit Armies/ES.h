@@ -17,6 +17,7 @@ public:
 	static void InfIncreament();
 	static void InfDecreament();
 	static int getKilled();
+	static int getInfected();
 	bool isInfected() const;
 	void setInfected(bool);
 
