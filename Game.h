@@ -4,8 +4,10 @@
 #include "GUI/Output.h"
 #include "Militaries/earthArmy.h"
 #include "Militaries/alienArmy.h"
+
 #include "Armies Genrator/randGen.h"
-#include "Militaries/alienArmy.h"
+
+
 
 
 class Game
@@ -14,7 +16,7 @@ class Game
 
 	earthArmy EarthArmies;
 	alienArmy AlienArmies;
-	alienArmy AlliedArmies;
+	
 
 
 	randGen UnitGen;
@@ -49,9 +51,11 @@ public:
 
 	void addEUnits(Unit*);
 	void addAUnits(Unit*);
+	void addSUUnits(Unit*);
 
 	earthArmy* GetEarthArmy();
 	alienArmy* GetAlienArmy();
+	alliedArmy* GetAlliedArmy();
 
 	bool addToKillList(Unit* unit);
 	bool getGameMode() const;

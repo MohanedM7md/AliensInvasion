@@ -94,11 +94,11 @@
     <ClInclude Include="Unit Armies\HU.h">
       <Filter>Unit Armies</Filter>
     </ClInclude>
-    <ClInclude Include="Militaries\alliedArmy.h">
-      <Filter>Militaries</Filter>
-    </ClInclude>
     <ClInclude Include="Unit Armies\SU.h">
       <Filter>Unit Armies</Filter>
+    </ClInclude>
+    <ClInclude Include="Militaries\alliedArmy.h">
+      <Filter>Militaries</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,7 +4,7 @@
 
 using namespace std;
 
-randGen::randGen(Game* Gptr) :ErthIDs(1), AliensthIDs(2000), Gptr(Gptr)
+randGen::randGen(Game* Gptr) :ErthIDs(1), AliensthIDs(2000), Gptr(Gptr), SUIDS(4000)
 {
 }
 
@@ -72,10 +72,20 @@ void randGen::GenrateArmy(int Tj)
 				Gptr->addEUnits(new HU(ErthIDs++, Tj, hlth, pwr, cap, "EG", Gptr));
 			}
 
-			/*======================== Alien Army ========================*/
-
+			
 
 		}
+	/*=================================================SU ARMY==========================================*/
+	if (Gptr->getHelp()) {
+		int RandSU = RandmonNumGent();
+		if (RandSU < param.PercOfSU) {
+			int hlth = RandmonRangeNum(param.SUhtlyRangees);
+			int pwr = RandmonRangeNum(param.SUpwRangees);
+			int cap = RandmonRangeNum(param.SUattkCapRangees);
+			Gptr->addEUnits(new SU(SUIDS++, Tj, hlth, pwr, cap, "SU", Gptr));
+		}
+	}
+	/*======================== Alien Army ========================*/
 	RandA = RandmonNumGent(); //genrate random number range 1-100
 	if (RandA < param.prob)
 		for (int i = 0; i < param.N; i++) {

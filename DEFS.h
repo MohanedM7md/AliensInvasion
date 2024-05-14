@@ -45,4 +45,9 @@ struct parameters {
 	int ApwRangees[2];
 	int AhtlyRangees[2];
 	int AattkCapRangees[2];
+	
+	int PercOfSU;
+	int SUpwRangees[2];
+	int SUhtlyRangees[2];
+	int SUattkCapRangees[2];
 };

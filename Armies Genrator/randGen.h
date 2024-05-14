@@ -11,6 +11,7 @@ class randGen {
 private:
     int ErthIDs;
     int AliensthIDs;
+    int SUIDS;
     Game* Gptr;
     parameters param;
 

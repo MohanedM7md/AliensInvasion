@@ -88,7 +88,9 @@ void Game::startGameInteractive()
 
 			this->EarthArmies.printEarth();//Print Earthians' Armies
 			this->AlienArmies.printAlien(); //Print Alines' Armies
-
+			if (ES::getInfected() / EarthArmies.GetLength("ttl")) {
+				help = true;
+			}
 			pOut->PrintOut("==================================   ", AQUA);
 			pOut->PrintOut("Units fighting at current step", ORANGE);
 			pOut->PrintOut("   ===================================\n\n", AQUA);
@@ -191,6 +193,23 @@ parameters Game::LoadParameters()
 		std::getline(inputFile, s,'-');			
 		param.AattkCapRangees[0] = std::stoi(s);
 		inputFile >> param.AattkCapRangees[1];
+
+		///Get SU rranges
+		//power Range
+		std::getline(inputFile, s, '-');
+		param.SUpwRangees[0] = std::stoi(s);
+		inputFile >> param.SUpwRangees[1];
+		//health range
+		std::getline(inputFile, s, '-');
+		param.SUhtlyRangees[0] = std::stoi(s);
+		inputFile >> param.SUhtlyRangees[1];
+		//Earth capacity range
+		std::getline(inputFile, s, '-');
+		param.SUattkCapRangees[0] = std::stoi(s);
+		inputFile >> param.SUattkCapRangees[1];
+
+
+		inputFile >> param.PercOfSU;
 		int Fprob;
 		inputFile >> Fprob;
 		inputFile >> TresholdPercentage;
@@ -263,6 +282,11 @@ void Game::addAUnits(Unit* add)
 	AlienArmies.addUnit(add);
 }
 
+void Game::addSUUnits(Unit* add)
+{
+	AliedArmies.addUnit(add);
+}
+
 earthArmy* Game::GetEarthArmy()
 {
 	return &EarthArmies;
@@ -271,6 +295,11 @@ earthArmy* Game::GetEarthArmy()
 alienArmy* Game::GetAlienArmy()
 {
 	return &AlienArmies;
+}
+
+alliedArmy* Game::GetAlliedArmy()
+{
+	return &AliedArmies;
 }
 
 bool Game::addToKillList(Unit* unit)
