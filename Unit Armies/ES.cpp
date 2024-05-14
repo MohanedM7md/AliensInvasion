@@ -102,21 +102,24 @@ void ES::attack()
 			ES_Found = Earmy->ES_Getter(es);
 			if (es)
 			{
-				dmge = calcDmg(this, es);
+				if (es != this)
+				{
+					dmge = calcDmg(this, es);
 
-				if (gameMode)
-					pOut->PrintOut(" " + std::to_string(es->GetID()) + ",");// print the attacked units
+					if (gameMode)
+						pOut->PrintOut(" " + std::to_string(es->GetID()) + ",");// print the attacked units
 
-				es->SetHealth(es->GetHealth() - dmge); // Set New health
-				es->setTa(Gameptr->GetTimeStep()); // Set time attacked
+					es->SetHealth(es->GetHealth() - dmge); // Set New health
+					es->setTa(Gameptr->GetTimeStep()); // Set time attacked
 
-				if (!es->GetHealth()) {
-					es->setTd(Gameptr->GetTimeStep());
-					ES::KilledIncreament();
-					Gameptr->addToKillList(as);
-				}
-				else {
-					tempList_ES.push(es);
+					if (!es->GetHealth()) {
+						es->setTd(Gameptr->GetTimeStep());
+						ES::KilledIncreament();
+						Gameptr->addToKillList(as);
+					}
+					else {
+						tempList_ES.push(es);
+					}
 				}
 			}
 

@@ -25,6 +25,8 @@ class Game
 	int Timesteps;
 	
 	void DisplayKilledList();
+	//void DisplayKilledList();
+	//void DisplayKilledList();
 
 	bool GameMode;
 

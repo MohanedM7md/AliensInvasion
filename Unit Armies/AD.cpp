@@ -87,10 +87,6 @@ void AD::attack()
 						At_EG->setTd(Gameptr->GetTimeStep());
 						Gameptr->addToKillList(At_EG);
 					}
-					else if ((At_ET->GetMaxHealth() / At_ET->GetHealth()) >= 5) {
-						At_ET->setTjUml(Gameptr->GetTimeStep());
-						Gameptr->getUML2()->enqueue(At_ET);
-					}
 					else
 					{
 						TempListEG.push(At_EG);
@@ -117,6 +113,10 @@ void AD::attack()
 						ET::KilledIncreament();
 						At_ET->setTd(Gameptr->GetTimeStep());
 						Gameptr->addToKillList(At_ET);
+					}
+					else if ((At_ET->GetMaxHealth() / At_ET->GetHealth()) >= 5) {
+						At_ET->setTjUml(Gameptr->GetTimeStep());
+						Gameptr->getUML2()->enqueue(At_ET);
 					}
 					else
 					{
