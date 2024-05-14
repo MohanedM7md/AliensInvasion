@@ -88,9 +88,6 @@ void Game::startGameInteractive()
 
 			this->EarthArmies.printEarth();//Print Earthians' Armies
 			this->AlienArmies.printAlien(); //Print Alines' Armies
-			if (ES::getInfected() / EarthArmies.GetLength("ttl")) {
-				help = true;
-			}
 			pOut->PrintOut("==================================   ", AQUA);
 			pOut->PrintOut("Units fighting at current step", ORANGE);
 			pOut->PrintOut("   ===================================\n\n", AQUA);
