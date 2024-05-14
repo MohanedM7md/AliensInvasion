@@ -3,10 +3,14 @@
 
 int ES::total = 0;
 int ES::Killed= 0;
+int ES::InfNom= 0;
+
+
 
 ES::ES(int id, int tj, int health, int power, int attackCap,
 	std::string type, Game* Gptr):Unit(id,tj,health,power, attackCap, type, Gptr)
 {
+	infected = false;
 	total++;
 }
 
@@ -16,26 +20,54 @@ int ES::getTotal()
 	return ES::total;
 }
 
+bool ES::isInfected()const
+{
+	return infected;
+}
+
+void ES::setInfected(bool inf)
+{
+	infected = inf;
+}
+
 void ES::KilledIncreament()
 {
 	ES::Killed++;
+}
+void ES::InfIncreament()
+{
+	ES::InfNom++;
+}
+void ES::InfDecreament()
+{
+	ES::InfNom--;
 }
 
 int ES::getKilled()
 {
 	return ES::Killed;
 }
+int ES::getInfected()
+{
+	return ES::Killed;
+}
+
+
 
 void ES::attack()
 {
 
 	alienArmy* Aarmy = Gameptr->GetAlienArmy();
-	if (Aarmy->IfListIsEmpyt("AS"))
-		return; // ends the function if it attacking empyt list
-
-	LinkedStack<AS*> tempList; // intialize temp list ot hold AS units
-	Output* pOut = Gameptr->getOutputPtr();// get Output ptr
 	bool gameMode = Gameptr->getGameMode();//check if the mode is interactive to print
+	Output* pOut = Gameptr->getOutputPtr();// get Output ptr
+	if (gameMode) {
+		pOut->PrintOut("Infected Percentage: ", DARK_GREEN);
+			pOut->PrintOut(std::to_string(((float)ES::InfNom / (ES::total - ES::Killed))*100) + "%\n\n", LIGHT_RED);
+	}
+	if (Aarmy->IfListIsEmpyt("AS"))
+		return; // ends the function if it attacking empty list
+
+	LinkedStack<AS*> tempList; // intialize temp list to hold AS units
 
 	if (gameMode) { // For the Fight scene output
 		pOut->PrintOut("ES ", LIGHT_BLUE);
@@ -67,9 +99,19 @@ void ES::attack()
 		}
 		 
 	}
-	if(gameMode)
-	pOut->PrintOut("\b]\n\n", DARK_GREEN);
+	for (int i = 0; i < InfNom; i++) {
+		int randNom = rand()%101;
+		if (randNom < 3) {
+			ES* es;
+			earthArmy* Aarmy = Gameptr->GetEarthArmy();
+			if (Aarmy->ES_randGetter(es))
+				es->setInfected(true);
+		}
+	}
+	if (gameMode) {
+		pOut->PrintOut("\b]\n\n", DARK_GREEN);
 
+	}
 	while (!tempList.isEmpty()) { //remove units from temp list
 		AS* as;
 		tempList.pop(as);

@@ -61,6 +61,11 @@ bool earthArmy::ES_Getter(ES*& es)
 	return ES_List.dequeue(es);
 }
 
+bool earthArmy::ES_randGetter(ES*& es)
+{
+	return ES_List.randompeek(es);
+}
+
 bool earthArmy::ET_Getter(ET*& et)
 {
 	return ET_List.pop(et);
@@ -109,7 +114,7 @@ void earthArmy::attackAliens()
 		ETattcker->attack();
 	EG* EGattcker;
 	int EGPri;
-	/*if (EG_List.peek(EGattcker,EGPri))
-		ESattcker->attack();*/
+	if (EG_List.peek(EGattcker,EGPri))
+		EGattcker->attack();
 
 }

@@ -70,7 +70,7 @@ void AD::attack()
 				At_EG->setTa(Gameptr->GetTimeStep());
 				if (!At_EG->GetHealth())
 				{
-					ES::KilledIncreament();
+					EG::KilledIncreament();
 					At_EG->setTd(Gameptr->GetTimeStep());
 					Gameptr->addToKillList(At_EG);
 				}

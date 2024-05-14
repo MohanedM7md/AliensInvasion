@@ -28,6 +28,7 @@ public:
 
 	/////////// Units Getters ///////////////////////
 	bool ES_Getter(ES*&);
+	bool ES_randGetter(ES*&);
 	bool ET_Getter(ET*&);
 	bool EG_Getter(EG*&, int&);
 

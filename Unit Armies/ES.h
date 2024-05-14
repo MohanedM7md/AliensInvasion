@@ -5,6 +5,8 @@
 class ES :public Unit {
 	static int total;
 	static int Killed;
+	static int InfNom;
+	bool infected;
 
 public:
 	ES(int id = 0, int tj = 0, int health = 0, int power = 0, int attackCap = 0,
@@ -12,12 +14,21 @@ public:
 
 	static int getTotal();
 	static void KilledIncreament();
+	static void InfIncreament();
+	static void InfDecreament();
 	static int getKilled();
+	static int getInfected();
+	bool isInfected() const;
+	void setInfected(bool);
+
 	void attack();
 };
 
 static std::ostream& operator<<(std::ostream& os, const ES* unit) {
-	os << unit->GetID();
+	if(unit->isInfected())
+		os <<'X'<< unit->GetID();
+	else
+		os << unit->GetID();
 	return os;
 }
 

@@ -5,6 +5,20 @@
 
 int AM::total = 0;
 int AM::Killed = 0;
+int AM::InfProb = 0;
+
+void AM::SetInfProb(int inf)
+{
+	int infect = rand() % inf;
+    InfProb = infect;
+}
+
+bool AM::GetInfability()
+{
+	int infect = rand() % 101;
+	return infect <= InfProb;
+}
+
 
 AM::AM(int id, int tj, int health, int power, int attackCap,
 	std::string type, Game* Gptr) :Unit(id, tj, health, power, attackCap, type, Gptr)
@@ -58,7 +72,14 @@ void AM::attack()
 				{
 					ES::KilledIncreament();
 					At_ES->setTd(Gameptr->GetTimeStep());
+					if (At_ES->isInfected())
+						ES::InfDecreament();
 					Gameptr->addToKillList(At_ES);
+					
+				}else if (GetInfability() && !At_ES->isInfected()) {
+					ES::InfIncreament();
+					At_ES->setInfected(true);
+					TempListES.push(At_ES);
 				}
 				else
 				{
@@ -93,7 +114,7 @@ void AM::attack()
 		* This condtion is To Check if There is Units To Attack
 		* " Maybe Attacked Enemies Could All die Before Loop Is Completed"
 		*/
-		if ( (ES_Found == false) && (ET_Found == false))
+		if ((ES_Found == false) && (ET_Found == false))
 		{
 			break;
 		}

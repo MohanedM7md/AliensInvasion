@@ -36,7 +36,6 @@ public:
 	bool IfListIsEmpyt(string s) const;
 
 	void attackEarthians();
-
 	int GetLength(string s) const;
 
 };

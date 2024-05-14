@@ -100,6 +100,7 @@ void alienArmy::attackEarthians()
 	if (AM_List.RandomPeek(AMattcker))
 		AMattcker->attack();
 
+
 	AD* AD_Pair1;
 	AD* AD_Pair2;
 	

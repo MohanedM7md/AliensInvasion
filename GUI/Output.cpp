@@ -21,22 +21,25 @@ Output::Output()
 int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
 {
     ClearScreen(); //clearing screen
-
     int cursor = 0; // Current selected item index(0) (cursor)
     char key = NULL;   // Key pressed by the user
 
    
     do {
+                 
+
         std::cout << "\n\n\n";
-        PrintOut("\t\t\t\t\t  ____  _      ____    ___  ____           ____  ____   __ __   ____  _____ ____  ___   ____\n", LIGHT_BLUE);
-        PrintOut("\t\t\t\t\t /    || |    |    |  /  _]|     \\        |    ||    \\ |  |  | /    |/ ___/|    |/   \\ |    \\ \n", LIGHT_BLUE);
-        PrintOut("\t\t\t\t\t| o   || |    |    | /  [_ |  _  |         |  | |  _  ||  |  ||  o  (   \\_  |  ||     ||  _  |\n", LIGHT_BLUE);
-        PrintOut("\t\t\t\t\t|     || |___  |  | |    _]|  |  |         |  | |  |  ||  |  ||     |\\__  | |  ||  O  ||  |  |\n", LIGHT_BLUE);
-        PrintOut("\t\t\t\t\t|  _  ||     | |  | |    [_|  |  |         |  | |  |  ||  :  ||  _  |/  \\ | |  ||     ||  |  |\n", LIGHT_RED);
-        PrintOut("\t\t\t\t\t|  |  ||     | |  | |     ||  |  |         |  | |  |  | \\   / |  |  |\\    | |  ||     ||  |  |\n", LIGHT_RED);
-        PrintOut("\t\t\t\t\t|__|__||_____||____||_____||__|__|        |____||__|__|  \\_/  |__|__| \\___||____|\\___/ |__|__|\n", LIGHT_RED);
-        std::cout << "\n\n\n";
+            SetConsoleTextAttribute(ConsoleHandler, ORANGE);
+            PrintOut("  ___  _     __    __  __    ___   ___    __ __    ___  _____  __   ___    __\n", LIGHT_BLUE);
+            PrintOut(" /   || |   |  |  / _]|  \\  | |  |   \\ |  |  |  /   |/ ___/ |  | /   \\ |  \\ \n", LIGHT_BLUE);
+            PrintOut("| o  || |    ||  / [_ | _ |  | |  | _  | |  |  | |  o (   \\_  || |     | | _ |\n", LIGHT_BLUE);
+            PrintOut("|    || |__  || |   _]| | |  | |  | |  | |  |  | |    |\\__  | || |  O  | | | |\n", LIGHT_BLUE);
+            PrintOut("|  _ ||    | || |   [_| | |  | |  | |  | |  :  | |  _ |/  \\ | || |     | | | |\n", LIGHT_RED);
+            PrintOut("|  | ||    | || |    || | |  | |  | |  | \\   /  |  | |\\    | || |     | | | |\n", LIGHT_RED);
+            PrintOut("|__|_||____||__||____||_|_|  |_|  |_|__|  \\_/   |__|_| \\___||__|\\___/  |_|_|\n", LIGHT_RED);
+
         for (int i = 0; i < MinueSize; i++) {
+            
             // If the current item is selected
             if (i == cursor) {
                 // Print arrow characters and the menu item 
@@ -181,6 +184,7 @@ void Output::AD_print()
 void Output::LoadingScreen()
 {
     CONSOLE_CURSOR_INFO cursorInfo = { 1,false };
+    cursorInfo.bVisible = false;
     SetConsoleCursorInfo(ConsoleHandler, &cursorInfo);
 
     COORD AlignText = { 23,5 };
