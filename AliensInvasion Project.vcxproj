@@ -35,7 +35,6 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="Militaries\alienArmy.h" />
-    <ClInclude Include="Militaries\alliedArmy.h" />
     <ClInclude Include="Militaries\earthArmy.h" />
     <ClInclude Include="Unit Armies\AD.h" />
     <ClInclude Include="Unit Armies\AM.h" />
@@ -53,7 +52,6 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Militaries\alienArmy.cpp" />
-    <ClCompile Include="Militaries\alliedArmy.cpp" />
     <ClCompile Include="Militaries\earthArmy.cpp" />
     <ClCompile Include="Unit Armies\AD.cpp" />
     <ClCompile Include="Unit Armies\AM.cpp" />

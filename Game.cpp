@@ -282,10 +282,10 @@ void Game::addAUnits(Unit* add)
 	AlienArmies.addUnit(add);
 }
 
-void Game::addSUUnits(Unit* add)
-{
-	AliedArmies.addUnit(add);
-}
+//void Game::addSUUnits(Unit* add)
+//{
+//	AliedArmies.addUnit(add);
+//}
 
 earthArmy* Game::GetEarthArmy()
 {
@@ -297,10 +297,10 @@ alienArmy* Game::GetAlienArmy()
 	return &AlienArmies;
 }
 
-alliedArmy* Game::GetAlliedArmy()
-{
-	return &AliedArmies;
-}
+//alliedArmy* Game::GetAlliedArmy()
+//{
+//	return &AliedArmies;
+//}
 
 bool Game::addToKillList(Unit* unit)
 {

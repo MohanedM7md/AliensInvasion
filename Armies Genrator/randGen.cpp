@@ -76,15 +76,15 @@ void randGen::GenrateArmy(int Tj)
 
 		}
 	/*=================================================SU ARMY==========================================*/
-	if (Gptr->getHelp()) {
-		int RandSU = RandmonNumGent();
-		if (RandSU < param.PercOfSU) {
-			int hlth = RandmonRangeNum(param.SUhtlyRangees);
-			int pwr = RandmonRangeNum(param.SUpwRangees);
-			int cap = RandmonRangeNum(param.SUattkCapRangees);
-			Gptr->addEUnits(new SU(SUIDS++, Tj, hlth, pwr, cap, "SU", Gptr));
-		}
-	}
+	//if (Gptr->getHelp()) {
+	//	int RandSU = RandmonNumGent();
+	//	if (RandSU < param.PercOfSU) {
+	//		int hlth = RandmonRangeNum(param.SUhtlyRangees);
+	//		int pwr = RandmonRangeNum(param.SUpwRangees);
+	//		int cap = RandmonRangeNum(param.SUattkCapRangees);
+	//		Gptr->addEUnits(new SU(SUIDS++, Tj, hlth, pwr, cap, "SU", Gptr));
+	//	}
+	//}
 	/*======================== Alien Army ========================*/
 	RandA = RandmonNumGent(); //genrate random number range 1-100
 	if (RandA < param.prob)

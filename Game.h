@@ -55,7 +55,7 @@ public:
 
 	earthArmy* GetEarthArmy();
 	alienArmy* GetAlienArmy();
-	alliedArmy* GetAlliedArmy();
+	//alliedArmy* GetAlliedArmy();
 
 	bool addToKillList(Unit* unit);
 	bool getGameMode() const;
