@@ -79,6 +79,15 @@ bool alienArmy::AD_Getter(AD*& adFrnt, AD*&adBack)
 	return (AD_List.dequeueFront(adFrnt) && AD_List.dequeueBack(adBack));
 }
 
+bool alienArmy::AD_Getter_Back(AD*& adBack)
+{
+
+	if (AD_List.getLength() < 2)
+		return false;
+
+	return (AD_List.dequeueBack(adBack));
+}
+
 bool alienArmy::IfListIsEmpyt(string s) const
 {
 	if (s == "AS")
@@ -107,7 +116,6 @@ void alienArmy::attackEarthians()
 	if (AD_List.peek(AD_Pair1) && AD_List.peekBack(AD_Pair2) && AD_List.getLength() != 1)
 	{
 		AD_Pair1->attack();
-		AD_Pair2->attack();
 	}
 }
 
