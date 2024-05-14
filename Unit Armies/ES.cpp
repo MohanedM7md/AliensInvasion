@@ -69,6 +69,7 @@ void ES::attack()
 {
 
 	alienArmy* Aarmy = Gameptr->GetAlienArmy();
+	earthArmy* Earmy = Gameptr->GetEarthArmy();
 	bool gameMode = Gameptr->getGameMode();//check if the mode is interactive to print
 	Output* pOut = Gameptr->getOutputPtr();// get Output ptr
 	if (gameMode) {
@@ -79,35 +80,86 @@ void ES::attack()
 		return; // ends the function if it attacking empty list
 
 	LinkedStack<AS*> tempList; // intialize temp list to hold AS units
+	LinkedStack<ES*> tempList_ES;
 
 	if (gameMode) { // For the Fight scene output
-		pOut->PrintOut("ES ", LIGHT_BLUE);
-		pOut->PrintOut(std::to_string(ID));
-		pOut->PrintOut(" Shots ", LIGHT_RED);
-		pOut->PrintOut('[', DARK_GREEN);
+		if (isInfected())
+		{
+			pOut->PrintOut("Infected ES ", LIGHT_BLUE);
+			pOut->PrintOut(std::to_string(ID));
+			pOut->PrintOut(" Shots ", LIGHT_RED);
+			pOut->PrintOut('[', DARK_GREEN);
+		}
+		else
+		{
+			pOut->PrintOut("ES ", LIGHT_BLUE);
+			pOut->PrintOut(std::to_string(ID));
+			pOut->PrintOut(" Shots ", LIGHT_RED);
+			pOut->PrintOut('[', DARK_GREEN);
+		}
 	}
 
 
 	
 	for (int i = 0; i < attackCapacity; i++) {
 		AS* as = nullptr;
-		if (!Aarmy->AS_Getter(as)) break;//if there is no more unit to attack end the loop.
-		int dmge = calcDmg(this, as);
+		ES* es = nullptr;
+		int dmge;
+		bool ES_Found = true, AS_Found = true;
+		//if there is no more unit to attack end the loop.
 
-		if(gameMode)
-			pOut->PrintOut(" " + std::to_string(as->GetID()) + ",");// print the attacked units
+		if (isInfected())
+		{
+			ES_Found = Earmy->ES_Getter(es);
+			if (es)
+			{
+				if (es != this)
+				{
+					dmge = calcDmg(this, es);
 
-		as->SetHealth(as->GetHealth() - dmge); // Set New health
-		as->setTa(Gameptr->GetTimeStep()); // Set time attacked
+					if (gameMode)
+						pOut->PrintOut(" " + std::to_string(es->GetID()) + ",");// print the attacked units
 
-		if (!as->GetHealth()) {
-			as->setTd(Gameptr->GetTimeStep());
-			AS::KilledIncreament();
-			Gameptr->addToKillList(as);
+					es->SetHealth(es->GetHealth() - dmge); // Set New health
+					es->setTa(Gameptr->GetTimeStep()); // Set time attacked
+
+					if (!es->GetHealth()) {
+						es->setTd(Gameptr->GetTimeStep());
+						ES::KilledIncreament();
+						Gameptr->addToKillList(es);
+					}
+					else {
+						tempList_ES.push(es);
+					}
+				}
+			}
+
 		}
-		else {
-			tempList.push(as);
+		else
+		{
+			AS_Found = Aarmy->AS_Getter(as);
+			if (as)
+			{
+				dmge = calcDmg(this, as);
+
+				if(gameMode)
+					pOut->PrintOut(" " + std::to_string(as->GetID()) + ",");// print the attacked units
+
+				as->SetHealth(as->GetHealth() - dmge); // Set New health
+				as->setTa(Gameptr->GetTimeStep()); // Set time attacked
+
+				if (!as->GetHealth()) {
+					as->setTd(Gameptr->GetTimeStep());
+					AS::KilledIncreament();
+					Gameptr->addToKillList(as);
+				}
+				else {
+					tempList.push(as);
+				}
+			}
+
 		}
+		if ((ES_Found == false) &&(AS_Found ==  false)) break;
 		 
 	}
 	for (int i = 0; i < InfNom; i++) {
@@ -127,5 +179,10 @@ void ES::attack()
 		AS* as;
 		tempList.pop(as);
 		Gameptr->addAUnits(as);
+	}
+	while (!tempList_ES.isEmpty()) { //remove units from temp list
+		ES* es;
+		tempList_ES.pop(es);
+		Gameptr->addEUnits(es);
 	}
 }

@@ -5,6 +5,7 @@
 #include "Militaries/earthArmy.h"
 #include "Militaries/alienArmy.h"
 #include "Armies Genrator/randGen.h"
+#include "Militaries/alienArmy.h"
 
 
 class Game
@@ -13,6 +14,8 @@ class Game
 
 	earthArmy EarthArmies;
 	alienArmy AlienArmies;
+	alienArmy AlliedArmies;
+
 
 	randGen UnitGen;
 

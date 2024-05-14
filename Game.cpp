@@ -105,6 +105,18 @@ void Game::startGameInteractive()
 			std::cout << "\n\n\n\n";
 		if ((!EarthArmies.GetLength("ttl") || !AlienArmies.GetLength("ttl")) && (Timesteps > 39)) {
 			pOut->PrintOut("\n\n\n\n\n\n\n \t\t\t\t\tCONGRATULATIONS THE BATLLE HAS FINISHED......\n", DARK_BLUE);
+			if (!EarthArmies.GetLength("ttl"))
+			{
+				pOut->PrintOut("\n \t\t\t\t\tAliens Won ...... Power of Evil Invades the Earth :( \n\n\n\n", RED);
+			}
+			else if (!AlienArmies.GetLength("ttl"))
+			{
+				pOut->PrintOut("\n \t\t\t\t\tEarth Won ..... Earthians Protect Their Beloved Planet  :) \n\n\n\n", DARK_BLUE);
+			}
+			else
+			{
+				pOut->PrintOut("\n \t\t\t\t\tDraw ..... Seems Like Both of Them Are Worth The Power They have \n\n\n\n", DARK_BLUE);
+			}
 			system("pause");
 			break;
 		}
