@@ -31,6 +31,11 @@ void ES::setInfected(bool inf)
 	infected = inf;
 }
 
+int ES::gethealed()
+{
+	return ES::HealedNom;
+}
+
 void ES::KilledIncreament()
 {
 	ES::Killed++;

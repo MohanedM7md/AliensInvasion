@@ -3,7 +3,7 @@
 
 //using namespace std;
 
-Game::Game():pOut(new Output), EarthArmies(this), UnitGen(this), AlienArmies(this),Timesteps(0)
+Game::Game():pOut(new Output), EarthArmies(this), UnitGen(this), AlienArmies(this),Timesteps(0),help(false)
 {
 	pOut->LoadingScreen();
 	parameters param = LoadParameters();
@@ -126,7 +126,7 @@ void Game::startGameSilent()
 			break;
 	}
 
-	pOut->PrintOut("Silent ends, Output file is created",LIGHT_RED);
+	pOut->PrintOut("Silent ends, Output file is created\n",LIGHT_RED);
 	system("pause");
 	OutPutFileCreator();
 	system("cls");
@@ -216,14 +216,15 @@ void Game::OutPutFileCreator()
 			OutputFile << "\n\n\n\nDraw\n\n";
 
 		OutputFile << "\n\n============================== Earth Statistcs  ===============================\n\n"
-			<< "ES #: "<<ES::getTotal()<<std::endl
-			<< "Percentage of destructed ES: " << ((double)ES::getKilled() / (double)ES::getTotal()) * 100 << "%" <<std::endl
+			<< "ES #: " << ES::getTotal() << std::endl
+			<< "Percentage of destructed ES: " << ((double)ES::getKilled() / (double)ES::getTotal()) * 100 << "%" << std::endl
 			<< "Percentage of Infected:" << std::to_string((float)ES::getInfected() / (ES::getTotal()) * 100) << std::endl
-			<< "ET #: "<<ET::getTotal()<<std::endl
+			<< "ET #: " << ET::getTotal() << std::endl
 			<< "Percentage of destructed ET: " << ((double)ET::getKilled() / (double)ET::getTotal()) * 100 << "%" << std::endl
 			<< "EG #: " << EG::getTotal() << std::endl
 			<< "Percentage of destructed EG: " << ((double)EG::getKilled() / (double)EG::getTotal()) * 100 << "%" << std::endl
-			<< "Percenta e of total destructed units: " << ((double)ttlDestructedEarth / (double)ttlEarthUnit) * 100 << "%"<<std::endl;
+			<< "Percentage of total destructed units: " << ((double)ttlDestructedEarth / (double)ttlEarthUnit) * 100 << "%" << std::endl
+			<< "percantage of Healed Units: " << ((double)(ES::gethealed() + ET::gethealed()) / (double)ttlEarthUnit) * 100 << "%" << std::endl;
 
 		OutputFile << "\n\n============================== Aliens Statistcs  ===============================\n\n"
 			<< "AS #: " << AS::getTotal() << std::endl
@@ -232,7 +233,7 @@ void Game::OutPutFileCreator()
 			<< "Percentage of destructed AM: " << ((double)AM::getKilled() / (double)AM::getTotal()) * 100 << "%" << std::endl
 			<< "AD #: " << AD::getTotal() << std::endl
 			<< "Percentage of destructed AD: " << ((double)AD::getKilled() / (double)AD::getTotal()) * 100 << "%" << std::endl
-			<< "Percenta e of total destructed units: " << (float(ttlDestructedALiens) / float(ttlALiensUnit)) * 100 << "%" << std::endl;
+			<< "Percentage of total destructed units: " << (float(ttlDestructedALiens) / float(ttlALiensUnit)) * 100 << "%" << std::endl;
 
 
 
@@ -279,6 +280,11 @@ int Game::UmlPriEquation(Unit* u) const
 int Game::GetTimeStep() const
 {
 	return Timesteps;
+}
+
+bool Game::getHelp() const
+{
+	return help;
 }
 
 priQueue<ES*>* Game::getUML1()

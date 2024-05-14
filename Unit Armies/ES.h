@@ -22,6 +22,7 @@ public:
 	static int getInfected();
 	bool isInfected() const;
 	void setInfected(bool);
+	static int gethealed();
 
 	void attack();
 };

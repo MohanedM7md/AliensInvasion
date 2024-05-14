@@ -14,6 +14,7 @@ public:
 	static void KilledIncreament();
 	static int getKilled();
 	static void HealNomIncreament();
+	static int gethealed();
 
 	void attack();
 

@@ -24,6 +24,9 @@ int ET::getKilled()
 {
 	return ET::Killed;
 }
+int ET::gethealed() {
+	return ET::HealedNom;
+}
 void ET::HealNomIncreament()
 {
 	HealedNom++;

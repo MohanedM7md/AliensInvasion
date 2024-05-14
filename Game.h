@@ -28,6 +28,7 @@ class Game
 	void DisplayUML1List();
 	void DisplayUML2List();
 	int TresholdPercentage;
+	bool help;
 	bool GameMode;
 
 public:
@@ -55,6 +56,8 @@ public:
 	int UmlPriEquation(Unit* u) const;
 
 	int GetTimeStep() const;
+
+	bool getHelp() const;
 	priQueue<ES*>* getUML1();
 	LinkedQueue<ET*>* getUML2();
 	~Game();
