@@ -74,6 +74,7 @@ void AS::attack()
 		tempList.pop(es);
 		Gameptr->addEUnits(es);
 	}
+	Gameptr->GetEarthArmy()->printEarth();
 }
 
 
