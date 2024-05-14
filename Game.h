@@ -18,6 +18,10 @@ class Game
 
 	LinkedQueue<Unit*> killed_List;
 
+
+	priQueue<ES*> UML1;
+	LinkedQueue<ET*> UML2;
+
 	int Timesteps;
 	
 	void DisplayKilledList();
@@ -46,8 +50,11 @@ public:
 	bool addToKillList(Unit* unit);
 	bool getGameMode() const;
 	
-	int GetTimeStep() const;
+	int UmlPriEquation(Unit* u) const;
 
+	int GetTimeStep() const;
+	priQueue<ES*>* getUML1();
+	LinkedQueue<ET*>* getUML2();
 	~Game();
 };
 #endif 

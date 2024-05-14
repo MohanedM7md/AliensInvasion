@@ -49,7 +49,7 @@ int ES::getKilled()
 }
 int ES::getInfected()
 {
-	return ES::Killed;
+	return ES::InfNom;
 }
 
 

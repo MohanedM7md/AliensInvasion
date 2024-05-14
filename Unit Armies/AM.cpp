@@ -10,7 +10,7 @@ int AM::InfProb = 0;
 void AM::SetInfProb(int inf)
 {
 	int infect = rand() % inf;
-    InfProb = infect;
+	InfProb = infect;
 }
 
 bool AM::GetInfability()
@@ -84,6 +84,11 @@ void AM::attack()
 						At_ES->setInfected(true);
 						TempListES.push(At_ES);
 					}
+					else if ((At_ES->GetMaxHealth() / At_ES->GetHealth()) >= 5) {
+						At_ES->setTjUml(Gameptr->GetTimeStep());
+						Gameptr->getUML1()->enqueue(At_ES, Gameptr->UmlPriEquation(At_ES));
+
+					}
 					else
 					{
 						TempListES.push(At_ES);
@@ -107,6 +112,10 @@ void AM::attack()
 						ET::KilledIncreament();
 						At_ET->setTd(Gameptr->GetTimeStep());
 						Gameptr->addToKillList(At_ET);
+					}
+					else if ((At_ET->GetMaxHealth() / At_ET->GetHealth()) >= 5) {
+						At_ET->setTjUml(Gameptr->GetTimeStep());
+						Gameptr->getUML2()->enqueue(At_ET);
 					}
 					else
 					{
@@ -133,8 +142,9 @@ void AM::attack()
 						if (At_ES->isInfected())
 							ES::InfDecreament();
 						Gameptr->addToKillList(At_ES);
-					
-					}else if (GetInfability() && !At_ES->isInfected()) {
+
+					}
+					else if (GetInfability() && !At_ES->isInfected()) {
 						ES::InfIncreament();
 						At_ES->setInfected(true);
 						TempListES.push(At_ES);
@@ -213,30 +223,30 @@ int AM::getTotal()
 	return AM::total;
 }
 
-			/*pOut->PrintOut("In Loop Break", PINK);
-			pOut->PrintOut(" Current i : ", LIGHT_BLUE);
-			pOut->PrintOut(std::to_string(i), ORANGE);
-			pOut->PrintOut(" EG Address ", LIGHT_BLUE);
-			if (At_ES)
-				pOut->PrintOut("Address is Found", DARK_GREEN);
-			else
-				pOut->PrintOut("Address is Not Found Found", LIGHT_RED);
-			pOut->PrintOut(" ET Address ", LIGHT_BLUE);
-			if (At_ET)
-				pOut->PrintOut("Address is Found", DARK_GREEN);
-			else
-				pOut->PrintOut("Address is Not Found Found", LIGHT_RED);*/		
-		
-		/*pOut->PrintOut(" Current i : ", LIGHT_BLUE);
-		pOut->PrintOut(std::to_string(i), ORANGE);
-		pOut->PrintOut(" EG Address ", LIGHT_BLUE);
-		if (At_ES)
-			pOut->PrintOut("Address is Found", DARK_GREEN);
-		else
-			pOut->PrintOut("Address is Not Found Found", LIGHT_RED);
+/*pOut->PrintOut("In Loop Break", PINK);
+pOut->PrintOut(" Current i : ", LIGHT_BLUE);
+pOut->PrintOut(std::to_string(i), ORANGE);
+pOut->PrintOut(" EG Address ", LIGHT_BLUE);
+if (At_ES)
+	pOut->PrintOut("Address is Found", DARK_GREEN);
+else
+	pOut->PrintOut("Address is Not Found Found", LIGHT_RED);
+pOut->PrintOut(" ET Address ", LIGHT_BLUE);
+if (At_ET)
+	pOut->PrintOut("Address is Found", DARK_GREEN);
+else
+	pOut->PrintOut("Address is Not Found Found", LIGHT_RED);*/
 
-		pOut->PrintOut(" ET Address ", LIGHT_BLUE);
-		if (At_ET)
-			pOut->PrintOut("Address is Found", DARK_GREEN);
-		else
-			pOut->PrintOut("Address is Not Found Found", LIGHT_RED);*/
+	/*pOut->PrintOut(" Current i : ", LIGHT_BLUE);
+	pOut->PrintOut(std::to_string(i), ORANGE);
+	pOut->PrintOut(" EG Address ", LIGHT_BLUE);
+	if (At_ES)
+		pOut->PrintOut("Address is Found", DARK_GREEN);
+	else
+		pOut->PrintOut("Address is Not Found Found", LIGHT_RED);
+
+	pOut->PrintOut(" ET Address ", LIGHT_BLUE);
+	if (At_ET)
+		pOut->PrintOut("Address is Found", DARK_GREEN);
+	else
+		pOut->PrintOut("Address is Not Found Found", LIGHT_RED);*/

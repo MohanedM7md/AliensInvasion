@@ -44,6 +44,10 @@ int Unit::GetHealth() const
 {
 	return health;
 }
+int Unit::GetMaxHealth() const
+{
+	return this->MaxHelth;
+}
 int Unit::GetPower() const
 {
 	return power;
@@ -52,15 +56,19 @@ int Unit::GetAttackCap() const
 {
 	return attackCapacity;
 }
+int Unit::getTjUml() const
+{
+	return this->TjUml;
+}
 std::string Unit::GetType()
 {
 	return std::string(type);
 }
 
-Game* Unit::GetGamePtr() const
-{
-	return Gameptr;
-}
+//Game* Unit::GetGamePtr() const
+//{
+//	return Gameptr;
+//}
 
 /* ===== Setters ======== */
 
@@ -84,6 +92,11 @@ void Unit::setTd(int td)
 {
 	if (td > 0)
 		this->Td = td;
+}
+
+void Unit::setTjUml(int t)
+{
+	this->TjUml = t;
 }
 
 void Unit::SetHealth(int heal)

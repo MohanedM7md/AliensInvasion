@@ -43,7 +43,7 @@ void AD::attack()
 	AD* AD_Pair2;
 	int Dummy;
 	bool GameMode = Gameptr->getGameMode();
-	
+
 	Aliens->AD_Getter_Back(AD_Pair2);
 
 	if (GameMode)
@@ -86,6 +86,10 @@ void AD::attack()
 						EG::KilledIncreament();
 						At_EG->setTd(Gameptr->GetTimeStep());
 						Gameptr->addToKillList(At_EG);
+					}
+					else if ((At_ET->GetMaxHealth() / At_ET->GetHealth()) >= 5) {
+						At_ET->setTjUml(Gameptr->GetTimeStep());
+						Gameptr->getUML2()->enqueue(At_ET);
 					}
 					else
 					{
@@ -144,6 +148,7 @@ void AD::attack()
 						At_EG->setTd(Gameptr->GetTimeStep());
 						Gameptr->addToKillList(At_EG);
 					}
+
 					else
 					{
 						TempListEG.push(At_EG);
@@ -165,7 +170,7 @@ void AD::attack()
 
 					if (GameMode)
 						pOut->PrintOut(" " + std::to_string(At_ET->GetID()) + ",");
-					
+
 					if (!At_ET->GetHealth())
 					{
 						ET::KilledIncreament();
@@ -184,7 +189,7 @@ void AD::attack()
 		* This condtion is To Check if There is Units To Attack
 		* " Maybe Attacked Enemies Could All die Before Loop Is Completed"
 		*/
-		if ( (EG_Found == false) && (ET_Found == false))
+		if ((EG_Found == false) && (ET_Found == false))
 		{
 			break;
 		}
@@ -213,8 +218,8 @@ void AD::attack()
 		if (At_EG)
 			pOut->PrintOut("Address is Found", DARK_GREEN);
 		else
-			pOut->PrintOut("Address is Not Found Found", LIGHT_RED);			
-		
+			pOut->PrintOut("Address is Not Found Found", LIGHT_RED);
+
 		pOut->PrintOut(" ET Address ", LIGHT_BLUE);
 		if (At_ET)
 			pOut->PrintOut("Address is Found", DARK_GREEN);

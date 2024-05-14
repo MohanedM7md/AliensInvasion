@@ -38,6 +38,7 @@ struct parameters {
 	int AS = 0;
 	int AM = 0;
 	int AD = 0;
+	int HU = 0;
 	int EpwRangees[2];
 	int EhtlyRangees[2];
 	int EattkCapRangees[2];

@@ -42,6 +42,7 @@
     <ClInclude Include="Unit Armies\EG.h" />
     <ClInclude Include="Unit Armies\ES.h" />
     <ClInclude Include="Unit Armies\ET.h" />
+    <ClInclude Include="Unit Armies\HU.h" />
     <ClInclude Include="Unit Armies\Unit.h" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +58,7 @@
     <ClCompile Include="Unit Armies\EG.cpp" />
     <ClCompile Include="Unit Armies\ES.cpp" />
     <ClCompile Include="Unit Armies\ET.cpp" />
+    <ClCompile Include="Unit Armies\HU.cpp" />
     <ClCompile Include="Unit Armies\Unit.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -24,7 +24,7 @@ protected:
 	int Tj;
 	int Ta;
 	int Td;
-
+	int TjUml;
 	////// fundmental Data members //////
 	int health;
 	int MaxHelth;
@@ -46,9 +46,11 @@ public:
 	int GetTd() const;
 	int GetTa() const;
 	int GetHealth() const;
+	int GetMaxHealth() const;
 	int GetPower() const ;
 	int GetAttackCap() const;
-	Game* GetGamePtr() const;
+	int getTjUml()const;
+	//Game* GetGamePtr() const;
 	string GetType();
 
 	/* ===== Setters ======== */
@@ -56,6 +58,7 @@ public:
 	void SetTj(int tj);
 	void setTa(int ta);
 	void setTd(int td);
+	void setTjUml(int t);
 
 	void SetHealth(int heal);
 	void SetPower(int powr);
