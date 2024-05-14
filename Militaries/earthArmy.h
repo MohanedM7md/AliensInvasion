@@ -5,6 +5,7 @@
 #include "../Unit Armies/ES.h"
 #include "../Unit Armies/ET.h"
 #include "../Unit Armies/EG.h"
+#include "../Unit Armies/HU.h"
 #include "../Armies' Lists/LinkedQueue.h"
 #include "../Armies' Lists/LinkedStack.h"
 #include "../Armies' Lists/priQueue.h"
@@ -19,6 +20,9 @@ class earthArmy {
 	LinkedQueue<ES*> ES_List;
 	LinkedStack<ET*> ET_List;
 	priQueue<EG*> EG_List;
+	LinkedStack<HU*> HU_List;
+	
+
 
 public:
 	

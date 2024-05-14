@@ -38,6 +38,14 @@ void earthArmy::printEarth()
 	pOut->PrintOut('[', LIGHT_GREEN);
 	EG_List.Print();
 	pOut->PrintOut("]\n\n", LIGHT_GREEN);
+
+	//=============== print HU Information ========================/
+	pOut->EG_Print();
+	pOut->PrintOut(std::to_string(HU_List.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut("  HU", LIGHT_CYAN);
+	pOut->PrintOut('[', LIGHT_GREEN);
+	HU_List.print();
+	pOut->PrintOut("]\n\n", LIGHT_GREEN);
 }
 
 bool earthArmy::addUnit(Unit* unit)
@@ -52,6 +60,8 @@ bool earthArmy::addUnit(Unit* unit)
 		EG_List.enqueue(dynamic_cast<EG*>(unit), dynamic_cast<EG*>(unit)->GetPri());
 		return true;
 	}
+	else if (dynamic_cast<HU*>(unit))
+		return HU_List.push((dynamic_cast<HU*>(unit)));
 
 	return false;
 }
@@ -116,5 +126,7 @@ void earthArmy::attackAliens()
 	int EGPri;
 	if (EG_List.peek(EGattcker,EGPri))
 		EGattcker->attack();
-
+	HU* HUHealer;
+	if (HU_List.pop(HUHealer))
+		HUHealer->attack();
 }

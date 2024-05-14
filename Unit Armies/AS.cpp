@@ -55,13 +55,18 @@ void AS::attack()
 
 		es->SetHealth(es->GetHealth() - dmge); // Set New health
 		es->setTa(Gameptr->GetTimeStep()); // Set time attacked
-
+		//float x = (float(es->GetHealth()) / float(es->GetMaxHealth()))*10;
 		if (!es->GetHealth()) {
 			ES::KilledIncreament();
 			es->setTd(Gameptr->GetTimeStep());
 			if (es->isInfected())
 				ES::InfDecreament();
 			Gameptr->addToKillList(es);
+		}
+		else if ((es->GetMaxHealth()/es->GetHealth()) >= 5) {
+			es->setTjUml(Gameptr->GetTimeStep());
+			Gameptr->getUML1()->enqueue(es, Gameptr->UmlPriEquation(es));
+
 		}
 		else {
 			tempList.push(es);

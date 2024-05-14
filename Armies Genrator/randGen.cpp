@@ -64,9 +64,12 @@ void randGen::GenrateArmy(int Tj)
 			else if (randB <= param.ES + param.ET) {
 				Gptr->addEUnits(new ET(ErthIDs++, Tj, hlth, pwr, cap, "ET", Gptr));
 			}
-			else
+			else if(randB <= param.ES + param.ET + param.EG)
 			{
 				Gptr->addEUnits(new EG(ErthIDs++, Tj, hlth, pwr, cap, "EG", Gptr));
+			}
+			else {
+				Gptr->addEUnits(new HU(ErthIDs++, Tj, hlth, pwr, cap, "EG", Gptr));
 			}
 
 			/*======================== Alien Army ========================*/

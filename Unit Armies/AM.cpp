@@ -81,6 +81,11 @@ void AM::attack()
 					At_ES->setInfected(true);
 					TempListES.push(At_ES);
 				}
+				else if ((At_ES->GetMaxHealth() / At_ES->GetHealth()) >= 5) {
+					At_ES->setTjUml(Gameptr->GetTimeStep());
+					Gameptr->getUML1()->enqueue(At_ES, Gameptr->UmlPriEquation(At_ES));
+
+				}
 				else
 				{
 					TempListES.push(At_ES);
@@ -103,6 +108,10 @@ void AM::attack()
 					ET::KilledIncreament();
 					At_ET->setTd(Gameptr->GetTimeStep());
 					Gameptr->addToKillList(At_ET);
+				}
+				else if ((At_ET->GetMaxHealth() / At_ET->GetHealth()) >= 5) {
+					At_ET->setTjUml(Gameptr->GetTimeStep());
+					Gameptr->getUML2()->enqueue(At_ET);
 				}
 				else
 				{

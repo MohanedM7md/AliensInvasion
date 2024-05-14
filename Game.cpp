@@ -63,7 +63,7 @@ void Game::startGameInteractive()
 		if (GetAsyncKeyState(VK_ESCAPE)) {
 			break; // Exit the loop and end the program
 		}
-		UnitGen.GenrateArmy(Timesteps++);
+			UnitGen.GenrateArmy(Timesteps++);
 			pOut->PrintOut("\t\t\t\t\t   Current Timestep:   " + std::to_string(Timesteps) + "\n\n", RED);
 
 			this->EarthArmies.printEarth();//Print Earthians' Armies
@@ -80,7 +80,7 @@ void Game::startGameInteractive()
 			pOut->PrintOut("   ========================================\n\n", RED);
 			DisplayKilledList(); // Killed List printer
 			std::cout << "\n\n\n";
-			//system("pause");
+			system("pause");
 			std::cout << "\n\n\n\n";
 		if ((!EarthArmies.GetLength("ttl") || !AlienArmies.GetLength("ttl")) && (Timesteps > 39)) {
 			pOut->PrintOut("\n\n\n\n\n\n\n \t\t\t\t\tCONGRATULATIONS THE BATLLE HAS FINISHED......\n", DARK_BLUE);
@@ -123,7 +123,7 @@ parameters Game::LoadParameters()
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
 		inputFile >> param.N; // get value of N
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
-		inputFile >> param.ES >> param.ET >> param.EG;
+		inputFile >> param.ES >> param.ET >> param.EG >> param.HU;
 		inputFile >> param.AS >> param.AM >> param.AD;
 		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
 		inputFile >> param.prob; // get value of probablity
@@ -180,7 +180,7 @@ void Game::OutPutFileCreator()
 
 	if (OutputFile.is_open()) {
 		Unit* u;
-		OutputFile << "Td" << '\t' << "ID" << '\t' <<"Tj"<< '\t' <<"DF" << '\t' << "Dd" << '\t' << "Db" <<"\tTj" << "\n\n\n";
+		OutputFile << "Td" << '\t' << "ID" << '\t' <<"Tj"<< '\t' <<"DF" << '\t' << "Dd" << '\t' << "Db" <<"\tTa" << "\n\n\n";
 		while (killed_List.dequeue(u)) {
 			int td = u->GetTd(), tj = u->GetTj(), ta = u->GetTa();
 			OutputFile << td << '\t' << u->GetID() << '\t' << tj << '\t' << (ta - tj) << '\t' << (td - ta) << '\t' << (td - tj)<<'\t'<<ta << "\n\n";
@@ -192,6 +192,7 @@ void Game::OutPutFileCreator()
 			OutputFile << "\n\n\n\nEarth Won the Battle\n\n";
 		else
 			OutputFile << "\n\n\n\nDraw\n\n";
+
 		OutputFile << "\n\n============================== Earth Statistcs  ===============================\n\n"
 			<< "ES #: "<<ES::getTotal()<<std::endl
 			<< "Percentage of destructed ES: " << ((double)ES::getKilled() / (double)ES::getTotal()) * 100 << "%" <<std::endl
@@ -247,11 +248,29 @@ bool Game::getGameMode() const
 	return GameMode;
 }
 
+int Game::UmlPriEquation(Unit* u) const
+{
+	return float(1 / u->GetHealth())*100;
+}
+
 
 int Game::GetTimeStep() const
 {
 	return Timesteps;
 }
+
+priQueue<ES*>* Game::getUML1()
+{
+	return &UML1;
+}
+
+LinkedQueue<ET*>* Game::getUML2()
+{
+	return &UML2;
+}
+
+
+
 
 Game::~Game()
 {

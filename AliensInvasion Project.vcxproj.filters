@@ -7,9 +7,6 @@
     <Filter Include="Militaries">
       <UniqueIdentifier>{3798208e-c8a2-47b3-8d3f-20bb1809eacd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="GUI">
-      <UniqueIdentifier>{455f3ec9-4f02-490d-b101-5aa33e1a6b5c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Armies%27 Lists">
       <UniqueIdentifier>{13b4f7d4-6753-4fba-ab9b-04bc3fdc647c}</UniqueIdentifier>
     </Filter>
@@ -18,6 +15,9 @@
     </Filter>
     <Filter Include="GameManager">
       <UniqueIdentifier>{d3b37169-0b06-417d-8f26-d236a7b5d6a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{455f3ec9-4f02-490d-b101-5aa33e1a6b5c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +91,9 @@
     <ClInclude Include="Armies%27 Lists\Array.h">
       <Filter>Armies%27 Lists</Filter>
     </ClInclude>
+    <ClInclude Include="Unit Armies\HU.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -130,6 +133,9 @@
       <Filter>Unit Armies</Filter>
     </ClCompile>
     <ClCompile Include="Unit Armies\AS.cpp">
+      <Filter>Unit Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit Armies\HU.cpp">
       <Filter>Unit Armies</Filter>
     </ClCompile>
   </ItemGroup>
