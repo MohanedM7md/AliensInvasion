@@ -4,6 +4,12 @@
 int SU::total = 0;
 int SU::Killed = 0;
 
+SU::SU(int id, int tj, int health, int power, int attackCap,
+	std::string, Game* Gptr) :Unit(id, tj, health, power, attackCap, type, Gptr)
+{
+
+}
+
 int SU::getTotal()
 {
 	return SU::total;
@@ -23,7 +29,7 @@ void SU::attack()
 {
 	alienArmy* Aarmy = Gameptr->GetAlienArmy();
 	if (Aarmy->IfListIsEmpyt("AS"))
-		return; // ends the function if it attacking empyt list
+		return;
 
 	LinkedStack<AS*> tempList; // intialize temp list ot hold AS units
 	Output* pOut = Gameptr->getOutputPtr();// get Output ptr
