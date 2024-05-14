@@ -115,7 +115,7 @@ void ES::attack()
 					if (!es->GetHealth()) {
 						es->setTd(Gameptr->GetTimeStep());
 						ES::KilledIncreament();
-						Gameptr->addToKillList(as);
+						Gameptr->addToKillList(es);
 					}
 					else {
 						tempList_ES.push(es);
