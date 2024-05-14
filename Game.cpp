@@ -22,6 +22,26 @@ void Game::DisplayKilledList()
 	pOut->PrintOut("]\n", LIGHT_BLUE);
 }
 
+void Game::DisplayUML1List()
+{
+
+	pOut->PrintOut("UML1 " + std::to_string(UML1.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut(" Unit", LIGHT_CYAN);
+	pOut->PrintOut("[", LIGHT_BLUE);
+	UML1.Print();
+	pOut->PrintOut("]\n", LIGHT_BLUE);
+}
+
+void Game::DisplayUML2List()
+{
+	pOut->PrintOut("UML2 " + std::to_string(UML2.getLength()), LIGHT_YELLOW);
+	pOut->PrintOut(" Unit", LIGHT_CYAN);
+	pOut->PrintOut("[", LIGHT_BLUE);
+	UML2.Print();
+	pOut->PrintOut("]\n", LIGHT_BLUE);
+}
+
+
 
 Output* Game::getOutputPtr() const
 {
@@ -74,7 +94,8 @@ void Game::startGameInteractive()
 			pOut->PrintOut("   ===================================\n\n", AQUA);
 			EarthArmies.attackAliens();
 			AlienArmies.attackEarthians();
-
+			DisplayUML1List();
+			DisplayUML2List();
 			pOut->PrintOut("\n\n====================================   ", RED);
 			pOut->PrintOut("Killed/Destructed Units", ORANGE);
 			pOut->PrintOut("   ========================================\n\n", RED);
