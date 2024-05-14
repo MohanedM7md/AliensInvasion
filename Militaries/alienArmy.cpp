@@ -104,7 +104,8 @@ void alienArmy::attackEarthians()
 	AD* AD_Pair1;
 	AD* AD_Pair2;
 	
-	if (AD_List.peek(AD_Pair1) && AD_List.peekBack(AD_Pair2) && AD_List.getLength() != 1)
+
+		if (AD_List.peek(AD_Pair1) && AD_List.peekBack(AD_Pair2) && AD_List.getLength() != 1)
 	{
 		AD_Pair1->attack();
 		AD_Pair2->attack();

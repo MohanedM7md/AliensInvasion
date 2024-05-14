@@ -30,13 +30,13 @@ int Output::ScreenMenu(std::string* MenuItems, int MinueSize)
 
         std::cout << "\n\n\n";
             SetConsoleTextAttribute(ConsoleHandler, ORANGE);
-            PrintOut("  ___  _     __    __  __    ___   ___    __ __    ___  _____  __   ___    __\n", LIGHT_BLUE);
-            PrintOut(" /   || |   |  |  / _]|  \\  | |  |   \\ |  |  |  /   |/ ___/ |  | /   \\ |  \\ \n", LIGHT_BLUE);
-            PrintOut("| o  || |    ||  / [_ | _ |  | |  | _  | |  |  | |  o (   \\_  || |     | | _ |\n", LIGHT_BLUE);
-            PrintOut("|    || |__  || |   _]| | |  | |  | |  | |  |  | |    |\\__  | || |  O  | | | |\n", LIGHT_BLUE);
-            PrintOut("|  _ ||    | || |   [_| | |  | |  | |  | |  :  | |  _ |/  \\ | || |     | | | |\n", LIGHT_RED);
-            PrintOut("|  | ||    | || |    || | |  | |  | |  | \\   /  |  | |\\    | || |     | | | |\n", LIGHT_RED);
-            PrintOut("|__|_||____||__||____||_|_|  |_|  |_|__|  \\_/   |__|_| \\___||__|\\___/  |_|_|\n", LIGHT_RED);
+            PrintOut("\t  ___  _     __    __  __    ___   ___    __ __    ___  _____  __  ___    __\n", LIGHT_BLUE);
+            PrintOut("\t /   || |   |  |  / _]|  \\   | |  |   \\  |  |  |  /   |/ ___/ |  |/   \\  |   \\ \n", LIGHT_BLUE);
+            PrintOut("\t| o  || |    ||  / [_ | _ |  | |  | _  | |  |  | |  o (   \\_  || |     | | _ |\n", LIGHT_BLUE);
+            PrintOut("\t|    || |__  || |   _]| | |  | |  | |  | |  |  | |    |\\__  | || |  O  | | | |\n", LIGHT_BLUE);
+            PrintOut("\t|  _ ||    | || |   [_| | |  | |  | |  | |  :  | |  _ |/  \\ | || |     | | | |\n", LIGHT_RED);
+            PrintOut("\t|  | ||    | || |    || | |  | |  | |  |  \\   /  |  | |\\    | || |     | | | |\n", LIGHT_RED);
+            PrintOut("\t|__|_||____||__||____||_|_|  |_|  |_|__|   \\_/   |__|_| \\___| |__|\\___/  |_|_|\n", LIGHT_RED);
 
         for (int i = 0; i < MinueSize; i++) {
             

@@ -28,10 +28,12 @@ public:
 	bool addUnit(Unit*);
 
 
+
 	/////////////// Alien Unit remover ///////////////
 	bool AS_Getter(AS*&);
 	bool AM_Getter(AM*&);
 	bool AD_Getter(AD*&, AD*&);
+	bool AD_Getter_Back(AD*& adBack);
 
 	bool IfListIsEmpyt(string s) const;
 
