@@ -45,7 +45,7 @@ bool alienArmy::addUnit(Unit* unit)
 
 	else if (dynamic_cast<AM*>(unit))
 	{
-		
+
 		return AM_List.add(dynamic_cast<AM*>(unit));
 	}
 
@@ -70,13 +70,22 @@ bool alienArmy::AM_Getter(AM*& am)
 	return AM_List.remove(am);
 }
 
-bool alienArmy::AD_Getter(AD*& adFrnt, AD*&adBack)
+bool alienArmy::AD_Getter(AD*& adFrnt, AD*& adBack)
 {
-	
+
 	if (AD_List.getLength() < 2)
 		return false;
 
 	return (AD_List.dequeueFront(adFrnt) && AD_List.dequeueBack(adBack));
+}
+
+bool alienArmy::AD_Getter_Back(AD*& adBack)
+{
+
+	if (AD_List.getLength() < 2)
+		return false;
+
+	return (AD_List.dequeueBack(adBack));
 }
 
 bool alienArmy::IfListIsEmpyt(string s) const
@@ -85,7 +94,7 @@ bool alienArmy::IfListIsEmpyt(string s) const
 		return AS_List.isEmpty();
 	else if (s == "AM")
 		return AM_List.isEmpty();
-	else if(s == "AD")
+	else if (s == "AD")
 		return AD_List.isEmpty();
 	return false;
 }
@@ -103,12 +112,10 @@ void alienArmy::attackEarthians()
 
 	AD* AD_Pair1;
 	AD* AD_Pair2;
-	
 
-		if (AD_List.peek(AD_Pair1) && AD_List.peekBack(AD_Pair2) && AD_List.getLength() != 1)
+	if (AD_List.peek(AD_Pair1) && AD_List.peekBack(AD_Pair2) && AD_List.getLength() != 1)
 	{
 		AD_Pair1->attack();
-		AD_Pair2->attack();
 	}
 }
 
@@ -118,7 +125,7 @@ int alienArmy::GetLength(string s) const
 		return AS_List.getLength();
 	else if (s == "AM")
 		return AM_List.getLength();
-	else if(s == "AD")
+	else if (s == "AD")
 		return AD_List.getLength();
 	else if (s == "ttl")
 		return AS_List.getLength() + AD_List.getLength() + AM_List.getLength();
