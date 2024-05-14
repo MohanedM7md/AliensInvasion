@@ -41,6 +41,7 @@ void HU::attack()
 		int dummy;
 		if (!UML1->dequeue(es,dummy)) break;//if there is no more unit to attack end the loop.
 		if (Gameptr->GetTimeStep() - es->getTjUml() == 10) {
+			ES::KilledIncreament();
 			Gameptr->addToKillList(es);
 			if (!UML1->dequeue(es, dummy)) break;//if there is no more unit to attack end the loop.
 		}
@@ -48,11 +49,15 @@ void HU::attack()
 
 		if (gameMode)
 			pOut->PrintOut(" " + std::to_string(es->GetID()) + ",");// print the attacked units
-
-		es->SetHealth(es->GetHealth() + Healing); // Set New health
+		if(es->isInfected())
+			es->SetHealth((es->GetHealth() + Healing)/2); // Set New health
+		else
+			es->SetHealth((es->GetHealth() + Healing)); // Set New health
 
 		if ((es->GetMaxHealth() / es->GetHealth()) <= 5) {
-		
+			if (es->isInfected())
+				es->setInfected(false);
+			ES::HealNomIncreament();
 			Gameptr->addEUnits(es);
 		}
 		else {
@@ -65,6 +70,7 @@ void HU::attack()
 		
 		if (!UML2->dequeue(et)) break;//if there is no more unit to attack end the loop.
 		if (Gameptr->GetTimeStep() - et->getTjUml() == 10) {
+			ET::KilledIncreament();
 			Gameptr->addToKillList(et);
 			if (!UML2->dequeue(et)) break;//if there is no more unit to attack end the loop.
 		}
@@ -76,6 +82,7 @@ void HU::attack()
 		et->SetHealth(et->GetHealth() + Healing); // Set New health
 
 		if (float(et->GetHealth() / et->GetMaxHealth()) * 10 > 20) {
+			ET::HealNomIncreament();
 			Gameptr->addEUnits(et);
 		}
 		else {

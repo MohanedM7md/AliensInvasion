@@ -94,6 +94,12 @@
     <ClInclude Include="Unit Armies\HU.h">
       <Filter>Unit Armies</Filter>
     </ClInclude>
+    <ClInclude Include="Militaries\alliedArmy.h">
+      <Filter>Militaries</Filter>
+    </ClInclude>
+    <ClInclude Include="Unit Armies\SU.h">
+      <Filter>Unit Armies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -136,6 +142,12 @@
       <Filter>Unit Armies</Filter>
     </ClCompile>
     <ClCompile Include="Unit Armies\HU.cpp">
+      <Filter>Unit Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Militaries\alliedArmy.cpp">
+      <Filter>Militaries</Filter>
+    </ClCompile>
+    <ClCompile Include="Unit Armies\SU.cpp">
       <Filter>Unit Armies</Filter>
     </ClCompile>
   </ItemGroup>

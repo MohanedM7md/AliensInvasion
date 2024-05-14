@@ -35,6 +35,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="GUI\Output.h" />
     <ClInclude Include="Militaries\alienArmy.h" />
+    <ClInclude Include="Militaries\alliedArmy.h" />
     <ClInclude Include="Militaries\earthArmy.h" />
     <ClInclude Include="Unit Armies\AD.h" />
     <ClInclude Include="Unit Armies\AM.h" />
@@ -43,6 +44,7 @@
     <ClInclude Include="Unit Armies\ES.h" />
     <ClInclude Include="Unit Armies\ET.h" />
     <ClInclude Include="Unit Armies\HU.h" />
+    <ClInclude Include="Unit Armies\SU.h" />
     <ClInclude Include="Unit Armies\Unit.h" />
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +53,7 @@
     <ClCompile Include="GUI\Output.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Militaries\alienArmy.cpp" />
+    <ClCompile Include="Militaries\alliedArmy.cpp" />
     <ClCompile Include="Militaries\earthArmy.cpp" />
     <ClCompile Include="Unit Armies\AD.cpp" />
     <ClCompile Include="Unit Armies\AM.cpp" />
@@ -59,6 +62,7 @@
     <ClCompile Include="Unit Armies\ES.cpp" />
     <ClCompile Include="Unit Armies\ET.cpp" />
     <ClCompile Include="Unit Armies\HU.cpp" />
+    <ClCompile Include="Unit Armies\SU.cpp" />
     <ClCompile Include="Unit Armies\Unit.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

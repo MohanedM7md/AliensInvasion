@@ -27,7 +27,7 @@ class Game
 	void DisplayKilledList();
 	void DisplayUML1List();
 	void DisplayUML2List();
-
+	int TresholdPercentage;
 	bool GameMode;
 
 public:
