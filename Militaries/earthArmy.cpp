@@ -127,6 +127,8 @@ void earthArmy::attackAliens()
 	if (EG_List.peek(EGattcker,EGPri))
 		EGattcker->attack();
 	HU* HUHealer;
-	if (HU_List.pop(HUHealer))
+	if (HU_List.pop(HUHealer) && (!ES_List.isEmpty() || !ET_List.isEmpty())) {
 		HUHealer->attack();
+		gPtr->addToKillList(HUHealer);
+	}
 }

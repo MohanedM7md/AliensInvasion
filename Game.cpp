@@ -193,6 +193,7 @@ parameters Game::LoadParameters()
 		inputFile >> param.AattkCapRangees[1];
 		int Fprob;
 		inputFile >> Fprob;
+		inputFile >> TresholdPercentage;
 		AM::SetInfProb(Fprob);
 		inputFile.close();//close
 	}

@@ -4,6 +4,7 @@
 int ES::total = 0;
 int ES::Killed= 0;
 int ES::InfNom= 0;
+int ES::HealedNom= 0;
 
 
 
@@ -41,6 +42,11 @@ void ES::InfIncreament()
 void ES::InfDecreament()
 {
 	ES::InfNom--;
+}
+
+void ES::HealNomIncreament()
+{
+	HealedNom++;
 }
 
 int ES::getKilled()
