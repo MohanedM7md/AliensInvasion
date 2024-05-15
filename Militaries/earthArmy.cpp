@@ -129,6 +129,7 @@ void earthArmy::attackAliens()
 	HU* HUHealer;
 	if (HU_List.pop(HUHealer) && (!ES_List.isEmpty() || !ET_List.isEmpty())) {
 		HUHealer->attack();
+		HUHealer->setTd(gPtr->GetTimeStep());
 		gPtr->addToKillList(HUHealer);
 	}
 }

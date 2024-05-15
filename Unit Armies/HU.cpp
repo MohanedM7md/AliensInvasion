@@ -42,8 +42,10 @@ void HU::attack()
 		if (!UML1->dequeue(es,dummy)) break;//if there is no more unit to attack end the loop.
 		if (Gameptr->GetTimeStep() - es->getTjUml() == 10) {
 			ES::KilledIncreament();
+			if (es->isInfected())
+				ES::InfDecreament();
 			Gameptr->addToKillList(es);
-			if (!UML1->dequeue(es, dummy)) break;//if there is no more unit to attack end the loop.
+			break;//if there is no more unit to heal end the loop.
 		}
 		int Healing = calcDmg(this, es);
 
@@ -72,7 +74,7 @@ void HU::attack()
 		if (Gameptr->GetTimeStep() - et->getTjUml() == 10) {
 			ET::KilledIncreament();
 			Gameptr->addToKillList(et);
-			if (!UML2->dequeue(et)) break;//if there is no more unit to attack end the loop.
+			break;
 		}
 		int Healing = calcDmg(this, et);
 

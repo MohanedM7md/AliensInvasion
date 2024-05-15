@@ -3,7 +3,7 @@
 
 //using namespace std;
 
-Game::Game():pOut(new Output), EarthArmies(this), UnitGen(this), AlienArmies(this),Timesteps(0),help(false)
+Game::Game():pOut(new Output), EarthArmies(this), UnitGen(this), AlienArmies(this), AllideArmies(this),Timesteps(0),help(false)
 {
 	pOut->LoadingScreen();
 	parameters param = LoadParameters();
@@ -79,7 +79,7 @@ void Game::startGameInteractive()
 	pOut->screenRefesher();
 
 
-	while(true) {
+	while(Timesteps<500) {
 		if (GetAsyncKeyState(VK_ESCAPE)) {
 			break; // Exit the loop and end the program
 		}
@@ -88,11 +88,22 @@ void Game::startGameInteractive()
 
 			this->EarthArmies.printEarth();//Print Earthians' Armies
 			this->AlienArmies.printAlien(); //Print Alines' Armies
+			float nom = ((float)ES::getInfected() / (ES::getTotal() - ES::getKilled())) * 100;
+			help = (((float)ES::getInfected() / (ES::getTotal() - ES::getKilled())) * 100 >= TresholdPercentage) && !help;
+			if (!ES::getInfected())
+				AllideArmies.FreeArmy();
+
+
 			pOut->PrintOut("==================================   ", AQUA);
 			pOut->PrintOut("Units fighting at current step", ORANGE);
 			pOut->PrintOut("   ===================================\n\n", AQUA);
 			EarthArmies.attackAliens();
 			AlienArmies.attackEarthians();
+			if (help) {
+				this->AllideArmies.printAllide();
+				AllideArmies.attackAliens();
+			}
+
 			DisplayUML1List();
 			DisplayUML2List();
 			pOut->PrintOut("\n\n====================================   ", RED);
@@ -129,8 +140,14 @@ void Game::startGameSilent()
 {
 	pOut->PrintOut("Silent Mode\n",LIGHT_CYAN);
 	pOut->PrintOut("Simulation Starts...\n",LIGHT_BLUE);
-	while (true) {
+	while (Timesteps < 500) {
 		UnitGen.GenrateArmy(Timesteps++);
+		help = (((float)ES::getInfected() / (ES::getTotal() - ES::getKilled())) * 100 >= TresholdPercentage);
+		if (!ES::getInfected())
+			AllideArmies.FreeArmy();
+		if (help) {
+			AllideArmies.attackAliens();
+		}
 		EarthArmies.attackAliens();
 		AlienArmies.attackEarthians();
 		if ((!EarthArmies.GetLength("ttl") || !AlienArmies.GetLength("ttl")) && (Timesteps > 39))
@@ -147,20 +164,22 @@ parameters Game::LoadParameters()
 {
 	parameters param;
 
+
 	std::fstream inputFile; // create File object
-	inputFile.open(("InputPrameters.txt"), std::ios::in); // open File
+	inputFile.open(("InputParameters.yml"), std::ios::in); // open File
 
 	if (inputFile.is_open()) {//checks if the file opened well
 
-		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of N
 		inputFile >> param.N; // get value of N
-		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//the same as before to get the value of ,%ES,ET,....
 		inputFile >> param.ES >> param.ET >> param.EG >> param.HU;
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab..
 		inputFile >> param.AS >> param.AM >> param.AD;
-		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab.
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of first line of proab..
 		inputFile >> param.prob; // get value of probablity
 		
-		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
 		std::string s;
 		///Get Earth rranges
 		//power Range
@@ -176,7 +195,7 @@ parameters Game::LoadParameters()
 		param.EattkCapRangees[0] = std::stoi(s);
 		inputFile >> param.EattkCapRangees[1];
 
-		//inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':');//it is ignor till the : of the third line
 		///Get Aliens rranges
 		//power Range
 		std::getline(inputFile, s,'-');
@@ -191,7 +210,9 @@ parameters Game::LoadParameters()
 		param.AattkCapRangees[0] = std::stoi(s);
 		inputFile >> param.AattkCapRangees[1];
 
-		///Get SU rranges
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
+
+		///Get Allied ranges
 		//power Range
 		std::getline(inputFile, s, '-');
 		param.SUpwRangees[0] = std::stoi(s);
@@ -202,14 +223,17 @@ parameters Game::LoadParameters()
 		inputFile >> param.SUhtlyRangees[1];
 		//Earth capacity range
 		std::getline(inputFile, s, '-');
-		param.SUattkCapRangees[0] = std::stoi(s);
+		param.AattkCapRangees[0] = std::stoi(s);
 		inputFile >> param.SUattkCapRangees[1];
 
 
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
+
+		inputFile >> TresholdPercentage;
 		inputFile >> param.PercOfSU;
 		int Fprob;
+		inputFile.ignore((std::numeric_limits<std::streamsize>::max)(), ':'); //the same as before to get the value of ranges.
 		inputFile >> Fprob;
-		inputFile >> TresholdPercentage;
 		AM::SetInfProb(Fprob);
 		inputFile.close();//close
 	}
@@ -240,13 +264,15 @@ void Game::OutPutFileCreator()
 			OutputFile << "\n\n\n\nAliens Won the Battle\n\n";
 		else if (!AlienArmies.GetLength("ttl"))
 			OutputFile << "\n\n\n\nEarth Won the Battle\n\n";
+		else if (EarthArmies.GetLength("ttl")< AlienArmies.GetLength("ttl"))
+			OutputFile << "\n\n\n\nAliens Won the Battle\n\n";
 		else
-			OutputFile << "\n\n\n\nDraw\n\n";
+			OutputFile << "\n\n\n\nEarth Won the Battle\n\n";
 
 		OutputFile << "\n\n============================== Earth Statistcs  ===============================\n\n"
 			<< "ES #: " << ES::getTotal() << std::endl
 			<< "Percentage of destructed ES: " << ((double)ES::getKilled() / (double)ES::getTotal()) * 100 << "%" << std::endl
-			<< "Percentage of Infected:" << std::to_string((float)ES::getInfected() / (ES::getTotal()) * 100) << std::endl
+			<< "Percentage of Infected:" << std::to_string((float)ES::getInfected() / (float)(ES::getTotal()) * 100)<<"%" << std::endl
 			<< "ET #: " << ET::getTotal() << std::endl
 			<< "Percentage of destructed ET: " << ((double)ET::getKilled() / (double)ET::getTotal()) * 100 << "%" << std::endl
 			<< "EG #: " << EG::getTotal() << std::endl
@@ -279,10 +305,10 @@ void Game::addAUnits(Unit* add)
 	AlienArmies.addUnit(add);
 }
 
-//void Game::addSUUnits(Unit* add)
-//{
-//	AliedArmies.addUnit(add);
-//}
+void Game::addSUUnits(Unit* add)
+{
+	AllideArmies.addUnit(add);
+}
 
 earthArmy* Game::GetEarthArmy()
 {
@@ -294,10 +320,10 @@ alienArmy* Game::GetAlienArmy()
 	return &AlienArmies;
 }
 
-//alliedArmy* Game::GetAlliedArmy()
-//{
-//	return &AliedArmies;
-//}
+allideArmy* Game::GetAllideArmy()
+{
+	return &AllideArmies;
+}
 
 bool Game::addToKillList(Unit* unit)
 {

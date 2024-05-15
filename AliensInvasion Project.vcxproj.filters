@@ -97,6 +97,9 @@
     <ClInclude Include="Unit Armies\SU.h">
       <Filter>Unit Armies</Filter>
     </ClInclude>
+    <ClInclude Include="Militaries\allideArmy.h">
+      <Filter>Militaries</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
@@ -143,6 +146,9 @@
     </ClCompile>
     <ClCompile Include="Unit Armies\SU.cpp">
       <Filter>Unit Armies</Filter>
+    </ClCompile>
+    <ClCompile Include="Militaries\allideArmy.cpp">
+      <Filter>Militaries</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

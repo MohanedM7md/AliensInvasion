@@ -6,6 +6,7 @@ class ES :public Unit {
 	static int total;
 	static int Killed;
 	static int InfNom;
+	static int EndInfNom;
 	static int HealedNom;
 	bool infected;
 
