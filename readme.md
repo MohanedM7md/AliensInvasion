@@ -110,8 +110,12 @@ Percentage of total destructed units: 71.5517%
 - Amr Ashrf
 - Nada Omar
 ## License
-This project is solely owned and maintained by [Your Name]. All rights reserved.
 
-Unauthorized copying, modification, or distribution of this software, or any portion thereof, is strictly prohibited. Usage of this software is restricted to [describe any restrictions or permissions you want to specify].
+This project is solely owned and maintained by Mohaned Mohamemed, Seif Mohamed, Nada Omar and Amr Ashrf. All rights reserved.
 
-For inquiries regarding licensing or usage permissions, please contact [Your Email Address].
+Unauthorized copying, modification, or distribution of this software, or any portion thereof, is strictly prohibited. Usage of this software is permitted only for non-commercial purposes and must include proper attribution to the author.
+
+When using or distributing this software, please provide appropriate attribution to Mohaned Mohamemed.
+
+For inquiries regarding licensing or usage permissions, please contact Mohandmohamed104@gmail.com
+
