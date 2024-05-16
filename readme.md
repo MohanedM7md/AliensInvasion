@@ -120,5 +120,5 @@ When using or distributing this software, please provide appropriate attribution
 
 For inquiries regarding licensing or usage permissions, please contact me.
 
-##Contact
+## Contact
 ### Mohandmohamed104@gmail.com
