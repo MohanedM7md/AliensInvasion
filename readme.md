@@ -4,9 +4,9 @@
   - [Introduction](#introduction)
   - [Features](#features) 
   - [Installation](#installation)
-  - [Usage](#usage) 
-  - [Screenshots](#screenshots) 
-  - [Contributing](#contributing) 
+  - [Input File Format](#Input)
+  - [Output File Format](#Output) 
+  - [Contributors](#contributing) 
   - [Contact](#contact)  
 
 ## Introduction
@@ -26,7 +26,8 @@
     - Interactive mode enables users to watch each simulation step by clicking any key. 
     - Silent mode generates output files without displaying simulation steps.  
 
-## Installation  To run this project locally, follow these steps:  
+## Installation 
+## To run this project locally, follow these steps:  
 1. Clone the repository:  
 ```bash 
 git clone https://github.com/MohanedM7md/AliensInvasion.git 
@@ -56,7 +57,7 @@ git clone https://github.com/MohanedM7md/AliensInvasion.git
     Treshold%, Allied%: 30 20
     Infection%: 20
 ```
-## Output
+## Output File Format
 ### The simulation generates an output file containing comprehensive battle results, statistics, and any other relevant information.
 ```Python
 Td	ID	    Tj	DF	Dd	Db	Ta
@@ -117,5 +118,7 @@ Unauthorized copying, modification, or distribution of this software, or any por
 
 When using or distributing this software, please provide appropriate attribution to Mohaned Mohamemed.
 
-For inquiries regarding licensing or usage permissions, please contact Mohandmohamed104@gmail.com
+For inquiries regarding licensing or usage permissions, please contact me.
 
+##Contact
+### Mohandmohamed104@gmail.com
