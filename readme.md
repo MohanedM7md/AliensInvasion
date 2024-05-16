@@ -117,12 +117,10 @@ The input file should adhere to the specified format, providing details about Ea
 
 <h2 align="center" id="output">Output File Format 📤</h2>
 
-The input file should adhere to the specified format, providing details about Earth and Alien forces, their formations, and strategies.
-
 *This is an example to The Output File*
 
 ```Python
-Td	ID	    Tj	DF	Dd	Db	Ta
+Td	ID	   Tj	DF	Dd	Db	Ta
 
 
 2	2014	1	1	0	1	2
@@ -177,7 +175,7 @@ Percentage of total destructed units: 71.5517%
 <h2 align="center" id="con"> Contributors 👬</h2>
 
 - Mohaned Mohammed Fathy (Leader)
-- Seif Mohammed
+- Seif Mohamed
 - Amr Ashrf
 - Nada Omar
 
@@ -188,7 +186,7 @@ Percentage of total destructed units: 71.5517%
 
 <h2 align="center" id="li"> License ©️ </h2>
 
-This project is solely owned and maintained by Mohaned Mohamemed, Seif Mohamed, Nada Omar and Amr Ashrf. All rights reserved.
+This project is solely owned and maintained by Mohaned Mohammed, Seif Mohamed, Nada Omar and Amr Ashrf. All rights reserved.
 
 Unauthorized copying, modification, or distribution of this software, or any portion thereof, is strictly prohibited. Usage of this software is permitted only for non-commercial purposes and must include proper attribution to the author.
 
