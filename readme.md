@@ -1,13 +1,13 @@
 # Earth vs. Aliens: War Simulation Game 
-![Earth vs. Aliens](https://your-image-url.com)
+![Earth vs. Aliens]
 ## Table of Contents
   - [Introduction](#introduction)
   - [Features](#features) 
   - [Installation](#installation)
-  - [Input File Format](#Input)
-  - [Output File Format](#Output) 
-  - [Contributors](#contributing) 
-  - [Contact](#contact)  
+  - [Input File Format](#Input-File-Format)
+  - [Output File Format](#Output-File-Format) 
+  - [contributing](#Contributors) 
+  - [Contact](#Contact)  
 
 ## Introduction
 ###  This C++ project is a war simulation game that pits Earth against Aliens. It utilizes various data structures to manage units for both sides and features a custom console GUI using the Windows library. The game provides options for interactive mode, allowing users to watch each simulation step by clicking any key, as well as a silent mode for generating output files only.  
