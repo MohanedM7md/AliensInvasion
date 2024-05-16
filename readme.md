@@ -1,40 +1,96 @@
-# Earth vs. Aliens: War Simulation Game 
-![Earth vs. Aliens]
+<h1 id="Main Heading" style="text-align: center;">AlienInvasion Game 👽🌏</h1>
+
+<div align="center">
+    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTQxODFkMWtyNnp4aDFoanU3M3k1MXR6bzk3czR4OHc5NjRremV2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/znWgshICOsJFBgHzj1/giphy.gif">
+</div>
+
+<div class="Game-Story" align="center">
+    <p>The year is 2047. Humanity thrives amidst technological advancements and global cooperation. But peace is shattered when an unknown force from the depths of space descends upon Earth. Massive alien vessels darken the skies, heralding an invasion unlike any the world has ever seen.
+    In the cosmic clash between Earth and extraterrestrial forces, will our planet triumph in a glorious defense, securing its rightful place in the universe? Or shall the relentless might of alien invaders prove overwhelming, casting humanity into the shadows of conquest and subjugation?
+    </p>
+</div>
+
+<div>
+
 ## Table of Contents
-  - [Introduction](#introduction)
-  - [Features](#features) 
-  - [Installation](#installation)
-  - [Input File Format](#Input-File-Format)
-  - [Output File Format](#Output-File-Format) 
-  - [contributing](#Contributors) 
-  - [Contact](#Contact)  
+  - <a href="#Intro">Introduction</a>
+  - <a href="#fea">Features</a>
+  - <a href="#inst">Installation</a>
+  - <a href="#Work">How Game Works </a>
+  - <a href="#input">Input File Format</a>
+  - <a href="#output">Output File Format</a>
+  - <a href="#con">Contributers </a>
+  - <a href="#li">Contributers </a>
+  - <a href="#contact">Contact </a>
 
-## Introduction
-###  This C++ project is a war simulation game that pits Earth against Aliens. It utilizes various data structures to manage units for both sides and features a custom console GUI using the Windows library. The game provides options for interactive mode, allowing users to watch each simulation step by clicking any key, as well as a silent mode for generating output files only.  
 
-## Features  
-- Simulates a war between Earth and Aliens. 
-- Utilizes the following data structures:   
-    - Earth: FIFO soldier, LIFO tank, FIFO healer, priorityQueue gunnery.   
-    - Aliens: FIFO soldiers, random array picker monsters, doublelinkedQueue Drones. 
-- Custom console GUI featuring:   
-    - Loading screen.   
-    - Menu items.   
-    - Printing screen. 
+</div>
+
+<div class="Project Intro">
+    <h2 align="center" id="Intro">Introduction</h2>
+    <p>
+    This C++ project is like a video game where Earth fights against aliens. It uses different ways to keep track of soldiers and stuff for both sides. The game looks simple but it's really smart under the hood. with a GUI that is simple and It shows everything happening in the game on the screen using the interactive mode, and you can choose to watch it step by step or just let it run quietly in the background and check out what happened later using silent mode.
+    </p>
+</div>
+
+<div class="Features">
+
+<h2 align="center" id="fea">Features</h2>
+
+- Simulates a war between Earth and Aliens.
+- Utilizes the following data structures:
+    - Earth: FIFO soldier, LIFO tank, FIFO healer, priorityQueue gunnery.
+    - Aliens: FIFO soldiers, random array picker monsters, doublelinkedQueue Drones.
+- Custom console GUI featuring:
+    - Loading screen.
+    - Menu items.
+    - Printing screen.
 - Game Manager featuring:
-    - Handles input files perfectly and generates output files showing battle results and statistics. 
-    - Interactive mode enables users to watch each simulation step by clicking any key. 
-    - Silent mode generates output files without displaying simulation steps.  
+    - Handles input files perfectly and generates output files showing battle results and statistics.
+    - Interactive mode enables users to watch each simulation step by clicking any key.
+    - Silent mode generates output files without displaying simulation steps.
 
-## Installation 
+</div>
+
+<div class="Installation">
+
+<h2 align="center" id="inst">Installation 🔽</h2>
+
 ### To run this project locally:
- Clone the repository:  
-```bash 
+
+#### Clone the repository:
+
+```
 git clone https://github.com/MohanedM7md/AliensInvasion.git 
 ```
-## Input File Format
-### The input file should adhere to the specified format, providing details about Earth and Alien forces, their formations, and strategies.
-```YML 
+
+### Warning ⚠️
+
+We Recommend you to run the game using **Visual Studio Community**
+As This is the IDE Used for this Project
+
+</div>
+
+<div class="How Works">
+<h2 align="center" id="Work">How The Game Works 🎲</h2>
+
+The Game is all about probablity it takes the input ranges of both armies from a text file
+(for more info about 
+<a href="#input"> Input File </a> see below
+) a random genrator uses the ranges from the input files to generates units of both armies the game runs for 500 time step where each time step the two armies attacks each other after the 500 time step one of the arimes win or the battle ends with draw
+
+
+</div>
+
+<div class="Input-Txt">
+
+<h2 align="center" id="input">Input File Format 📃</h2>
+
+The input file should adhere to the specified format, providing details about Earth and Alien forces, their formations, and strategies.
+
+
+
+```YML
     #probablity of Genration in percentage
     Probablity: 100
     #number of Genrated Unit per Genrations
@@ -57,8 +113,17 @@ git clone https://github.com/MohanedM7md/AliensInvasion.git
     Treshold%, Allied%: 30 20
     Infection%: 20
 ```
-## Output File Format
-### The simulation generates an output file containing comprehensive battle results, statistics, and any other relevant information.
+
+</div>
+
+<div class="output-Txt">
+
+<h2 align="center" id="output">Output File Format 📤</h2>
+
+The input file should adhere to the specified format, providing details about Earth and Alien forces, their formations, and strategies.
+
+*This is an example to The Output File*
+
 ```Python
 Td	ID	    Tj	DF	Dd	Db	Ta
 
@@ -77,6 +142,8 @@ Td	ID	    Tj	DF	Dd	Db	Ta
 6	23	2	1	3	4	3
 
 7	2008	1	1	5	6	2
+
+
 Earth Won the Battle
 
 
@@ -105,12 +172,24 @@ Percentage of destructed AD: 58.3333%
 Percentage of total destructed units: 71.5517%
 
 ```
-## Contributors
+
+</div>
+
+<div class = "Contributes">
+
+<h2 align="center" id="con"> Contributors 👬</h2>
+
 - Mohaned Mohammed Fathy (Leader)
 - Seif Mohammed
 - Amr Ashrf
 - Nada Omar
-## License
+
+
+</div>
+
+<div class = "License">
+
+<h2 align="center" id="li"> License ©️ </h2>
 
 This project is solely owned and maintained by Mohaned Mohamemed, Seif Mohamed, Nada Omar and Amr Ashrf. All rights reserved.
 
@@ -120,5 +199,14 @@ When using or distributing this software, please provide appropriate attribution
 
 For inquiries regarding licensing or usage permissions, please contact me.
 
-## Contact
+</div>
+
+<div class = "Contact">
+
+
+<h2 align="center" id="contact"> Contact 📧 </h2>
+
 ### Mohandmohamed104@gmail.com
+### eng.seifmohamed2004@gmail.com
+
+</div>
