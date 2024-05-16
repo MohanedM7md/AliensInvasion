@@ -16,7 +16,7 @@
 - Simulates a war between Earth and Aliens. 
 - Utilizes the following data structures:   
     - Earth: FIFO soldier, LIFO tank, FIFO healer, priorityQueue gunnery.   
-    - Aliens: FIFO soldiers, random array picker monsters, double linked queue drones. 
+    - Aliens: FIFO soldiers, random array picker monsters, doublelinkedQueue Drones. 
 - Custom console GUI featuring:   
     - Loading screen.   
     - Menu items.   
@@ -27,8 +27,8 @@
     - Silent mode generates output files without displaying simulation steps.  
 
 ## Installation 
-## To run this project locally, follow these steps:  
-1. Clone the repository:  
+### To run this project locally:
+ Clone the repository:  
 ```bash 
 git clone https://github.com/MohanedM7md/AliensInvasion.git 
 ```
