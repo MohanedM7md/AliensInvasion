@@ -2,8 +2,8 @@
 
 
 <div class="Game-Story" align="center">
-    <p>The year is 2047. Humanity thrives amidst technological advancements and global cooperation. But peace is shattered when an unknown force from the depths of space descends upon Earth. Massive alien vessels darken the skies, heralding an invasion unlike any the world has ever seen.
-    In the cosmic clash between Earth and extraterrestrial forces, will our planet triumph in a glorious defense, securing its rightful place in the universe? Or shall the relentless might of alien invaders prove overwhelming, casting humanity into the shadows of conquest and subjugation?
+    <p>The year is 2047. Humanity thrives amidst technological advancements and global cooperation. But the whispers have become shouts, the blurry figures in the night sky, confirmed spaceships. An alien              invasion is no longer science fiction !!! The world needs to act quickly to be ready for the expected invasion. Using the observed information about alien armies, The Global Defense Unit decided to make            the world ready by simulating Earth’s power against aliens’ power.
+        Fortunately.
     </p>
 </div>
 
@@ -26,7 +26,7 @@
 <div class="Project Intro">
     <h2 align="center" id="Intro">Introduction</h2>
     <p>
-    This C++ project is like a video game where Earth fights against aliens. It uses different ways to keep track of soldiers and stuff for both sides. The game looks simple but it's really smart under the hood. with a GUI that is simple and It shows everything happening in the game on the screen using the interactive mode, and you can choose to watch it step by step or just let it run quietly in the background and check out what happened later using silent mode.
+    This C++ project program that simulates the battle against alien armies and calculates some related statistics in order to help decision makers around the world. It uses different ways to keep track of soldiers and stuff for both sides. The game looks simple but it's really smart under the hood. with a GUI that is simple and It shows everything happening in the game on the screen using the interactive mode, and you can choose to watch it step by step or just let it run quietly in the background and check out what happened later using silent mode.
     </p>
 </div>
 
