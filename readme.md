@@ -1,8 +1,5 @@
 <h1 id="Main Heading" style="text-align: center;">AlienInvasion Game 👽🌏</h1>
 
-<div align="center">
-    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExOTQxODFkMWtyNnp4aDFoanU3M3k1MXR6bzk3czR4OHc5NjRremV2aiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/znWgshICOsJFBgHzj1/giphy.gif">
-</div>
 
 <div class="Game-Story" align="center">
     <p>The year is 2047. Humanity thrives amidst technological advancements and global cooperation. But peace is shattered when an unknown force from the depths of space descends upon Earth. Massive alien vessels darken the skies, heralding an invasion unlike any the world has ever seen.
