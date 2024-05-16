@@ -120,7 +120,7 @@ The input file should adhere to the specified format, providing details about Ea
 *This is an example to The Output File*
 
 ```Python
-Td	ID	   Tj	DF	Dd	Db	Ta
+Td	ID	 Tj    	DF	Dd	Db	Ta
 
 
 2	2014	1	1	0	1	2
