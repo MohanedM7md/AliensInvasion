@@ -25,7 +25,7 @@
 <div class="Project Intro">
     <h2 align="center" id="Intro">Introduction</h2>
     <p>
-    This C++ project program that <u>simulates</u> the battle against alien armies and <u>calculates</u> some related <b>statistics</b> in order to help decision makers around the world. It uses different ways to keep track of soldiers and stuff for both sides. The game looks simple but it's really smart under the hood. with a GUI that is simple and It shows everything happening in the game on the screen using the interactive mode, and you can choose to watch it step by step or just let it run quietly in the background and check out what happened later using silent mode.
+    This C++ project program that <strong style = "color:black">simulates</strong> the battle against alien armies and <strong style = "color:black">calculates</strong> some related <b>statistics</b> in order to help decision makers around the world. It uses different ways to keep track of soldiers and stuff for both sides. The game looks simple but it's really smart under the hood. with a GUI that is simple and It shows everything happening in the game on the screen using the interactive mode, and you can choose to watch it step by step or just let it run quietly in the background and check out what happened later using silent mode.
     </p>
 </div>
 
